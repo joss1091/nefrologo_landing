@@ -9,23 +9,24 @@ interface Props {
       sourceUrl: string
     }
   }
-  slug?: string
+  slug?: string,
+  width: any, 
+  height: any
 }
 
-export default function CoverImage({ title, coverImage, slug }: Props) {
+export default function CoverImage({ title, coverImage, slug, width, height }: Props) {
   const image = (
     <Image
-      width={2000}
-      height={1000}
+      width={width || 325}
+      height={height || 237}
       alt={`Cover Image for ${title}`}
       src={coverImage?.node.sourceUrl}
-      className={cn('shadow-small', {
-        'hover:shadow-medium transition-shadow duration-200': slug,
-      })}
+      
     />
   )
   return (
-    <div className="sm:mx-0">
+  
+    < >
       {slug ? (
         <Link href={`/posts/${slug}`} aria-label={title}>
           {image}
@@ -33,6 +34,6 @@ export default function CoverImage({ title, coverImage, slug }: Props) {
       ) : (
         image
       )}
-    </div>
+    </>
   )
 }

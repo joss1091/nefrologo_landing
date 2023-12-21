@@ -1,7 +1,7 @@
-import Avatar from './avatar'
-import Date from './date'
-import CoverImage from './cover-image'
-import Link from 'next/link'
+import Avatar from "./avatar";
+import Date from "./date";
+import CoverImage from "./cover-image";
+import Link from "next/link";
 
 export default function PostPreview({
   title,
@@ -10,29 +10,56 @@ export default function PostPreview({
   excerpt,
   author,
   slug,
+  categories
 }) {
+  console.log(categories.edges)
   return (
-    <div>
-      <div className="mb-5">
-        {coverImage && (
-          <CoverImage title={title} coverImage={coverImage} slug={slug} />
+    <div className="col-sm-12 col-md-6 col-lg-4">
+      <div className="post-item">
+        <div className="post__img">
+          
+          {coverImage && (
+          <CoverImage title={title} coverImage={coverImage} slug={slug} height={237} width={325} />
         )}
+        </div>
+        <div className="post__body">
+          <div className="post__meta-cat">
+            {categories.edges.map(({node}) => (
+              <Link
+              href={`/categories/${node.slug}`}
+              className="hover:underline"
+              dangerouslySetInnerHTML={{ __html: node.name }}
+            ></Link>
+            ))}
+            
+            
+          </div>
+          <div className="post__meta d-flex">
+            <span className="post__meta-date">
+              <Date dateString={date} />
+            </span>
+             
+            <Link className="post__meta-author" href="#">
+              {author.node.name}
+            </Link>
+          </div>
+          <h4 className="post__title">
+            <Link href={`/posts/${slug}`}>{title}</Link>
+          </h4>
+
+          <div
+            className="post__desc"
+            dangerouslySetInnerHTML={{ __html: excerpt }}
+          ></div>
+          <Link
+            href={`/posts/${slug}`}
+            className="btn btn__secondary btn__link btn__rounded"
+          >
+            <span>Leer más</span>
+            <i className="icon-arrow-right"></i>
+          </Link>
+        </div>
       </div>
-      <h3 className="text-3xl mb-3 leading-snug">
-        <Link
-          href={`/posts/${slug}`}
-          className="hover:underline"
-          dangerouslySetInnerHTML={{ __html: title }}
-        ></Link>
-      </h3>
-      <div className="text-lg mb-4">
-        <Date dateString={date} />
-      </div>
-      <div
-        className="text-lg leading-relaxed mb-4"
-        dangerouslySetInnerHTML={{ __html: excerpt }}
-      />
-      <Avatar author={author} />
     </div>
-  )
+  );
 }

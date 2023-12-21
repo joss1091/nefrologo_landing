@@ -1,5 +1,7 @@
 import { AppProps } from 'next/app'
-import '../styles/index.css'
+import '../styles/style.css'
+import '../styles/libraries.css'
+import "../styles/scss/style.scss"
 
 function MyApp({ Component, pageProps }: AppProps) {
   return <Component {...pageProps} />

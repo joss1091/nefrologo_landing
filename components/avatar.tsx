@@ -11,12 +11,11 @@ export default function Avatar({ author }) {
       <div className="w-12 h-12 relative mr-4">
         <Image
           src={author.node.avatar.url}
-          layout="fill"
-          className="rounded-full"
+          width={70}
+          height={70}
           alt={name}
         />
       </div>
-      <div className="text-xl font-bold">{name}</div>
     </div>
   )
 }

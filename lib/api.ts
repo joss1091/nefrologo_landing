@@ -10,6 +10,7 @@ async function fetchAPI(query = '', { variables }: Record<string, any> = {}) {
   }
 
   // WPGraphQL Plugin must be enabled
+
   const res = await fetch(API_URL, {
     headers,
     method: 'POST',
@@ -41,6 +42,7 @@ export async function getPreviewPost(id, idType = 'DATABASE_ID') {
       variables: { id, idType },
     }
   )
+
   return data.post
 }
 
@@ -56,14 +58,96 @@ export async function getAllPostsWithSlug() {
       }
     }
   `)
+
   return data?.posts
+}
+
+export async function getAllCategoriesWithSlug() {
+  const data = await fetchAPI(`
+    {
+      categories(first: 10000) {
+        edges {
+          node {
+            slug
+          }
+        }
+      }
+    }
+  `)
+
+  return data?.categories
+}
+
+export async function getAllTagsWithSlug() {
+  const data = await fetchAPI(`
+    {
+      tags {
+        nodes {
+          name
+          slug
+        }
+      }
+    }
+  `)
+
+  return data?.tags
 }
 
 export async function getAllPostsForHome(preview) {
   const data = await fetchAPI(
     `
     query AllPosts {
-      posts(first: 20, where: { orderby: { field: DATE, order: DESC } }) {
+      posts(first: 3, where: { orderby: { field: DATE, order: DESC } }) {
+        edges {
+          node {
+            title
+            excerpt
+            slug
+            date
+            featuredImage {
+              node {
+                sourceUrl
+              }
+            }
+            categories{
+              edges {
+                node {
+                  slug
+                  name
+                }
+              }
+            }
+            author {
+              node {
+                name
+                firstName
+                lastName
+                avatar {
+                  url
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  `,
+    {
+      variables: {
+        onlyEnabled: !preview,
+        preview,
+      },
+    }
+  )
+    
+  return data?.posts
+}
+
+export async function getAllPostsPaginate(preview) {
+  const data = await fetchAPI(
+    `
+    query AllPosts {
+      posts( where: { orderby: { field: DATE, order: DESC } }) {
         edges {
           node {
             title
@@ -97,9 +181,112 @@ export async function getAllPostsForHome(preview) {
       },
     }
   )
-
+    
   return data?.posts
 }
+
+export async function getAllPostsByCategory(preview, categoryName) {
+  const data = await fetchAPI(
+    `
+    query AllPosts($categoryName: String) {
+      posts( where: {categoryName: $categoryName, orderby: { field: DATE, order: DESC } }) {
+        edges {
+          node {
+            title
+            excerpt
+            slug
+            date
+            featuredImage {
+              node {
+                sourceUrl
+              }
+            }
+            categories{
+              edges {
+                node {
+                  slug
+                  name
+                }
+              }
+            }
+            author {
+              node {
+                name
+                firstName
+                lastName
+                avatar {
+                  url
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  `,
+    {
+      variables: {
+        onlyEnabled: !preview,
+        preview,
+        categoryName: categoryName
+      },
+    }
+  )
+    
+  return data?.posts
+}
+
+export async function getAllPostsByTag(preview, tag) {
+  const data = await fetchAPI(
+    `
+    query AllPosts($tag: String) {
+      posts( where: {tag: $tag, orderby: { field: DATE, order: DESC } }) {
+        edges {
+          node {
+            title
+            excerpt
+            slug
+            date
+            featuredImage {
+              node {
+                sourceUrl
+              }
+            }
+            categories{
+              edges {
+                node {
+                  slug
+                  name
+                }
+              }
+            }
+            author {
+              node {
+                name
+                firstName
+                lastName
+                avatar {
+                  url
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  `,
+    {
+      variables: {
+        onlyEnabled: !preview,
+        preview,
+        tag: tag
+      },
+    }
+  )
+    
+  return data?.posts
+}
+
 
 export async function getPostAndMorePosts(slug, preview, previewData) {
   const postPreview = preview && previewData?.post
@@ -116,6 +303,7 @@ export async function getPostAndMorePosts(slug, preview, previewData) {
       name
       firstName
       lastName
+      description
       avatar {
         url
       }
@@ -139,6 +327,7 @@ export async function getPostAndMorePosts(slug, preview, previewData) {
         edges {
           node {
             name
+            slug
           }
         }
       }
@@ -146,6 +335,7 @@ export async function getPostAndMorePosts(slug, preview, previewData) {
         edges {
           node {
             name
+            slug
           }
         }
       }
@@ -183,6 +373,22 @@ export async function getPostAndMorePosts(slug, preview, previewData) {
           }
         }
       }
+      tags {
+        edges {
+          node {
+            name
+            count
+            slug
+          }
+        }
+      }
+      categories {
+        nodes {
+          name
+          count
+          slug
+        }
+      }
     }
   `,
     {
@@ -192,6 +398,8 @@ export async function getPostAndMorePosts(slug, preview, previewData) {
       },
     }
   )
+
+  
 
   // Draft posts may not have an slug
   if (isDraft) data.post.slug = postPreview.id
@@ -207,6 +415,6 @@ export async function getPostAndMorePosts(slug, preview, previewData) {
   data.posts.edges = data.posts.edges.filter(({ node }) => node.slug !== slug)
   // If there are still 3 posts, remove the last one
   if (data.posts.edges.length > 2) data.posts.edges.pop()
-
+  console.log(data.tags.edges, "tags")
   return data
 }

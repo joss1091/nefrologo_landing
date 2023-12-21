@@ -20,5 +20,6 @@ module.exports = {
         pathname: `${pathname}/**`,
       },
     ],
+    domains: ['secure.gravatar.com',"blog-content.nefrologojosuemolina.com.mx"]
   },
 }

@@ -1,8 +1,8 @@
-import Avatar from './avatar'
-import Date from './date'
-import CoverImage from './cover-image'
-import PostTitle from './post-title'
-import Categories from './categories'
+import Avatar from "./avatar";
+import Date from "./date";
+import CoverImage from "./cover-image";
+import PostTitle from "./post-title";
+import Categories from "./categories";
 
 export default function PostHeader({
   title,
@@ -13,22 +13,23 @@ export default function PostHeader({
 }) {
   return (
     <>
-      <PostTitle>{title}</PostTitle>
-      <div className="hidden md:block md:mb-12">
-        <Avatar author={author} />
+      <div className="post__meta-cat">
+      {categories.edges.map(({ node }) => (
+        <a href="#" key={node.name}>{node.name}</a>
+      ))}
       </div>
-      <div className="mb-8 md:mb-16 sm:mx-0">
-        <CoverImage title={title} coverImage={coverImage} />
+      <div className="post__meta d-flex align-items-center mb-20">
+        <span className="post__meta-date"><Date dateString={date} /></span>
+        <a className="post__meta-author" href="#">
+          {author.node.name}
+        </a>
+        <a className="post__meta-comments" href="#">
+          2 coments
+        </a>
       </div>
-      <div className="max-w-2xl mx-auto">
-        <div className="block md:hidden mb-6">
-          <Avatar author={author} />
-        </div>
-        <div className="mb-6 text-lg">
-          Posted <Date dateString={date} />
-          <Categories categories={categories} />
-        </div>
-      </div>
+      <h1 className="post__title mb-30">
+        {title}
+      </h1>
     </>
-  )
+  );
 }
