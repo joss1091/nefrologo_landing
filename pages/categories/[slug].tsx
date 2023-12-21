@@ -11,10 +11,9 @@ import PostPreview from "../../components/post-preview";
 import Header from "../../components/header";
 import GridPosts from "../../components/grid-posts";
 
-export default function Index({ allPosts: { edges }, preview }) {
-  const heroPost = edges[0]?.node;
-  const morePosts = edges.slice(1);
+export default function Index({ allPosts: allPosts, preview }) {
 
+  var edges = allPosts?.edges || []
   return (
     <Layout preview={preview}>
       <Head>

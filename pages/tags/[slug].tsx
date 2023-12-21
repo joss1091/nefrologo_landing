@@ -11,7 +11,7 @@ import Header from "../../components/header";
 import GridPosts from "../../components/grid-posts";
 
 export default function Index({ allPosts: allPosts, preview }) {
-  var edges = allPosts.edges || []
+  var edges = allPosts?.edges || []
   
   return (
     <Layout preview={preview}>
@@ -28,7 +28,7 @@ export default function Index({ allPosts: allPosts, preview }) {
 
 export const getStaticProps: GetStaticProps = async ({ params,preview = false }) => {
   const allPosts = await getAllPostsByTag(preview, params?.slug);
-  console.log(allPosts, "kkkk")
+
   return {
     props: { allPosts, preview },
     revalidate: 10,
@@ -37,7 +37,7 @@ export const getStaticProps: GetStaticProps = async ({ params,preview = false })
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const allPosts = await getAllTagsWithSlug();
-  console.log(allPosts, "llllllll")
+  
   return {
     paths: allPosts.nodes.map(({ slug }) => `/tags/${slug}`) || [],
     fallback: true,

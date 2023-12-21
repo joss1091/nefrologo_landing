@@ -23,8 +23,7 @@ export default function Post({ post, posts,tags, categories, preview }) {
  
   const router = useRouter();
   const morePosts = posts?.edges;
-
-  if (!router.isFallback && !post?.slug) {
+  if (!post) {
     return <ErrorPage statusCode={404} />;
   }
 

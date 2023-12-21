@@ -159,6 +159,14 @@ export async function getAllPostsPaginate(preview) {
                 sourceUrl
               }
             }
+            categories{
+              edges {
+                node {
+                  slug
+                  name
+                }
+              }
+            }
             author {
               node {
                 name
@@ -415,6 +423,5 @@ export async function getPostAndMorePosts(slug, preview, previewData) {
   data.posts.edges = data.posts.edges.filter(({ node }) => node.slug !== slug)
   // If there are still 3 posts, remove the last one
   if (data.posts.edges.length > 2) data.posts.edges.pop()
-  console.log(data.tags.edges, "tags")
   return data
 }

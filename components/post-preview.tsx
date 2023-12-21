@@ -12,7 +12,6 @@ export default function PostPreview({
   slug,
   categories
 }) {
-  console.log(categories.edges)
   return (
     <div className="col-sm-12 col-md-6 col-lg-4">
       <div className="post-item">
