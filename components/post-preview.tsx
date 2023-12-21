@@ -25,6 +25,7 @@ export default function PostPreview({
           <div className="post__meta-cat">
             {categories.edges.map(({node}) => (
               <Link
+              key={node.slug}
               href={`/categories/${node.slug}`}
               className="hover:underline"
               dangerouslySetInnerHTML={{ __html: node.name }}

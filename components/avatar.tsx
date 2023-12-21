@@ -10,7 +10,7 @@ export default function Avatar({ author }) {
     <div className="flex items-center">
       <div className="w-12 h-12 relative mr-4">
         <Image
-          src={author.node.avatar.url}
+          src={name}
           width={70}
           height={70}
           alt={name}

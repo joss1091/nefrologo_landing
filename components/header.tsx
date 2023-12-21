@@ -1,6 +1,19 @@
-import Link from 'next/link'
 
+import React, { useEffect } from 'react';
+import $ from 'jquery';
 export default function Header() {
+
+  useEffect(() => {
+  
+    require("bootstrap")
+    $('.navbar-toggler').on('click', function () {
+      $('.navbar-collapse').addClass('menu-opened');
+  })
+
+  $('.close-mobile-menu').on('click', function (e) {
+      $('.navbar-collapse').removeClass('menu-opened');
+  });
+  }, []);
   return (
     <header className="header header-layout1">
           <div className="header-topbar">

@@ -7,12 +7,10 @@ import PostBody from "../../components/post-body";
 import MoreStories from "../../components/more-stories";
 import Header from "../../components/header";
 import PostHeader from "../../components/post-header";
-import SectionSeparator from "../../components/section-separator";
 import Layout from "../../components/layout";
-import PostTitle from "../../components/post-title";
-import Tags from "../../components/tags";
+
 import { getAllPostsWithSlug, getPostAndMorePosts } from "../../lib/api";
-import { CMS_NAME } from "../../lib/constants";
+
 import CoverImage from "../../components/cover-image";
 import PostWidget from "../../components/post-widget";
 import Avatar from "../../components/avatar";
@@ -23,6 +21,8 @@ export default function Post({ post, posts,tags, categories, preview }) {
  
   const router = useRouter();
   const morePosts = posts?.edges;
+  console.log(router)
+  console.log(post)
   if (!post) {
     return <ErrorPage statusCode={404} />;
   }
