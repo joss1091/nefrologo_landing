@@ -19,7 +19,18 @@ module.exports = {
         port,
         pathname: `${pathname}/**`,
       },
-    ],
-    domains: ['secure.gravatar.com',"blog-content.nefrologojosuemolina.com.mx"]
+      {
+        protocol: protocol.slice(0, -1),
+        hostname: "blog-content.nefrologojosuemolina.com.mx",
+        port,
+        pathname: `/**`,
+      },
+      {
+        protocol: protocol.slice(0, -1),
+        hostname: "secure.gravatar.com",
+        port,
+        pathname: `/**`,
+      },
+    ]
   },
 }
