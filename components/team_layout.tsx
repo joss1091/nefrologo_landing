@@ -1,7 +1,35 @@
 import Slider from "react-slick";
 
 export default function TeamLayout({  }) {
- 
+  const settings = {
+    autoplay: true,
+    dots: false,
+    arrows: false,
+    slidesToShow: 3,
+    infinite: false,
+    slidesToScroll: 1,
+    responsive: [
+    
+      {
+        breakpoint: 992, 
+        settings: {
+          slidesToShow: 3
+        }
+      }, 
+      {
+        breakpoint: 767, 
+        settings: {
+          slidesToShow: 1
+        }
+      }, 
+      {
+        breakpoint: 480, 
+        settings: {
+          slidesToShow: 1
+        }
+      }
+    ]
+  };
 
   return (
     <section className="team-layout2 pb-80">
@@ -18,12 +46,11 @@ export default function TeamLayout({  }) {
       </div>
       <div className="row">
         <div className="col-12">
-          <div className="slick-carousel"
-            data-slick='{"slidesToShow": 3, "slidesToScroll": 1, "autoplay": true, "arrows": false, "dots": false, "responsive": [ {"breakpoint": 992, "settings": {"slidesToShow": 2}}, {"breakpoint": 767, "settings": {"slidesToShow": 1}}, {"breakpoint": 480, "settings": {"slidesToShow": 1}}]}'>
+          <Slider {...settings} className="slick-carousel">
             
             <div className="member">
               <div className="member__img">
-                <img src="assets/images/team/1.jpg" alt="member img" />
+                <img src="https://7oroof.com/demos/medcity/assets/images/team/1.jpg" alt="member img" />
               </div>
               <div className="member__info">
                 <h5 className="member__name"><a href="doctors-single-doctor1.html">Mike Dooley</a></h5>
@@ -46,7 +73,7 @@ export default function TeamLayout({  }) {
            
             <div className="member">
               <div className="member__img">
-                <img src="assets/images/team/2.jpg" alt="member img" />
+                <img src="https://7oroof.com/demos/medcity/assets/images/team/5.jpg" alt="member img" />
               </div>
               <div className="member__info">
                 <h5 className="member__name"><a href="doctors-single-doctor1.html">Dermatologists</a></h5>
@@ -68,7 +95,7 @@ export default function TeamLayout({  }) {
             </div>
             <div className="member">
               <div className="member__img">
-                <img src="assets/images/team/3.jpg" alt="member img" />
+                <img src="https://7oroof.com/demos/medcity/assets/images/team/5.jpg" alt="member img" />
               </div>
               <div className="member__info">
                 <h5 className="member__name"><a href="doctors-single-doctor1.html">Maria Andaloro</a></h5>
@@ -91,7 +118,7 @@ export default function TeamLayout({  }) {
           
             <div className="member">
               <div className="member__img">
-                <img src="assets/images/team/4.jpg" alt="member img" />
+                <img src="https://7oroof.com/demos/medcity/assets/images/team/5.jpg" alt="member img" />
               </div>
               <div className="member__info">
                 <h5 className="member__name"><a href="doctors-single-doctor1.html">Dupree Black</a></h5>
@@ -114,7 +141,7 @@ export default function TeamLayout({  }) {
             </div>
             <div className="member">
               <div className="member__img">
-                <img src="assets/images/team/5.jpg" alt="member img" />
+                <img src="https://7oroof.com/demos/medcity/assets/images/team/5.jpg" alt="member img" />
               </div>
               <div className="member__info">
                 <h5 className="member__name"><a href="doctors-single-doctor1.html">Markus skar</a></h5>
@@ -137,7 +164,7 @@ export default function TeamLayout({  }) {
           
             <div className="member">
               <div className="member__img">
-                <img src="assets/images/team/6.jpg" alt="member img" />
+                <img src="https://7oroof.com/demos/medcity/assets/images/team/5.jpg" alt="member img" />
               </div>
               <div className="member__info">
                 <h5 className="member__name"><a href="doctors-single-doctor1.html">Kiano Barker</a></h5>
@@ -157,7 +184,7 @@ export default function TeamLayout({  }) {
                 </div>
               </div>
             </div>
-          </div>
+          </Slider>
         </div>
       </div>
     </div>

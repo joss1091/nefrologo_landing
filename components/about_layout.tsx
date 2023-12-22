@@ -32,7 +32,7 @@ export default function AboutLayout({  }) {
             </div>
           </div>
           <div className="video-banner-layout2 bg-overlay">
-            <img src="assets/images/about/2.jpg" alt="about" className="w-100" />
+            <img src="https://7oroof.com/demos/medcity/assets/images/about/2.jpg" alt="about" className="w-100" />
             <a className="video__btn video__btn-white popup-video" href="https://www.youtube.com/watch?v=nrJtHemSPW4">
               <div className="video__player">
                 <i className="fa fa-play"></i>

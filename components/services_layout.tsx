@@ -1,5 +1,6 @@
 import Slider from "react-slick";
 
+
 export default function ServicesLayout({  }) {
   const settings = {
     dots: true,
@@ -13,7 +14,7 @@ export default function ServicesLayout({  }) {
 
   return (
     <section className="services-layout1 services-carousel">
-    <div className="bg-img"><img src="assets/images/backgrounds/2.jpg" alt="background" /></div>
+    <div className="bg-img"><img src="https://7oroof.com/demos/medcity/assets/images/backgrounds/2.jpg" alt="background" /></div>
     <div className="container">
       <div className="row">
         <div className="col-sm-12 col-md-12 col-lg-6 offset-lg-3">

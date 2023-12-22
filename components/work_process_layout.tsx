@@ -1,11 +1,43 @@
 import Slider from "react-slick";
 
 export default function WorkProcessLayout({  }) {
- 
+  const settings = {
+    dots: false,
+    arrows: false,
+    slidesToShow: 4,
+    infinite: false,
+    slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 1200, 
+        settings: {
+          slidesToShow: 3
+        }
+      }, 
+      {
+        breakpoint: 992, 
+        settings: {
+          slidesToShow: 2
+        }
+      }, 
+      {
+        breakpoint: 767, 
+        settings: {
+          slidesToShow: 2
+        }
+      }, 
+      {
+        breakpoint: 480, 
+        settings: {
+          slidesToShow: 1
+        }
+      }
+    ]
+  };
 
   return (
     <section className="work-process work-process-carousel pt-130 pb-0 bg-overlay bg-overlay-secondary">
-      <div className="bg-img"><img src="assets/images/banners/1.jpg" alt="background" /></div>
+      <div className="bg-img"><img src="https://7oroof.com/demos/medcity/assets/images/banners/1.jpg" alt="background" /></div>
       <div className="container">
         <div className="row heading-layout2">
           <div className="col-12">
@@ -34,8 +66,7 @@ export default function WorkProcessLayout({  }) {
         <div className="row">
           <div className="col-12">
             <div className="carousel-container mt-90">
-              <div className="slick-carousel"
-                data-slick='{"slidesToShow": 4, "slidesToScroll": 1, "infinite":false, "arrows": false, "dots": false, "responsive": [{"breakpoint": 1200, "settings": {"slidesToShow": 3}}, {"breakpoint": 992, "settings": {"slidesToShow": 2}}, {"breakpoint": 767, "settings": {"slidesToShow": 2}}, {"breakpoint": 480, "settings": {"slidesToShow": 1}}]}'>
+              <Slider {...settings} className="slick-carousel">
                 
                 <div className="process-item">
                   <span className="process__number">01</span>
@@ -88,7 +119,7 @@ export default function WorkProcessLayout({  }) {
                   <p className="process__desc">Our administration and support staff have exceptional skills and trained to
                     assist you. </p>
                   <a href="#" className="btn btn__secondary btn__link">
-                    <span>Meet Our Doctors</span>
+                    <span>Meet Our DocStors</span>
                     <i className="icon-arrow-right"></i>
                   </a>
                 </div>
@@ -106,7 +137,7 @@ export default function WorkProcessLayout({  }) {
                     <i className="icon-arrow-right"></i>
                   </a>
                 </div>
-              </div>
+              </Slider>
             </div>
           </div>
         </div>
@@ -115,7 +146,7 @@ export default function WorkProcessLayout({  }) {
         <div className="container">
           <div className="row align-items-center">
             <div className="col-sm-12 col-md-2 col-lg-2">
-              <img src="assets/images/icons/alert2.png" className="cta__img" alt="alert" />
+              <img src="https://7oroof.com/demos/medcity/assets/images/icons/alert2.png" className="cta__img" alt="alert" />
             </div>
             <div className="col-sm-12 col-md-7 col-lg-7">
               <h4 className="cta__title">True Healthcare For Your Family!</h4>

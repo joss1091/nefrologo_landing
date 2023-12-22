@@ -5,7 +5,7 @@ export default function FeaturesLayout({  }) {
 
   return (
     <section className="features-layout2 pt-130 bg-overlay bg-overlay-primary">
-    <div className="bg-img"><img src="assets/images/backgrounds/2.jpg" alt="background" /></div>
+    <div className="bg-img"><img src="https://7oroof.com/demos/medcity/assets/images/backgrounds/2.jpg" alt="background" /></div>
     <div className="container">
       <div className="row">
         <div className="col-sm-12 col-md-12 col-lg-8 offset-lg-1">
@@ -39,7 +39,7 @@ export default function FeaturesLayout({  }) {
         <div className="col-sm-6 col-md-6 col-lg-3">
           <div className="feature-item">
             <div className="feature__img">
-              <img src="assets/images/services/1.jpg" alt="service" loading="lazy" />
+              <img src="https://7oroof.com/demos/medcity/assets/images/services/2.jpg" alt="service" loading="lazy" />
             </div>
             <div className="feature__content">
               <div className="feature__icon">
@@ -55,7 +55,7 @@ export default function FeaturesLayout({  }) {
         <div className="col-sm-6 col-md-6 col-lg-3">
           <div className="feature-item">
             <div className="feature__img">
-              <img src="assets/images/services/2.jpg" alt="service" loading="lazy" />
+              <img src="https://7oroof.com/demos/medcity/assets/images/services/2.jpg" alt="service" loading="lazy" />
             </div>
             <div className="feature__content">
               <div className="feature__icon">
@@ -72,7 +72,7 @@ export default function FeaturesLayout({  }) {
         <div className="col-sm-6 col-md-6 col-lg-3">
           <div className="feature-item">
             <div className="feature__img">
-              <img src="assets/images/services/3.jpg" alt="service" loading="lazy" />
+              <img src="https://7oroof.com/demos/medcity/assets/images/services/2.jpg" alt="service" loading="lazy" />
             </div>
             <div className="feature__content">
               <div className="feature__icon">
@@ -89,7 +89,7 @@ export default function FeaturesLayout({  }) {
         <div className="col-sm-6 col-md-6 col-lg-3">
           <div className="feature-item">
             <div className="feature__img">
-              <img src="assets/images/services/4.jpg" alt="service" loading="lazy" />
+              <img src="https://7oroof.com/demos/medcity/assets/images/services/2.jpg" alt="service" loading="lazy" />
             </div>
             <div className="feature__content">
               <div className="feature__icon">
@@ -106,7 +106,7 @@ export default function FeaturesLayout({  }) {
         <div className="col-sm-6 col-md-6 col-lg-3">
           <div className="feature-item">
             <div className="feature__img">
-              <img src="assets/images/services/5.jpg" alt="service" loading="lazy" />
+              <img src="https://7oroof.com/demos/medcity/assets/images/services/2.jpg" alt="service" loading="lazy" />
             </div>
             <div className="feature__content">
               <div className="feature__icon">
@@ -123,7 +123,7 @@ export default function FeaturesLayout({  }) {
         <div className="col-sm-6 col-md-6 col-lg-3">
           <div className="feature-item">
             <div className="feature__img">
-              <img src="assets/images/services/6.jpg" alt="service" loading="lazy" />
+              <img src="https://7oroof.com/demos/medcity/assets/images/services/2.jpg" alt="service" loading="lazy" />
             </div>
             <div className="feature__content">
               <div className="feature__icon">
@@ -140,7 +140,7 @@ export default function FeaturesLayout({  }) {
         <div className="col-sm-6 col-md-6 col-lg-3">
           <div className="feature-item">
             <div className="feature__img">
-              <img src="assets/images/services/7.jpg" alt="service" loading="lazy" />
+              <img src="https://7oroof.com/demos/medcity/assets/images/services/2.jpg" alt="service" loading="lazy" />
             </div>
             <div className="feature__content">
               <div className="feature__icon">
@@ -157,7 +157,7 @@ export default function FeaturesLayout({  }) {
         <div className="col-sm-6 col-md-6 col-lg-3">
           <div className="feature-item">
             <div className="feature__img">
-              <img src="assets/images/services/8.jpg" alt="service" loading="lazy" />
+              <img src="https://7oroof.com/demos/medcity/assets/images/services/2.jpg" alt="service" loading="lazy" />
             </div>
             <div className="feature__content">
               <div className="feature__icon">

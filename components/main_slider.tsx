@@ -13,7 +13,22 @@ export default function MainSlider({}) {
     cssEase: "linear",
     draggable: true,
   };
-
+  useEffect(() => {
+  
+    $('.bg-img').each(function () {
+      var imgSrc = $(this).children('img').attr('src');
+      $(this).parent().css({
+          'background-image': 'url(' + imgSrc + ')',
+          'background-size': 'cover',
+          'background-position': 'center',
+      });
+      $(this).parent().addClass('bg-img');
+      if ($(this).hasClass('background-size-auto')) {
+          $(this).parent().addClass('background-size-auto');
+      }
+      $(this).remove();
+  });
+  }, []);
   return (
     <section className="slider">
       <Slider {...settings} className="slick-carousel m-slides-0">

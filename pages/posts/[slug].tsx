@@ -16,13 +16,13 @@ import PostWidget from "../../components/post-widget";
 import Avatar from "../../components/avatar";
 import TagList from "../../components/tag-list";
 import Link from "next/link";
+import BreadCrumb from "../../components/breadcrum";
 
 export default function Post({ post, posts,tags, categories, preview }) {
  
   const router = useRouter();
   const morePosts = posts?.edges;
-  console.log(router)
-  console.log(post)
+
   if (!post) {
     return <ErrorPage statusCode={404} />;
   }
@@ -35,19 +35,23 @@ export default function Post({ post, posts,tags, categories, preview }) {
           <div className="container">
             <div className="row align-items-center">
               <div className="col-12">
-                <nav>
-                  <ol className="breadcrumb mb-0">
-                    <li className="breadcrumb-item">
-                      <a href="index.html">Home</a>
-                    </li>
-                    <li className="breadcrumb-item">
-                      <a href="blog.html">Blog</a>
-                    </li>
-                    <li className="breadcrumb-item active" aria-current="page">
-                      6 Tips to Protect Your Mental Health When You’re Sick
-                    </li>
-                  </ol>
-                </nav>
+                <BreadCrumb items={[
+                  {
+                    label: "Home",
+                    to: "/",
+                    active: false
+                  },
+                  {
+                    label: "Blog",
+                    to: "/posts",
+                    active: false
+                  },
+                  {
+                    label: post.title,
+                    active: true
+                  }
+                ]} />
+                
               </div>
             </div>
           </div>
@@ -102,7 +106,7 @@ export default function Post({ post, posts,tags, categories, preview }) {
                   <div className="widget-tags">
                     <ul className="list-unstyled d-flex flex-wrap mb-0">
                       {post.categories.edges.map(({node}) => (
-                        <li>
+                        <li key={node.slug}>
                         <Link href={`/tags/${node.slug}`}>{node.name}</Link>
                       </li>
                       ))}
@@ -115,7 +119,7 @@ export default function Post({ post, posts,tags, categories, preview }) {
                   <a href="#" className="widget-nav__prev d-flex flex-wrap">
                     <div className="widget-nav__img">
                       <img
-                        src="assets/images/blog/grid/2.jpg"
+                        src="https://7oroof.com/demos/medcity/assets/images/blog/grid/2.jpg"
                         alt="blog thumb"
                       />
                     </div>
@@ -129,7 +133,7 @@ export default function Post({ post, posts,tags, categories, preview }) {
                   <a href="#" className="widget-nav__next d-flex flex-wrap">
                     <div className="widget-nav__img">
                       <img
-                        src="assets/images/blog/grid/3.jpg"
+                        src="https://7oroof.com/demos/medcity/assets/images/blog/grid/3.jpg"
                         alt="blog thumb"
                       />
                     </div>
@@ -187,7 +191,7 @@ export default function Post({ post, posts,tags, categories, preview }) {
                       <ul className="list-unstyled mb-0">
                       
                       {categories.nodes.map(({ name, slug , count}) => (
-                        <li>
+                        <li key={slug}>
                           <Link  href={`/categories/${slug}`} aria-label={name}>
                             <span className="cat-count">{count}</span>
                             <span>{name}</span>
