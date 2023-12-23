@@ -30,7 +30,6 @@ export default function Post({ post, posts,tags, categories, preview }) {
   return (
     <Layout preview={preview}>
       <Container>
-        <Header />
         <section className="page-title pt-30 pb-30 text-center">
           <div className="container">
             <div className="row align-items-center">
@@ -192,7 +191,7 @@ export default function Post({ post, posts,tags, categories, preview }) {
                       
                       {categories.nodes.map(({ name, slug , count}) => (
                         <li key={slug}>
-                          <Link  href={`/categories/${slug}`} aria-label={name}>
+                          <Link  href={`/categorias/${slug}`} aria-label={name}>
                             <span className="cat-count">{count}</span>
                             <span>{name}</span>
                           </Link>

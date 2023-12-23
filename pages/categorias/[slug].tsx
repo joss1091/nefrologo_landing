@@ -16,7 +16,6 @@ export default function Index({ allPosts: allPosts, preview }) {
         <title>{`Next.js Blog Example with ${CMS_NAME}`}</title>
       </Head>
       <Container>
-        <Header />
         <GridPosts posts={edges} />
       </Container>
     </Layout>
@@ -36,7 +35,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const allPosts = await getAllCategoriesWithSlug();
 
   return {
-    paths: allPosts.edges.map(({ node }) => `/categories/${node.slug}`) || [],
+    paths: allPosts.edges.map(({ node }) => `/categorias/${node.slug}`) || [],
     fallback: true,
   };
 };

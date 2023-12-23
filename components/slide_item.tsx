@@ -1,26 +1,26 @@
+import Link from "next/link";
 
-export default function SlideItem(props) {
+export default function SlideItem({service}) {
   return (
-    <div className="service-item" {...props}>
+    <div className="service-item" >
     <div className="service__icon">
       <i className="icon-head"></i>
       <i className="icon-head"></i>
     </div>
     <div className="service__content">
-      <h4 className="service__title">Neurology Clinic</h4>
-      <p className="service__desc">Some neurologists receive subspecialty training focusing on a particular area
-        of
-        the fields, these training programs are called fellowships, and are one to two years.
+      <h4 className="service__title">{service.name}</h4>
+      <p className="service__desc">
+        {service.short_description}
       </p>
       <ul className="list-items list-items-layout1 list-unstyled">
-        <li>Neurocritical Care</li>
-        <li>Neuro Oncology</li>
-        <li>Geriatric Neurology</li>
+        {service.items.map((item) => (
+           <li>{item}</li>
+        ))}
       </ul>
-      <a href="services-single.html" className="btn btn__secondary btn__outlined btn__rounded">
-        <span>Read More</span>
+      <Link href={`/servicios/${service.slug}`} className="btn btn__secondary btn__outlined btn__rounded">
+        <span>Leer más</span>
         <i className="icon-arrow-right"></i>
-      </a>
+      </Link>
     </div>
   </div>
   );

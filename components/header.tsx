@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import $ from "jquery";
 import Link from "next/link";
-export default function Header() {
+export default function Header({services, company}) {
   useEffect(() => {
     var $win = $(window);
 
@@ -33,58 +33,29 @@ export default function Header() {
       $(".navbar-collapse").removeClass("menu-opened");
     });
   }, []);
+  const available_day = company.short_schedule[0]
   return (
     <header className="header header-layout1">
       <div className="header-topbar">
         <div className="container-fluid">
           <div className="row align-items-center">
             <div className="col-12">
-              <div className="d-flex align-items-center justify-content-between">
-                <ul className="contact__list d-flex flex-wrap align-items-center list-unstyled mb-0">
-                  <li>
-                    <button
-                      className="miniPopup-emergency-trigger"
-                      type="button"
-                    >
-                      24/7 Emergency
-                    </button>
-                    <div
-                      id="miniPopup-emergency"
-                      className="miniPopup miniPopup-emergency text-center"
-                    >
-                      <div className="emergency__icon">
-                        <i className="icon-call3"></i>
-                      </div>
-                      <a href="tel:+201061245741" className="phone__number">
-                        <i className="icon-phone"></i>{" "}
-                        <span>+2 01061245741</span>
-                      </a>
-                      <p>
-                        Please feel free to contact our friendly reception staff
-                        with any general or medical enquiry.
-                      </p>
-                      <a
-                        href="appointment.html"
-                        className="btn btn__secondary btn__link btn__block"
-                      >
-                        <span>Make Appointment</span>{" "}
-                        <i className="icon-arrow-right"></i>
-                      </a>
-                    </div>
-                  </li>
+              <div className="d-flex align-items-center justify-content-between mt-10">
+                <ul className="contact__list d-flex flex-wrap align-items-center list-unstyled mb-0 mt-10">
+                 
                   <li>
                     <i className="icon-phone"></i>
-                    <a href="tel:+5565454117">
-                      Emergency Line: (002) 01061245741
-                    </a>
+                    <Link href={`tel:+52${company.appointment.phone}`}>
+                      Linea de emergencia: {company.appointment.phone}
+                    </Link>
                   </li>
                   <li>
                     <i className="icon-location"></i>
-                    <a href="#">Location: Brooklyn, New York</a>
+                    <Link href="#">Ubicacion: {company.location.short_address}</Link>
                   </li>
                   <li>
                     <i className="icon-clock"></i>
-                    <a href="contact-us.html">Mon - Fri: 8:00 am - 7:00 pm</a>
+                    <Link href="/contacto">{available_day.text} {available_day.details.from} - {available_day.details.to}</Link>
                   </li>
                 </ul>
                 <div className="d-flex">
@@ -142,11 +113,14 @@ export default function Header() {
                   Servicios
                 </a>
                 <ul className="dropdown-menu">
-                  <li className="nav__item">
-                    <a href="/servicios/single" className="nav__item-link">
-                      service
-                    </a>
+                  {services.map(({slug, name}) => (
+                    <li className="nav__item" key={slug}>
+                    <Link href={`/servicios/${slug}`} className="nav__item-link">
+                      {name}
+                    </Link>
                   </li>
+                  ))}
+                  
                 </ul>
               </li>
               <li className="nav__item">

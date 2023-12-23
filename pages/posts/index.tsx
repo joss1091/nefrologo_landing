@@ -15,7 +15,6 @@ export default function Index({ allPosts: allPosts, preview }) {
         <title>{`Next.js Blog Example with `}</title>
       </Head>
       <Container>
-        <Header />
         <GridPosts posts={edges} />
       </Container>
     </Layout>

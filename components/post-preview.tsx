@@ -26,7 +26,7 @@ export default function PostPreview({
             {categories.edges.map(({node}) => (
               <Link
               key={node.slug}
-              href={`/categories/${node.slug}`}
+              href={`/categorias/${node.slug}`}
               className="hover:underline"
               dangerouslySetInnerHTML={{ __html: node.name }}
             ></Link>

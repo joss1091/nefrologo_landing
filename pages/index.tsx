@@ -13,7 +13,7 @@ import FeaturesLayout from "../components/features_layout";
 import TeamLayout from "../components/team_layout";
 import WorkProcessLayout from "../components/work_process_layout";
 import { getAllPostsForHome } from "../lib/api";
-
+import data from "../lib/data.js"
 export default function Index({ allPosts: { edges }, preview }) {
 
   return (
@@ -22,11 +22,11 @@ export default function Index({ allPosts: { edges }, preview }) {
         <title>{`Next.js Blog Example with ${CMS_NAME}`}</title>
       </Head>
       <Container>
-        <Header />
-        <MainSlider />
-        <ContactInfo />
+       
+        <MainSlider sliders={data.sliders} />
+        <ContactInfo company={data.company} />
         <AboutLayout />
-        <ServicesLayout />
+        <ServicesLayout services={data.services} />
         <FeaturesLayout />
         <TeamLayout />
         <WorkProcessLayout />
