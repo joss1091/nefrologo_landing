@@ -34,7 +34,7 @@ export default function MainSlider({ sliders }) {
     <section className="slider">
       <Slider {...settings} className="slick-carousel m-slides-0">
         {sliders.map(({ title, subtitle, items, image }) => (
-          <div className="slide-item align-v-h ">
+          <div className="slide-item align-v-h " key={title}>
             <div className="bg-img">
               <img src={image} alt="slide img" />
             </div>
@@ -45,8 +45,8 @@ export default function MainSlider({ sliders }) {
                     <h2 className="slide__title">{title}</h2>
                     <p className="slide__desc">{subtitle}</p>
                     <ul className="features-list list-unstyled mb-0 d-flex flex-wrap">
-                      {items.map(({ icon, text }) => (
-                        <li className="feature-item">
+                      {items.map(({ icon, text }, index) => (
+                        <li className="feature-item" key={index}>
                           <div className="feature__icon">
                             <i className={icon}></i>
                           </div>

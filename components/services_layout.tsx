@@ -39,7 +39,7 @@ export default function ServicesLayout({ services }) {
           <div className="col-12">
             <Slider {...settings} slide={"section"} className="slick-carousel">
               {services.map((service) => (
-                <SlideItem service={service} />
+                <SlideItem service={service} key={service.slug}/>
               ))}
             </Slider>
           </div>

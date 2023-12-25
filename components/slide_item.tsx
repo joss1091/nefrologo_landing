@@ -13,8 +13,8 @@ export default function SlideItem({service}) {
         {service.short_description}
       </p>
       <ul className="list-items list-items-layout1 list-unstyled">
-        {service.items.map((item) => (
-           <li>{item}</li>
+        {service.items.map((item, index) => (
+           <li key={index}>{item}</li>
         ))}
       </ul>
       <Link href={`/servicios/${service.slug}`} className="btn btn__secondary btn__outlined btn__rounded">

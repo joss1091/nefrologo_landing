@@ -43,8 +43,8 @@ export default function ContactInfo({ company }) {
             <div className="contact__content">
               <h2 className="contact__title">Horarios</h2>
               <ul className="time__list list-unstyled mb-0">
-                {company.short_schedule.map(({text, details}) => (
-                  <li><span>{text}</span><span>{details.from} - {details.to}</span></li>
+                {company.short_schedule.map(({text, details}, index) => (
+                  <li key={index}><span>{text}</span><span>{details.from} - {details.to}</span></li>
                 ))}
                 
                 
