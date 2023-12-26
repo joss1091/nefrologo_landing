@@ -1,12 +1,19 @@
 import Head from "next/head";
-import { GetStaticProps } from "next";
 import Container from "../../components/container";
 import Layout from "../../components/layout";
-import { getAllPostsPaginate } from "../../lib/api";
+import { getPosts } from "../../lib/api";
 import Header from "../../components/header";
 import GridPosts from "../../components/grid-posts";
 
-export default function Index({ allPosts: allPosts, preview }) {
+
+export default function Index({
+  allPosts: allPosts,
+  haveMorePosts,
+  havepreviousPosts,
+  preview,
+  currentPage,
+}) {
+
   const edges = allPosts?.edges || [];
 
   return (
@@ -15,17 +22,35 @@ export default function Index({ allPosts: allPosts, preview }) {
         <title>{`Next.js Blog Example with `}</title>
       </Head>
       <Container>
-        <GridPosts posts={edges} />
+        <GridPosts
+          posts={edges}
+          haveMorePosts={haveMorePosts}
+          havepreviousPosts={havepreviousPosts}
+          currentPage={currentPage}
+          to="/posts"
+        />
       </Container>
     </Layout>
   );
 }
 
-export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
-  const allPosts = await getAllPostsPaginate(preview);
+export async function getServerSideProps({ req, res, query }) {
+  const currentPage = Number(query.page) || 1;
+
+  const allPosts = await getPosts({ currentPage }, false);
+  const haveMorePosts = Boolean(allPosts?.pageInfo?.offsetPagination.hasMore);
+  const havepreviousPosts = Boolean(
+    allPosts?.pageInfo?.offsetPagination.hasPrevious
+  );
 
   return {
-    props: { allPosts, preview },
-    revalidate: 10,
+    props: {
+      currentPage,
+      allPosts,
+      preview: false,
+      haveMorePosts,
+      havepreviousPosts,
+    },
   };
-};
+}
+

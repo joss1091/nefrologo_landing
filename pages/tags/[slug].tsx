@@ -1,41 +1,53 @@
 import Head from "next/head";
-import { GetStaticPaths, GetStaticProps } from "next";
 import Container from "../../components/container";
 import Layout from "../../components/layout";
-import { getAllPostsByTag , getAllTagsWithSlug} from "../../lib/api";
+import { getAllPostsByTag } from "../../lib/api";
 import { CMS_NAME } from "../../lib/constants";
-import Header from "../../components/header";
 import GridPosts from "../../components/grid-posts";
 
-export default function Index({ allPosts: allPosts, preview }) {
-  var edges = allPosts?.edges || []
-  
+export default function Index({
+  allPosts: allPosts,
+  preview,
+  haveMorePosts,
+  havepreviousPosts,
+  currentPage,
+}) {
+  var edges = allPosts?.edges || [];
+
   return (
     <Layout preview={preview}>
       <Head>
         <title>{`Next.js Blog Example with ${CMS_NAME}`}</title>
       </Head>
       <Container>
-        <GridPosts posts={edges} />
+        <GridPosts
+          posts={edges}
+          haveMorePosts={haveMorePosts}
+          havepreviousPosts={havepreviousPosts}
+          currentPage={currentPage}
+          to="/posts"
+        />
       </Container>
     </Layout>
   );
 }
 
-export const getStaticProps: GetStaticProps = async ({ params,preview = false }) => {
-  const allPosts = await getAllPostsByTag(preview, params?.slug);
+export async function getServerSideProps({ req, res, query }) {
+  const currentPage = Number(query.page) || 1;
+
+  const allPosts = await getAllPostsByTag(false, {currentPage,tag: query.slug});
+  const haveMorePosts = Boolean(allPosts?.pageInfo?.offsetPagination.hasMore);
+  const havepreviousPosts = Boolean(
+    allPosts?.pageInfo?.offsetPagination.hasPrevious
+  );
 
   return {
-    props: { allPosts, preview },
-    revalidate: 10,
+    props: {
+      currentPage,
+      allPosts,
+      preview: false,
+      haveMorePosts,
+      havepreviousPosts,
+    },
   };
-};
-
-export const getStaticPaths: GetStaticPaths = async () => {
-  const allPosts = await getAllTagsWithSlug();
-  
-  return {
-    paths: allPosts.nodes.map(({ slug }) => `/tags/${slug}`) || [],
-    fallback: true,
-  };
-};
+}

@@ -17,10 +17,10 @@ import Avatar from "../../components/avatar";
 import TagList from "../../components/tag-list";
 import Link from "next/link";
 import BreadCrumb from "../../components/breadcrum";
+import PrevioutNextPostPreview from "../../components/previous_next_post_preview";
 
-export default function Post({ post, posts,tags, categories, preview }) {
- 
-  const router = useRouter();
+export default function Post({ post, posts,tags, categories,previousPost,nextPost, preview }) {
+
   const morePosts = posts?.edges;
 
   if (!post) {
@@ -115,34 +115,8 @@ export default function Post({ post, posts,tags, categories, preview }) {
                   </div>
                 </div>
                 <div className="widget-nav d-flex justify-content-between mb-40">
-                  <a href="#" className="widget-nav__prev d-flex flex-wrap">
-                    <div className="widget-nav__img">
-                      <img
-                        src="https://7oroof.com/demos/medcity/assets/images/blog/grid/2.jpg"
-                        alt="blog thumb"
-                      />
-                    </div>
-                    <div className="widget-nav__content">
-                      <span>Previous Post</span>
-                      <h5 className="widget-nav__ttile mb-0">
-                        Unsure About Wearing a Face Mask?
-                      </h5>
-                    </div>
-                  </a>
-                  <a href="#" className="widget-nav__next d-flex flex-wrap">
-                    <div className="widget-nav__img">
-                      <img
-                        src="https://7oroof.com/demos/medcity/assets/images/blog/grid/3.jpg"
-                        alt="blog thumb"
-                      />
-                    </div>
-                    <div className="widget-nav__content">
-                      <span>Next Post</span>
-                      <h5 className="widget-nav__ttile mb-0">
-                        Tips for Eating Healthy When You’re Home
-                      </h5>
-                    </div>
-                  </a>
+                  <PrevioutNextPostPreview post={previousPost} arrow={"prev"} label={"Anterior Post"} />
+                  <PrevioutNextPostPreview post={nextPost} arrow={"next"} label={"Siguiente Post"} />
                 </div>
                 <div className="blog-author d-flex flex-wrap mb-70">
                   <div className="blog-author__avatar">
@@ -224,13 +198,15 @@ export const getStaticProps: GetStaticProps = async ({
   previewData,
 }) => {
   const data = await getPostAndMorePosts(params?.slug, preview, previewData);
-  
+
 
   return {
     props: {
       preview,
       post: data.post,
       posts: data.posts,
+      previousPost: data.post.previousPost,
+      nextPost: data.post.nextPost,
       categories: data.categories,
       tags: data.tags
     },

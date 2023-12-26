@@ -1,4 +1,5 @@
 const API_URL = process.env.WORDPRESS_API_URL
+const PAGE_SIZE = 12
 
 async function fetchAPI(query = '', { variables }: Record<string, any> = {}) {
   const headers = { 'Content-Type': 'application/json' }
@@ -62,35 +63,67 @@ export async function getAllPostsWithSlug() {
   return data?.posts
 }
 
-export async function getAllCategoriesWithSlug() {
-  const data = await fetchAPI(`
-    {
-      categories(first: 10000) {
+
+
+export async function getPosts({ currentPage}, preview) {
+  let offset  = calculateOffset(currentPage)
+  
+  const data = await fetchAPI(
+    `
+    query AllPosts($offset: Int!, $pageSize: Int!) {
+      posts( where: { offsetPagination: {offset: $offset, size: $pageSize} orderby: { field: DATE, order: DESC } }) {
+        pageInfo {
+          offsetPagination {
+            hasMore
+            hasPrevious
+            total
+          }
+        }
         edges {
           node {
+            title
+            excerpt
             slug
+            date
+            featuredImage {
+              node {
+                sourceUrl
+              }
+            }
+            categories{
+              edges {
+                node {
+                  slug
+                  name
+                }
+              }
+            }
+            author {
+              node {
+                name
+                firstName
+                lastName
+                avatar {
+                  url
+                }
+              }
+            }
           }
         }
       }
     }
-  `)
-
-  return data?.categories
-}
-
-export async function getAllTagsWithSlug() {
-  const data = await fetchAPI(`
+  `,
     {
-      tags {
-        nodes {
-          name
-          slug
-        }
-      }
+      variables: {
+        onlyEnabled: !preview,
+        preview,
+        pageSize: PAGE_SIZE,
+        offset: offset
+      },
     }
-  `)
-
-  return data?.tags
+  )
+    
+  return data?.posts
 }
 
 export async function getAllPostsForHome(preview) {
@@ -143,11 +176,20 @@ export async function getAllPostsForHome(preview) {
   return data?.posts
 }
 
-export async function getAllPostsPaginate(preview) {
+
+export async function getAllPostsByCategory(preview, {currentPage, categoryName}) {
+  let offset = calculateOffset(currentPage)
   const data = await fetchAPI(
     `
-    query AllPosts {
-      posts( where: { orderby: { field: DATE, order: DESC } }) {
+    query AllPosts($categoryName: String, $offset: Int!, $pageSize: Int!) {
+      posts( where: {offsetPagination: {offset: $offset, size: $pageSize}, categoryName: $categoryName, orderby: { field: DATE, order: DESC } }) {
+        pageInfo {
+          offsetPagination {
+            hasMore
+            hasPrevious
+            total
+          }
+        }
         edges {
           node {
             title
@@ -186,6 +228,9 @@ export async function getAllPostsPaginate(preview) {
       variables: {
         onlyEnabled: !preview,
         preview,
+        categoryName: categoryName,
+        offset: offset,
+        pageSize: PAGE_SIZE
       },
     }
   )
@@ -193,11 +238,19 @@ export async function getAllPostsPaginate(preview) {
   return data?.posts
 }
 
-export async function getAllPostsByCategory(preview, categoryName) {
+export async function getAllPostsByTag(preview, {tag, currentPage}) {
+  let offset = calculateOffset(currentPage)
   const data = await fetchAPI(
     `
-    query AllPosts($categoryName: String) {
-      posts( where: {categoryName: $categoryName, orderby: { field: DATE, order: DESC } }) {
+    query AllPosts($tag: String, $offset: Int!, $pageSize: Int!) {
+      posts( where: {offsetPagination: {offset: $offset, size: $pageSize} , tag: $tag, orderby: { field: DATE, order: DESC } }) {
+        pageInfo {
+          offsetPagination {
+            hasMore
+            hasPrevious
+            total
+          }
+        }
         edges {
           node {
             title
@@ -236,58 +289,9 @@ export async function getAllPostsByCategory(preview, categoryName) {
       variables: {
         onlyEnabled: !preview,
         preview,
-        categoryName: categoryName
-      },
-    }
-  )
-    
-  return data?.posts
-}
-
-export async function getAllPostsByTag(preview, tag) {
-  const data = await fetchAPI(
-    `
-    query AllPosts($tag: String) {
-      posts( where: {tag: $tag, orderby: { field: DATE, order: DESC } }) {
-        edges {
-          node {
-            title
-            excerpt
-            slug
-            date
-            featuredImage {
-              node {
-                sourceUrl
-              }
-            }
-            categories{
-              edges {
-                node {
-                  slug
-                  name
-                }
-              }
-            }
-            author {
-              node {
-                name
-                firstName
-                lastName
-                avatar {
-                  url
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  `,
-    {
-      variables: {
-        onlyEnabled: !preview,
-        preview,
-        tag: tag
+        tag: tag,
+        pageSize: PAGE_SIZE,
+        offset
       },
     }
   )
@@ -352,26 +356,23 @@ export async function getPostAndMorePosts(slug, preview, previewData) {
       post(id: $id, idType: $idType) {
         ...PostFields
         content
-        ${
-          // Only some of the fields of a revision are considered as there are some inconsistencies
-          isRevision
-            ? `
-        revisions(first: 1, where: { orderby: { field: MODIFIED, order: DESC } }) {
-          edges {
+        previousPost {
+          title
+          slug
+          featuredImage {
             node {
-              title
-              excerpt
-              content
-              author {
-                node {
-                  ...AuthorFields
-                }
-              }
+              sourceUrl
             }
           }
         }
-        `
-            : ''
+        nextPost {
+          title
+          slug
+          featuredImage {
+            node {
+              sourceUrl
+            }
+          }
         }
       }
       posts(first: 3, where: { orderby: { field: DATE, order: DESC } }) {
@@ -424,4 +425,7 @@ export async function getPostAndMorePosts(slug, preview, previewData) {
   // If there are still 3 posts, remove the last one
   if (data.posts.edges.length > 2) data.posts.edges.pop()
   return data
+}
+let calculateOffset = (currentPage) => {
+  return (currentPage - 1 ) * (PAGE_SIZE + 1)
 }
