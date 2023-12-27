@@ -18,6 +18,7 @@ import TagList from "../../components/tag-list";
 import Link from "next/link";
 import BreadCrumb from "../../components/breadcrum";
 import PrevioutNextPostPreview from "../../components/previous_next_post_preview";
+import Meta from "../../components/meta";
 
 export default function Post({ post, posts,tags, categories,previousPost,nextPost, preview }) {
 
@@ -29,6 +30,7 @@ export default function Post({ post, posts,tags, categories,previousPost,nextPos
 
   return (
     <Layout preview={preview}>
+      <Meta  title={post.title} />
       <Container>
         <section className="page-title pt-30 pb-30 text-center">
           <div className="container">

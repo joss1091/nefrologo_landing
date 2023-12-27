@@ -9,7 +9,7 @@ export default function ContactInfo({ company }) {
     <section className="contact-info py-0">
     <div className="container">
       <div className="row row-no-gutter boxes-wrapper">
-        <div className="col-sm-12 col-md-4">
+        <div className="col-sm-12 col-md-6">
           <div className="contact-box d-flex">
             <div className="contact__icon">
               <i className="icon-call3"></i>
@@ -23,19 +23,8 @@ export default function ContactInfo({ company }) {
             </div>
           </div>
         </div>
-        <div className="col-sm-12 col-md-4">
-          <div className="contact-box d-flex">
-            <div className="contact__icon">
-              <i className="icon-health-report"></i>
-            </div>
-            <div className="contact__content">
-              <h2 className="contact__title">¿Por que elegir al Dr. Josue?</h2>
-              <p className="contact__desc">Desde tu primera cita de valoración, experimentarás la excelencia y compromiso de nuestro servicio. Te llevara de la mano en el proceso de atencion de tu salud-enfermedad con el mayor sentido de humanismo .</p>
-              
-            </div>
-          </div>
-        </div>
-        <div className="col-sm-12 col-md-4">
+       
+        <div className="col-sm-12 col-md-6">
           <div className="contact-box d-flex">
             <div className="contact__icon">
               <i className="icon-heart2"></i>

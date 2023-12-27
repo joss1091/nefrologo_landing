@@ -1,9 +1,8 @@
-import Head from "next/head";
 import Container from "../../components/container";
 import Layout from "../../components/layout";
 import { getAllPostsByCategory } from "../../lib/api";
-import { CMS_NAME } from "../../lib/constants";
 import GridPosts from "../../components/grid-posts";
+import Meta from "../../components/meta";
 
 export default function Index({
   allPosts: allPosts,
@@ -16,9 +15,7 @@ export default function Index({
   var edges = allPosts?.edges || [];
   return (
     <Layout preview={preview}>
-      <Head>
-        <title>{`Next.js Blog Example with ${CMS_NAME}`}</title>
-      </Head>
+      <Meta title={`${categoryName} | Blog`} />
       <Container>
         <GridPosts
           posts={edges}

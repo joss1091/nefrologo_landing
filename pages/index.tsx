@@ -3,8 +3,7 @@ import { GetStaticProps } from "next";
 import Container from "../components/container";
 import MoreStories from "../components/more-stories";
 import Layout from "../components/layout";
-import { CMS_NAME } from "../lib/constants";
-import Header from "../components/header"
+
 import MainSlider from "../components/main_slider";
 import ContactInfo from "../components/contact_info";
 import AboutLayout from "../components/about_layout";
@@ -14,22 +13,20 @@ import TeamLayout from "../components/team_layout";
 import WorkProcessLayout from "../components/work_process_layout";
 import { getAllPostsForHome } from "../lib/api";
 import data from "../lib/data.js"
+import Meta from "../components/meta";
 export default function Index({ allPosts: { edges }, preview }) {
 
   return (
     <Layout preview={preview}>
-      <Head>
-        <title>{`Next.js Blog Example with ${CMS_NAME}`}</title>
-      </Head>
+      <Meta title={"Especialista en Nefrologia"} />
       <Container>
        
         <MainSlider sliders={data.sliders} />
         <ContactInfo company={data.company} />
-        <AboutLayout />
+        <AboutLayout data={data} />
         <ServicesLayout services={data.services} />
-        <FeaturesLayout />
-        <TeamLayout />
-        <WorkProcessLayout />
+        {/* <FeaturesLayout services={data.services} /> */}
+        <WorkProcessLayout hospitals={data.hospitals} company={data.company} />
         {edges && < MoreStories posts={edges} title={"Blog"} subtitle={"Articulos recientes"} />}
       </Container>
     </Layout>

@@ -1,6 +1,7 @@
+import Link from "next/link";
 import Slider from "react-slick";
 
-export default function FeaturesLayout({  }) {
+export default function FeaturesLayout({ services }) {
  
 
   return (
@@ -35,141 +36,26 @@ export default function FeaturesLayout({  }) {
         </div>
       </div>
       <div className="row">
+        {services.map(({name, slug}) => (
+           <div key={slug} className="col-sm-6 col-md-6 col-lg-3">
+           <div className="feature-item">
+             <div className="feature__img">
+               <img src="https://7oroof.com/demos/medcity/assets/images/services/2.jpg" alt="service" loading="lazy" />
+             </div>
+             <div className="feature__content">
+               <div className="feature__icon">
+                 <i className="icon-heart"></i>
+               </div>
+               <h4 className="feature__title">{name}</h4>
+             </div>
+             <Link href="#" className="btn__link">
+               <i className="icon-arrow-right icon-outlined"></i>
+             </Link>
+           </div>
+         </div>
+        ))}
        
-        <div className="col-sm-6 col-md-6 col-lg-3">
-          <div className="feature-item">
-            <div className="feature__img">
-              <img src="https://7oroof.com/demos/medcity/assets/images/services/2.jpg" alt="service" loading="lazy" />
-            </div>
-            <div className="feature__content">
-              <div className="feature__icon">
-                <i className="icon-heart"></i>
-              </div>
-              <h4 className="feature__title">Medical Advices & Check Ups</h4>
-            </div>
-            <a href="#" className="btn__link">
-              <i className="icon-arrow-right icon-outlined"></i>
-            </a>
-          </div>
-        </div>
-        <div className="col-sm-6 col-md-6 col-lg-3">
-          <div className="feature-item">
-            <div className="feature__img">
-              <img src="https://7oroof.com/demos/medcity/assets/images/services/2.jpg" alt="service" loading="lazy" />
-            </div>
-            <div className="feature__content">
-              <div className="feature__icon">
-                <i className="icon-doctor"></i>
-              </div>
-              <h4 className="feature__title">Trusted Medical Treatment </h4>
-            </div>
-            <a href="#" className="btn__link">
-              <i className="icon-arrow-right icon-outlined"></i>
-            </a>
-          </div>
-        </div>
-     
-        <div className="col-sm-6 col-md-6 col-lg-3">
-          <div className="feature-item">
-            <div className="feature__img">
-              <img src="https://7oroof.com/demos/medcity/assets/images/services/2.jpg" alt="service" loading="lazy" />
-            </div>
-            <div className="feature__content">
-              <div className="feature__icon">
-                <i className="icon-ambulance"></i>
-              </div>
-              <h4 className="feature__title">Emergency Help Available 24/7</h4>
-            </div>
-            <a href="#" className="btn__link">
-              <i className="icon-arrow-right icon-outlined"></i>
-            </a>
-          </div>
-        </div>
         
-        <div className="col-sm-6 col-md-6 col-lg-3">
-          <div className="feature-item">
-            <div className="feature__img">
-              <img src="https://7oroof.com/demos/medcity/assets/images/services/2.jpg" alt="service" loading="lazy" />
-            </div>
-            <div className="feature__content">
-              <div className="feature__icon">
-                <i className="icon-drugs"></i>
-              </div>
-              <h4 className="feature__title">Medical Research Professionals </h4>
-            </div>
-            <a href="#" className="btn__link">
-              <i className="icon-arrow-right icon-outlined"></i>
-            </a>
-          </div>
-        </div>
-       
-        <div className="col-sm-6 col-md-6 col-lg-3">
-          <div className="feature-item">
-            <div className="feature__img">
-              <img src="https://7oroof.com/demos/medcity/assets/images/services/2.jpg" alt="service" loading="lazy" />
-            </div>
-            <div className="feature__content">
-              <div className="feature__icon">
-                <i className="icon-first-aid-kit"></i>
-              </div>
-              <h4 className="feature__title">Only Qualified Doctors</h4>
-            </div>
-            <a href="#" className="btn__link">
-              <i className="icon-arrow-right icon-outlined"></i>
-            </a>
-          </div>
-        </div>
-        
-        <div className="col-sm-6 col-md-6 col-lg-3">
-          <div className="feature-item">
-            <div className="feature__img">
-              <img src="https://7oroof.com/demos/medcity/assets/images/services/2.jpg" alt="service" loading="lazy" />
-            </div>
-            <div className="feature__content">
-              <div className="feature__icon">
-                <i className="icon-hospital"></i>
-              </div>
-              <h4 className="feature__title">Cutting Edge Facility</h4>
-            </div>
-            <a href="#" className="btn__link">
-              <i className="icon-arrow-right icon-outlined"></i>
-            </a>
-          </div>
-        </div>
-        
-        <div className="col-sm-6 col-md-6 col-lg-3">
-          <div className="feature-item">
-            <div className="feature__img">
-              <img src="https://7oroof.com/demos/medcity/assets/images/services/2.jpg" alt="service" loading="lazy" />
-            </div>
-            <div className="feature__content">
-              <div className="feature__icon">
-                <i className="icon-expenses"></i>
-              </div>
-              <h4 className="feature__title">Affordable Prices For All Patients</h4>
-            </div>
-            <a href="#" className="btn__link">
-              <i className="icon-arrow-right icon-outlined"></i>
-            </a>
-          </div>
-        </div>
-       
-        <div className="col-sm-6 col-md-6 col-lg-3">
-          <div className="feature-item">
-            <div className="feature__img">
-              <img src="https://7oroof.com/demos/medcity/assets/images/services/2.jpg" alt="service" loading="lazy" />
-            </div>
-            <div className="feature__content">
-              <div className="feature__icon">
-                <i className="icon-bandage"></i>
-              </div>
-              <h4 className="feature__title">Quality Care For Every Patient</h4>
-            </div>
-            <a href="#" className="btn__link">
-              <i className="icon-arrow-right icon-outlined"></i>
-            </a>
-          </div>
-        </div>
       </div>
       <div className="row">
         <div className="col-md-12 col-lg-6 offset-lg-3 text-center">

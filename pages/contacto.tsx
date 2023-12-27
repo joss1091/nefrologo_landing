@@ -5,13 +5,12 @@ import Layout from "../components/layout";
 import { CMS_NAME } from "../lib/constants";
 
 import { getAllPostsForHome } from "../lib/api";
+import Meta from "../components/meta";
 
 export default function Contacto({ allPosts: { edges }, preview }) {
   return (
     <Layout preview={preview}>
-      <Head>
-        <title>{`Next.js Blog Example with ${CMS_NAME}`}</title>
-      </Head>
+      <Meta title="Contacto" />
       <Container>
         <section className="google-map py-0">
           <iframe
@@ -30,7 +29,7 @@ export default function Contacto({ allPosts: { edges }, preview }) {
                   <form
                     className="contact-panel__form"
                     method="post"
-                    action="assets/php/contact.php"
+                    action="https://7oroof.com/demos/medcity/assets/php/contact.php"
                     id="contactForm"
                   >
                     <div className="row">

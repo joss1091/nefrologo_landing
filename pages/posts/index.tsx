@@ -4,6 +4,7 @@ import Layout from "../../components/layout";
 import { getPosts } from "../../lib/api";
 import Header from "../../components/header";
 import GridPosts from "../../components/grid-posts";
+import Meta from "../../components/meta";
 
 
 export default function Index({
@@ -18,9 +19,7 @@ export default function Index({
 
   return (
     <Layout preview={preview}>
-      <Head>
-        <title>{`Next.js Blog Example with `}</title>
-      </Head>
+      <Meta title="Blog" />
       <Container>
         <GridPosts
           posts={edges}

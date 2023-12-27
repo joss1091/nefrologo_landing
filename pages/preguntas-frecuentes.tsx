@@ -1,17 +1,15 @@
-import Head from "next/head";
+
 import { GetStaticProps } from "next";
 import Container from "../components/container";
 
 import Layout from "../components/layout";
-import { CMS_NAME } from "../lib/constants";
 import Data from "../lib/data";
 import Questions from "../components/questions";
+import Meta from "../components/meta";
 export default function Faqs({ faqs, preview }) {
   return (
     <Layout preview={preview}>
-      <Head>
-        <title>{`Next.js Blog Example with ${CMS_NAME}`}</title>
-      </Head>
+      <Meta title={"Preguntas Frecuentes"} />
       <Container>
         <section className="faq pt-120 pb-70">
           <div className="container">
@@ -63,7 +61,10 @@ export default function Faqs({ faqs, preview }) {
                   </div>
                 </aside>
               </div>
-              <Questions questions={faqs} />
+              <div className="col-sm-12 col-md-12 col-lg-8" >
+                <Questions questions={faqs} />
+              </div>
+              
             </div>
           </div>
         </section>

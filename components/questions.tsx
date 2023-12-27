@@ -12,7 +12,7 @@ export default function Questions({ questions }) {
     });
   }, []);
   return (
-    <div className="col-sm-12 col-md-12 col-lg-8" id="accordion">
+    <div className="" id="accordion">
       {questions.map(({ question, answer }, index) => (
         <div
           className={`accordion-item ${index == 0 ? "opened" : ""}`}

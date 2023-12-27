@@ -225,7 +225,7 @@ import $ from "jquery"
             $(contactResult, contactForm).html('Please Wait...');
             $.ajax({
                 type: "POST",
-                url: "assets/php/contact.php",
+                url: "https://7oroof.com/demos/medcity/assets/php/contact.php",
                 data: $(contactForm).serialize(),
                 timeout: 20000,
                 success: function (msg) {

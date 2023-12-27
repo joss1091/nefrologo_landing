@@ -1,12 +1,14 @@
+import Link from "next/link";
 import Slider from "react-slick";
 
-export default function WorkProcessLayout({  }) {
+export default function WorkProcessLayout({ hospitals, company }) {
   const settings = {
     dots: false,
     arrows: false,
     slidesToShow: 4,
     infinite: false,
     slidesToScroll: 1,
+    autoplay: true,
     responsive: [
       {
         breakpoint: 1200, 
@@ -17,19 +19,22 @@ export default function WorkProcessLayout({  }) {
       {
         breakpoint: 992, 
         settings: {
-          slidesToShow: 2
+          slidesToShow: 2,
+          autoplay: true
         }
       }, 
       {
         breakpoint: 767, 
         settings: {
-          slidesToShow: 2
+          slidesToShow: 2,
+          autoplay: true
         }
       }, 
       {
         breakpoint: 480, 
         settings: {
-          slidesToShow: 1
+          slidesToShow: 2,
+          autoplay: true
         }
       }
     ]
@@ -44,15 +49,12 @@ export default function WorkProcessLayout({  }) {
             <h2 className="heading__subtitle color-primary">Caring For The Health Of You And Your Family.</h2>
           </div>
           <div className="col-sm-12 col-md-12 col-lg-6 col-xl-5">
-            <h3 className="heading__title color-white">We Provide All Aspects Of Medical Practice For Your Whole Family!
+            <h3 className="heading__title color-white">Trabajamos con diversos Hospitales para el beneficio de tu salud
             </h3>
           </div>
           <div className="col-sm-12 col-md-12 col-lg-6 col-xl-6 offset-xl-1">
-            <p className="heading__desc font-weight-bold color-gray mb-40">We will work with you to develop individualised
-              care
-              plans, including
-              management of chronic diseases. If we cannot assist, we can provide referrals or advice about the type of
-              practitioner you require. We treat all enquiries sensitively and in the strictest confidence.
+            <p className="heading__desc font-weight-bold color-gray mb-40">
+Trabajaremos con usted para desarrollar planes de atención individualizados, incluido el manejo de enfermedades crónicas. Si no podemos ayudarlo, podemos brindarle referencias o asesoramiento sobre el tipo de médico que necesita. Tratamos todas las consultas con sensibilidad y con la más estricta confidencialidad.
             </p>
             <ul className="list-items list-items-layout2 list-items-light list-horizontal list-unstyled">
               <li>Fractures and dislocations</li>
@@ -67,76 +69,24 @@ export default function WorkProcessLayout({  }) {
           <div className="col-12">
             <div className="carousel-container mt-90">
               <Slider {...settings} className="slick-carousel">
+                {hospitals.map(({name, url, logo, description}, index) => (
+                  <div className="process-item" key={index}>
+                  
+                  <div className="process__icon ">
+                    <img className="icon-health-report" src={logo} ></img>
+                  </div>
+                  <h4 className="process__title pt-30">{name}</h4>
+                  <p className="process__desc">{description}</p>
+                  <Link href={url} target="_blank" className="btn btn__secondary btn__link">
+                    <span>Ver más</span>
+                    <i className="icon-arrow-right"></i>
+                  </Link>
+                </div>
+                )
+              )}
                 
-                <div className="process-item">
-                  <span className="process__number">01</span>
-                  <div className="process__icon">
-                    <i className="icon-health-report"></i>
-                  </div>
-                  <h4 className="process__title">Fill In Our Medical Application</h4>
-                  <p className="process__desc">Medcity offers low-cost health coverage for adults with limited income, you
-                    can
-                    enroll.</p>
-                  <a href="#" className="btn btn__secondary btn__link">
-                    <span>Doctors’ Timetable</span>
-                    <i className="icon-arrow-right"></i>
-                  </a>
-                </div>
-                <div className="process-item">
-                  <span className="process__number">02</span>
-                  <div className="process__icon">
-                    <i className="icon-dna"></i>
-                  </div>
-                  <h4 className="process__title">Review Your Family Medical History</h4>
-                  <p className="process__desc">Regular health exams can help find all the problems, also can find it early
-                    chances.</p>
-                  <a href="#" className="btn btn__secondary btn__link">
-                    <span>Start A Check Up</span>
-                    <i className="icon-arrow-right"></i>
-                  </a>
-                </div>
-                <div className="process-item">
-                  <span className="process__number">03</span>
-                  <div className="process__icon">
-                    <i className="icon-medicine"></i>
-                  </div>
-                  <h4 className="process__title">Choose Between Our Care Programs</h4>
-                  <p className="process__desc">We have protocols to protect our patients while continuing to provide
-                    necessary
-                    care.</p>
-                  <a href="#" className="btn btn__secondary btn__link">
-                    <span>Explore Programs</span>
-                    <i className="icon-arrow-right"></i>
-                  </a>
-                </div>
                 
-                <div className="process-item">
-                  <span className="process__number">04</span>
-                  <div className="process__icon">
-                    <i className="icon-stethoscope"></i>
-                  </div>
-                  <h4 className="process__title">Introduce You To Highly Qualified Doctors</h4>
-                  <p className="process__desc">Our administration and support staff have exceptional skills and trained to
-                    assist you. </p>
-                  <a href="#" className="btn btn__secondary btn__link">
-                    <span>Meet Our DocStors</span>
-                    <i className="icon-arrow-right"></i>
-                  </a>
-                </div>
-            
-                <div className="process-item">
-                  <span className="process__number">05</span>
-                  <div className="process__icon">
-                    <i className="icon-head"></i>
-                  </div>
-                  <h4 className="process__title">Your custom Next process</h4>
-                  <p className="process__desc">Our administration and support staff have exceptional skills to assist you.
-                  </p>
-                  <a href="#" className="btn btn__secondary btn__link">
-                    <span>Meet Our Doctors</span>
-                    <i className="icon-arrow-right"></i>
-                  </a>
-                </div>
+                
               </Slider>
             </div>
           </div>
@@ -149,16 +99,15 @@ export default function WorkProcessLayout({  }) {
               <img src="https://7oroof.com/demos/medcity/assets/images/icons/alert2.png" className="cta__img" alt="alert" />
             </div>
             <div className="col-sm-12 col-md-7 col-lg-7">
-              <h4 className="cta__title">True Healthcare For Your Family!</h4>
-              <p className="cta__desc">Serve the community by improving the quality of life through better health. We have
-                put protocols to protect our patients and staff while continuing to provide medically necessary care.
+              <h4 className="cta__title">¡Verdadera atención médica para su familia!</h4>
+              <p className="cta__desc">Servir a la comunidad mejorando la calidad de vida a través de una mejor salud. Hemos implementado protocolos para proteger a nuestros pacientes y personal mientras continuamos brindando atención médicamente necesaria.
               </p>
             </div>
             <div className="col-sm-12 col-md-12 col-lg-3">
-              <a href="appointment.html" className="btn btn__primary btn__secondary-style2 btn__rounded">
-                <span>Healthcare Programs</span>
+              <Link href={company.appointment.url} className="btn btn__primary btn__secondary-style2 btn__rounded">
+                <span>Agendar cita</span>
                 <i className="icon-arrow-right"></i>
-              </a>
+              </Link>
             </div>
           </div>
         </div>
