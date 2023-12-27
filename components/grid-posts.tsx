@@ -29,7 +29,7 @@ export default function GridPosts({ posts, currentPage, to , haveMorePosts,havep
                       className="current"
                       href={`${to}?page=${currentPage - 1}`}
                     >
-                      atras
+                      <i className="fa fa-arrow-left"></i>
                     </Link>
                   )}
                 </li>
@@ -39,7 +39,7 @@ export default function GridPosts({ posts, currentPage, to , haveMorePosts,havep
                       className="current"
                       href={`${to}?page=${currentPage + 1}`}
                     >
-                      sig
+                     <i className="fa fa-arrow-right"></i>
                     </Link>
                   )}
                 </li>
