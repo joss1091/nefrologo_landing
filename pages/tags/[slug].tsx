@@ -1,8 +1,6 @@
-import Head from "next/head";
 import Container from "../../components/container";
 import Layout from "../../components/layout";
 import { getAllPostsByTag } from "../../lib/api";
-import { CMS_NAME } from "../../lib/constants";
 import GridPosts from "../../components/grid-posts";
 import Meta from "../../components/meta";
 
@@ -12,7 +10,7 @@ export default function Index({
   haveMorePosts,
   havepreviousPosts,
   currentPage,
-  tag
+  tag,
 }) {
   var edges = allPosts?.edges || [];
 
@@ -35,7 +33,10 @@ export default function Index({
 export async function getServerSideProps({ req, res, query }) {
   const currentPage = Number(query.page) || 1;
 
-  const allPosts = await getAllPostsByTag(false, {currentPage,tag: query.slug});
+  const allPosts = await getAllPostsByTag(false, {
+    currentPage,
+    tag: query.slug,
+  });
   const haveMorePosts = Boolean(allPosts?.pageInfo?.offsetPagination.hasMore);
   const havepreviousPosts = Boolean(
     allPosts?.pageInfo?.offsetPagination.hasPrevious
@@ -48,7 +49,7 @@ export async function getServerSideProps({ req, res, query }) {
       preview: false,
       haveMorePosts,
       havepreviousPosts,
-      tag: query.slug
+      tag: query.slug,
     },
   };
 }

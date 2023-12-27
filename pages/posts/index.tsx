@@ -1,11 +1,8 @@
-import Head from "next/head";
 import Container from "../../components/container";
 import Layout from "../../components/layout";
 import { getPosts } from "../../lib/api";
-import Header from "../../components/header";
 import GridPosts from "../../components/grid-posts";
 import Meta from "../../components/meta";
-
 
 export default function Index({
   allPosts: allPosts,
@@ -14,7 +11,6 @@ export default function Index({
   preview,
   currentPage,
 }) {
-
   const edges = allPosts?.edges || [];
 
   return (
@@ -52,4 +48,3 @@ export async function getServerSideProps({ req, res, query }) {
     },
   };
 }
-

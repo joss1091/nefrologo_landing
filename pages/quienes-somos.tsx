@@ -1,49 +1,49 @@
-import Head from "next/head";
 import { GetStaticProps } from "next";
 import Container from "../components/container";
 import MoreStories from "../components/more-stories";
 import Layout from "../components/layout";
-import { CMS_NAME } from "../lib/constants";
-
-import TeamLayout from "../components/team_layout";
 import { getAllPostsForHome } from "../lib/api";
 import Meta from "../components/meta";
 import Link from "next/link";
 import data from "../lib/data";
+import EmergencyWidget from "../components/emergencyWidget";
+import ScheduleWidget from "../components/scheduleWidget";
+import BreadCrumb from "../components/breadcrum";
 
-export default function AboutUs({ allPosts: { edges }, preview }) {
-
+export default function AboutUs({
+  allPosts: { edges },
+  company,
+  doctor,
+  preview,
+}) {
   return (
     <Layout preview={preview}>
       <Meta title={"Quienes somos"} />
       <Container>
-      <section className="page-title page-title-layout6">
+        <section className="page-title page-title-layout5">
           <div className="bg-img">
             <img
-              src="https://7oroof.com/demos/medcity/assets/images/backgrounds/7.jpg"
+              src="https://7oroof.com/demos/medcity/assets/images/backgrounds/6.jpg"
               alt="background"
             />
           </div>
           <div className="container">
             <div className="row">
-              <div className="col-12 d-flex flex-wrap justify-content-end align-items-center">
-                <div className="testimonials__rating mr-30">
-                  <div className="testimonials__rating-inner d-flex align-items-center">
-                    <span className="total__rate">4.9</span>
-                    <div>
-                      <span className="overall__rate">
-                        Zocdoc Overall Rating
-                      </span>
-                      <span>, based on 7541 reviews.</span>
-                    </div>
-                  </div>
-                </div>
-                <Link
-                  href={data.company.appointment.url}
-                  className="btn btn__white btn__rounded"
-                >
-                  Appointment
-                </Link>
+              <div className="col-12">
+                <h1 className="pagetitle__heading">{doctor.name}</h1>
+                <BreadCrumb
+                  items={[
+                    {
+                      label: "Home",
+                      to: "/",
+                      active: false,
+                    },
+                    {
+                      label: doctor.name,
+                      active: true,
+                    },
+                  ]}
+                />
               </div>
             </div>
           </div>
@@ -54,24 +54,19 @@ export default function AboutUs({ allPosts: { edges }, preview }) {
             <div className="row">
               <div className="col-sm-12 col-md-12 col-lg-4">
                 <aside className="sidebar has-marign-right">
-                  <div className="widget widget-member shifted-top">
+                  <div className="widget widget-member ">
                     <div className="member mb-0">
                       <div className="member__img">
-                        <img
-                          src={data.doctor.avatar}
-                          alt={data.doctor.name}
-                        />
+                        <img src={doctor.avatar} alt={doctor.name} />
                       </div>
                       <div className="member__info">
                         <h5 className="member__name">
                           <a href="doctors-single-doctor1.html">
-                           {data.doctor.name}
+                            {doctor.name}
                           </a>
                         </h5>
-                        <p className="member__job">{data.doctor.speciality}</p>
-                        <p className="member__desc">
-                          {data.doctor.desciption}
-                        </p>
+                        <p className="member__job">{doctor.speciality}</p>
+                        <p className="member__desc">{doctor.desciption}</p>
                         <div className="mt-20 d-flex flex-wrap justify-content-between align-items-center">
                           <ul className="social-icons list-unstyled mb-0">
                             <li>
@@ -85,7 +80,10 @@ export default function AboutUs({ allPosts: { edges }, preview }) {
                               </a>
                             </li>
                             <li>
-                              <Link href={`tel:+52${data.company.appointment.phone}`} className="phone">
+                              <Link
+                                href={`tel:+52${company.appointment.phone}`}
+                                className="phone"
+                              >
                                 <i className="fas fa-phone-alt"></i>
                               </Link>
                             </li>
@@ -94,49 +92,8 @@ export default function AboutUs({ allPosts: { edges }, preview }) {
                       </div>
                     </div>
                   </div>
-                  <div className="widget widget-help bg-overlay bg-overlay-primary-gradient">
-                    <div className="bg-img">
-                      <img
-                        src="https://7oroof.com/demos/medcity/assets/images/banners/5.jpg"
-                        alt="background"
-                      />
-                    </div>
-                    <div className="widget-content">
-                      <div className="widget__icon">
-                        <i className="icon-call3"></i>
-                      </div>
-                      <h4 className="widget__title">Emergency Cases</h4>
-                      <p className="widget__desc">
-                        Please feel welcome to contact our friendly reception
-                        staff with any general or medical enquiry call us.
-                      </p>
-                      <a href="tel:+201061245741" className="phone__number">
-                        <i className="icon-phone"></i> <span>01061245741</span>
-                      </a>
-                    </div>
-                  </div>
-                  <div className="widget widget-schedule">
-                    <div className="widget-content">
-                      <div className="widget__icon">
-                        <i className="icon-charity2"></i>
-                      </div>
-                      <h4 className="widget__title">Opening Hours</h4>
-                      <ul className="time__list list-unstyled mb-0">
-                        <li>
-                          <span>Monday - Friday</span>
-                          <span>8.00 - 7:00 pm</span>
-                        </li>
-                        <li>
-                          <span>Saturday</span>
-                          <span>9.00 - 10:00 pm</span>
-                        </li>
-                        <li>
-                          <span>Sunday</span>
-                          <span>10.00 - 12:00 pm</span>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
+                  <EmergencyWidget company={company} />
+                  <ScheduleWidget company={company} />
                 </aside>
               </div>
               <div className="col-sm-12 col-md-12 col-lg-8">
@@ -150,13 +107,12 @@ export default function AboutUs({ allPosts: { edges }, preview }) {
                     concussion, epilepsy, migraine, multiple sclerosis,
                     Parkinson’s disease, and stroke.
                   </p>
-                  
                 </div>
                 <ul className="details-list list-unstyled mb-60">
                   <li>
                     <h5 className="details__title">Especialidad</h5>
                     <div className="details__content">
-                      <p className="mb-0">{data.doctor.speciality} </p>
+                      <p className="mb-0">{doctor.speciality} </p>
                     </div>
                   </li>
                   <li>
@@ -169,20 +125,16 @@ export default function AboutUs({ allPosts: { edges }, preview }) {
                     <h5 className="details__title">Certificaciones/cursos</h5>
                     <div className="details__content">
                       <ul className="list-items list-items-layout2 list-unstyled mb-0">
-                        {data.doctor.certifications.map((certification, index) => (
-                            <li key={index}>{certification}</li>
+                        {doctor.certifications.map((certification, index) => (
+                          <li key={index}>{certification}</li>
                         ))}
-                        
-                       
                       </ul>
                     </div>
                   </li>
                   <li>
                     <h5 className="details__title">Office</h5>
                     <div className="details__content">
-                      <p className="mb-0">
-                        2307 Beverley Rd Brooklyn, New York 11226 United States.
-                      </p>
+                      <p className="mb-0">{company.location.address}</p>
                     </div>
                   </li>
                   <li>
@@ -448,8 +400,14 @@ export default function AboutUs({ allPosts: { edges }, preview }) {
             </div>
           </div>
         </section>
-        
-        {edges && < MoreStories posts={edges} title={"Blog"} subtitle={"Articulos recientes"} />}
+
+        {edges && (
+          <MoreStories
+            posts={edges}
+            title={"Blog"}
+            subtitle={"Articulos recientes"}
+          />
+        )}
       </Container>
     </Layout>
   );
@@ -457,9 +415,9 @@ export default function AboutUs({ allPosts: { edges }, preview }) {
 
 export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
   const allPosts = await getAllPostsForHome(preview);
-
+  const { company, doctor } = data;
   return {
-    props: { allPosts, preview },
+    props: { allPosts, preview, company, doctor },
     revalidate: 10,
   };
 };

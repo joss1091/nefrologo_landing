@@ -6,8 +6,9 @@ import { CMS_NAME } from "../lib/constants";
 
 import { getAllPostsForHome } from "../lib/api";
 import Meta from "../components/meta";
+import Data from "../lib/data";
 
-export default function Contacto({ allPosts: { edges }, preview }) {
+export default function Contacto({ allPosts: { edges }, location,preview }) {
   return (
     <Layout preview={preview}>
       <Meta title="Contacto" />
@@ -17,8 +18,9 @@ export default function Contacto({ allPosts: { edges }, preview }) {
            
             height="500"
             width="100%"
-            src="https://maps.google.com/maps?q=Suite%20100%20San%20Francisco%2C%20LA%2094107%20United%20States&amp;t=m&amp;z=10&amp;output=embed&amp;iwloc=near"
+            src={location.map}
           ></iframe>
+          
         </section>
 
         <section className="contact-layout1 pt-0 mt--100">
@@ -165,9 +167,10 @@ export default function Contacto({ allPosts: { edges }, preview }) {
 
 export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
   const allPosts = await getAllPostsForHome(preview);
+  const location = Data.company.location
 
   return {
-    props: { allPosts, preview },
+    props: { allPosts, preview, location },
     revalidate: 10,
   };
 };

@@ -10,7 +10,7 @@ import EmergencyWidget from "../../components/emergencyWidget";
 import ScheduleWidget from "../../components/scheduleWidget";
 import ErrorPage from "next/error";
 
-export default function Index({ service,otherServices,company, preview }) {
+export default function Index({ service, otherServices, company, preview }) {
   if (!service) {
     return <ErrorPage statusCode={404} />;
   }
@@ -51,7 +51,6 @@ export default function Index({ service,otherServices,company, preview }) {
                   <p className="text-block__desc mb-20 ">
                     {service.long_description}
                   </p>
-                
                 </div>
 
                 <ul className="list-items list-unstyled mb-60 pl-40">
@@ -104,9 +103,7 @@ export default function Index({ service,otherServices,company, preview }) {
                     </div>
                   </div>
                   <div className="widget__footer d-flex flex-wrap justify-content-between align-items-center">
-                    <div className="plan__price">
-                      
-                    </div>
+                    <div className="plan__price"></div>
                     <div className="d-flex align-items-center">
                       <Link
                         href="#"
@@ -115,7 +112,6 @@ export default function Index({ service,otherServices,company, preview }) {
                         <span>Agendar cita</span>{" "}
                         <i className="icon-arrow-right"></i>
                       </Link>
-                      
                     </div>
                   </div>
                 </div>
@@ -195,20 +191,16 @@ export default function Index({ service,otherServices,company, preview }) {
                     </div>
                   </div>
                 </div>
-               
 
                 <Questions questions={service.faqs} />
-
-              
               </div>
-              
+
               <div className="col-sm-12 col-md-12 col-lg-4">
-                
                 <aside className="sidebar has-marign-left sticky-top">
-                <ServiceListWidget services={otherServices} />
-               <EmergencyWidget company={company} />
-                  
-                 <ScheduleWidget company={company} />
+                  <ServiceListWidget services={otherServices} />
+                  <EmergencyWidget company={company} />
+
+                  <ScheduleWidget company={company} />
                 </aside>
               </div>
             </div>
@@ -224,10 +216,12 @@ export const getStaticProps: GetStaticProps = async ({
   preview = false,
 }) => {
   const service = Data.services.find((service) => service.slug == params?.slug);
-  const otherServices = Data.services.filter((service) => service.slug != params?.slug)
+  const otherServices = Data.services.filter(
+    (service) => service.slug != params?.slug
+  );
 
   return {
-    props: { service, preview, otherServices , company: Data.company},
+    props: { service, preview, otherServices, company: Data.company },
     revalidate: 10,
   };
 };

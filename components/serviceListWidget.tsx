@@ -9,7 +9,7 @@ export default function ServiceListWidget({ services }) {
         <div className="widget-content">
           <ul className="list-unstyled mb-0">
             {services.map(({name, slug}) => (
-              <li>
+              <li key={slug}>
               <Link href={`/servicios/${slug}`}>
                 <span>{name}</span>
                 <i className="icon-arrow-right"></i>

@@ -20,21 +20,24 @@ export default function WorkProcessLayout({ hospitals, company }) {
         breakpoint: 992, 
         settings: {
           slidesToShow: 2,
-          autoplay: true
+          autoplay: true,
+          arrows: true
         }
       }, 
       {
         breakpoint: 767, 
         settings: {
           slidesToShow: 2,
-          autoplay: true
+          autoplay: true,
+          arrows: true
         }
       }, 
       {
         breakpoint: 480, 
         settings: {
-          slidesToShow: 2,
-          autoplay: true
+          slidesToShow: 1,
+          autoplay: true,
+          arrows: true
         }
       }
     ]
