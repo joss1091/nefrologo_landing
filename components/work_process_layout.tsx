@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Slider from "react-slick";
+import Image from "next/image";
 
 export default function WorkProcessLayout({ hospitals, company }) {
   const settings = {
@@ -45,7 +46,7 @@ export default function WorkProcessLayout({ hospitals, company }) {
 
   return (
     <section className="work-process work-process-carousel pt-130 pb-0 bg-overlay bg-overlay-secondary">
-      <div className="bg-img"><img src="/images/banners/1.jpg" alt="background" /></div>
+      <div className="bg-img"><Image width={400} height={400} src="/images/banners/1.jpg" alt="background" /></div>
       <div className="container">
         <div className="row heading-layout2">
           <div className="col-12">
@@ -76,7 +77,7 @@ Trabajaremos con usted para desarrollar planes de atención individualizados, in
                   <div className="process-item" key={index}>
                   
                   <div className="process__icon ">
-                    <img className="icon-health-report" src={logo} ></img>
+                    <Image width={225} height={47} className="icon-health-report" src={logo} alt={name} />
                   </div>
                   <h4 className="process__title pt-30">{name}</h4>
                   <p className="process__desc">{description}</p>
@@ -99,7 +100,7 @@ Trabajaremos con usted para desarrollar planes de atención individualizados, in
         <div className="container">
           <div className="row align-items-center">
             <div className="col-sm-12 col-md-2 col-lg-2">
-              <img src="https://7oroof.com/demos/medcity/assets/images/icons/alert2.png" className="cta__img" alt="alert" />
+              <Image width={170} height={144} src="/images/icons/alert2.png" className="cta__img" alt="alert" />
             </div>
             <div className="col-sm-12 col-md-7 col-lg-7">
               <h4 className="cta__title">¡Verdadera atención médica para su familia!</h4>

@@ -1,26 +1,19 @@
-import Head from "next/head";
+
 import { GetStaticProps } from "next";
 import Container from "../components/container";
 import Layout from "../components/layout";
-import { CMS_NAME } from "../lib/constants";
 
-import { getAllPostsForHome } from "../lib/api";
 import Meta from "../components/meta";
 import Data from "../lib/data";
+import Image from "next/image";
 
-export default function Contacto({ allPosts: { edges }, location,preview }) {
+export default function Contacto({  location, preview }) {
   return (
     <Layout preview={preview}>
       <Meta title="Contacto" />
       <Container>
         <section className="google-map py-0">
-          <iframe
-           
-            height="500"
-            width="100%"
-            src={location.map}
-          ></iframe>
-          
+          <iframe height="500" width="100%" src={location.map}></iframe>
         </section>
 
         <section className="contact-layout1 pt-0 mt--100">
@@ -117,7 +110,12 @@ export default function Contacto({ allPosts: { edges }, location,preview }) {
                   </form>
                   <div className="contact-panel__info d-flex flex-column justify-content-between bg-overlay bg-overlay-primary-gradient">
                     <div className="bg-img">
-                      <img src="/images/banners/1.jpg" alt="banner" />
+                      <Image
+                        width={430}
+                        height={600}
+                        src="/images/banners/1.jpg"
+                        alt="banner"
+                      />
                     </div>
                     <div>
                       <h4 className="contact-panel__title color-white">
@@ -166,11 +164,11 @@ export default function Contacto({ allPosts: { edges }, location,preview }) {
 }
 
 export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
-  const allPosts = await getAllPostsForHome(preview);
-  const location = Data.company.location
+  
+  const location = Data.company.location;
 
   return {
-    props: { allPosts, preview, location },
+    props: {  preview, location },
     revalidate: 10,
   };
 };

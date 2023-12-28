@@ -9,6 +9,7 @@ import ServiceListWidget from "../../components/serviceListWidget";
 import EmergencyWidget from "../../components/emergencyWidget";
 import ScheduleWidget from "../../components/scheduleWidget";
 import ErrorPage from "next/error";
+import Image from "next/image";
 
 export default function Index({ service, otherServices, company, preview }) {
   if (!service) {
@@ -20,7 +21,9 @@ export default function Index({ service, otherServices, company, preview }) {
       <Container>
         <section className="page-title page-title-layout2 bg-overlay text-center pb-0">
           <div className="bg-img">
-            <img
+            <Image
+              width={430}
+              height={600}
               src="/images/page-titles/3.jpg"
               alt="background"
             />

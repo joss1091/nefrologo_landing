@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
 import $ from "jquery";
 import Link from "next/link";
-export default function Header({services, company}) {
+import Image from "next/image";
+export default function Header({ services, company }) {
   useEffect(() => {
     var $win = $(window);
 
@@ -49,8 +50,7 @@ export default function Header({services, company}) {
     });
   }, []);
 
-
-  const available_day = company.short_schedule[0]
+  const available_day = company.short_schedule[0];
   return (
     <header className="header header-layout1">
       <div className="header-topbar">
@@ -59,7 +59,6 @@ export default function Header({services, company}) {
             <div className="col-12">
               <div className="d-flex align-items-center justify-content-between mt-10">
                 <ul className="contact__list d-flex flex-wrap align-items-center list-unstyled mb-0 mt-10">
-                 
                   <li>
                     <i className="icon-phone"></i>
                     <Link href={`tel:+52${company.appointment.phone}`}>
@@ -68,11 +67,16 @@ export default function Header({services, company}) {
                   </li>
                   <li>
                     <i className="icon-location"></i>
-                    <Link href="#">Ubicacion: {company.location.short_address}</Link>
+                    <Link href="#">
+                      Ubicacion: {company.location.short_address}
+                    </Link>
                   </li>
                   <li>
                     <i className="icon-clock"></i>
-                    <Link href="/contacto">{available_day.text} {available_day.details.from} - {available_day.details.to}</Link>
+                    <Link href="/contacto">
+                      {available_day.text} {available_day.details.from} -{" "}
+                      {available_day.details.to}
+                    </Link>
                   </li>
                 </ul>
                 <div className="d-flex">
@@ -102,15 +106,19 @@ export default function Header({services, company}) {
       <nav className="navbar navbar-expand-lg sticky-navbar">
         <div className="container-fluid">
           <a className="navbar-brand" href="/">
-            <img
+            <Image
+              height={50}
+              width={185}
               src="/images/logo/logo-light.png"
               className="logo-light"
-              alt="logo"
+              alt={company.name}
             />
-            <img
+            <Image
+              height={50}
+              width={185}
               src="/images/logo/logo-dark.png"
               className="logo-dark"
-              alt="logo"
+              alt={company.name}
             />
           </a>
           <button className="navbar-toggler" type="button">
@@ -120,7 +128,6 @@ export default function Header({services, company}) {
           </button>
           <div className="collapse navbar-collapse" id="mainNavigation">
             <ul className="navbar-nav ml-auto">
-              
               <li className="nav__item has-dropdown">
                 <a
                   href="/servicios"
@@ -130,14 +137,16 @@ export default function Header({services, company}) {
                   Servicios
                 </a>
                 <ul className="dropdown-menu">
-                  {services.map(({slug, name}) => (
+                  {services.map(({ slug, name }) => (
                     <li className="nav__item" key={slug}>
-                    <Link href={`/servicios/${slug}`} className="nav__item-link">
-                      {name}
-                    </Link>
-                  </li>
+                      <Link
+                        href={`/servicios/${slug}`}
+                        className="nav__item-link"
+                      >
+                        {name}
+                      </Link>
+                    </li>
                   ))}
-                  
                 </ul>
               </li>
               <li className="nav__item">

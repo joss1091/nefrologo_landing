@@ -1,4 +1,3 @@
-import { useRouter } from "next/router";
 import ErrorPage from "next/error";
 import { GetStaticPaths, GetStaticProps } from "next";
 import Container from "../../components/container";
@@ -16,9 +15,26 @@ import Link from "next/link";
 import BreadCrumb from "../../components/breadcrum";
 import PrevioutNextPostPreview from "../../components/previous_next_post_preview";
 import Meta from "../../components/meta";
+import {
+  FacebookShareButton,
+  FacebookIcon,
+  TwitterShareButton,
+  TwitterIcon,
+  LinkedinIcon,
+  LinkedinShareButton,
+  WhatsappIcon,
+  WhatsappShareButton,
+} from "next-share";
 
-export default function Post({ post, posts,tags, categories,previousPost,nextPost, preview }) {
-
+export default function Post({
+  post,
+  posts,
+  tags,
+  categories,
+  previousPost,
+  nextPost,
+  preview,
+}) {
   const morePosts = posts?.edges;
 
   if (!post) {
@@ -27,29 +43,30 @@ export default function Post({ post, posts,tags, categories,previousPost,nextPos
 
   return (
     <Layout preview={preview}>
-      <Meta  title={post.title} />
+      <Meta title={post.title} />
       <Container>
         <section className="page-title pt-30 pb-30 text-center">
           <div className="container">
             <div className="row align-items-center">
               <div className="col-12">
-                <BreadCrumb items={[
-                  {
-                    label: "Home",
-                    to: "/",
-                    active: false
-                  },
-                  {
-                    label: "Blog",
-                    to: "/posts",
-                    active: false
-                  },
-                  {
-                    label: post.title,
-                    active: true
-                  }
-                ]} />
-                
+                <BreadCrumb
+                  items={[
+                    {
+                      label: "Home",
+                      to: "/",
+                      active: false,
+                    },
+                    {
+                      label: "Blog",
+                      to: "/posts",
+                      active: false,
+                    },
+                    {
+                      label: post.title,
+                      active: true,
+                    },
+                  ]}
+                />
               </div>
             </div>
           </div>
@@ -82,48 +99,63 @@ export default function Post({ post, posts,tags, categories,previousPost,nextPos
                 </div>
                 <div className="d-flex flex-wrap justify-content-between border-top border-bottom pt-30 pb-30 mb-40">
                   <div className="blog-share d-flex flex-wrap align-items-center">
-                    <strong className="mr-20 color-heading">Share</strong>
+                    <strong className="mr-20 color-heading">Compartir</strong>
                     <ul className="list-unstyled social-icons d-flex mb-0">
                       <li>
-                        <a href="#">
-                          <i className="fab fa-facebook-f"></i>
-                        </a>
+                        <FacebookShareButton
+                          quote="Visita mi blog"
+                          url="https://www.nefrologojosuemolina.com.mx/"
+                        >
+                          <FacebookIcon size={32} round />
+                        </FacebookShareButton>
                       </li>
                       <li>
-                        <a href="#">
-                          <i className="fab fa-twitter"></i>
-                        </a>
+                        <TwitterShareButton url={`https://www.nefrologojosuemolina.com.mx/posts/${post.slug}`}>
+                          <TwitterIcon size={32} round />
+                        </TwitterShareButton>
                       </li>
                       <li>
-                        <a href="#">
-                          <i className="fab fa-google"></i>
-                        </a>
+                        <LinkedinShareButton url={`https://www.nefrologojosuemolina.com.mx/posts/${post.slug}`}>
+                          <LinkedinIcon size={32} round />
+                        </LinkedinShareButton>
+                      </li>
+                      <li>
+                        <WhatsappShareButton url={`https://www.nefrologojosuemolina.com.mx/posts/${post.slug}`}>
+                          <WhatsappIcon size={32} round />
+                        </WhatsappShareButton>
                       </li>
                     </ul>
                   </div>
                   <div className="widget-tags">
                     <ul className="list-unstyled d-flex flex-wrap mb-0">
-                      {post.categories.edges.map(({node}) => (
+                      {post.categories.edges.map(({ node }) => (
                         <li key={node.slug}>
-                        <Link href={`/tags/${node.slug}`}>{node.name}</Link>
-                      </li>
+                          <Link href={`/tags/${node.slug}`}>{node.name}</Link>
+                        </li>
                       ))}
-                      
-                     
                     </ul>
                   </div>
                 </div>
                 <div className="widget-nav d-flex justify-content-between mb-40">
-                  <PrevioutNextPostPreview post={previousPost} arrow={"prev"} label={"Anterior Post"} />
-                  <PrevioutNextPostPreview post={nextPost} arrow={"next"} label={"Siguiente Post"} />
+                  <PrevioutNextPostPreview
+                    post={previousPost}
+                    arrow={"prev"}
+                    label={"Anterior Post"}
+                  />
+                  <PrevioutNextPostPreview
+                    post={nextPost}
+                    arrow={"next"}
+                    label={"Siguiente Post"}
+                  />
                 </div>
                 <div className="blog-author d-flex flex-wrap mb-70">
                   <div className="blog-author__avatar">
-                    
                     <Avatar author={post.author} />
                   </div>
                   <div className="blog-author__content">
-                    <h6 className="blog-author__name">{post.author.node.firstName} {post.author.node.lastName} </h6>
+                    <h6 className="blog-author__name">
+                      {post.author.node.firstName} {post.author.node.lastName}{" "}
+                    </h6>
                     <p className="blog-author__bio">
                       {post.author.node.description}
                     </p>
@@ -154,24 +186,23 @@ export default function Post({ post, posts,tags, categories,previousPost,nextPos
               </div>
               <div className="col-sm-12 col-md-12 col-lg-4">
                 <aside className="sidebar">
-                  
                   {morePosts.length > 0 && <PostWidget posts={morePosts} />}
 
                   <div className="widget widget-categories">
                     <h5 className="widget__title">Categories</h5>
                     <div className="widget-content">
                       <ul className="list-unstyled mb-0">
-                      
-                      {categories.nodes.map(({ name, slug , count}) => (
-                        <li key={slug}>
-                          <Link  href={`/categorias/${slug}`} aria-label={name}>
-                            <span className="cat-count">{count}</span>
-                            <span>{name}</span>
-                          </Link>
-                        </li>
-                      ))}
-                       
-                        
+                        {categories.nodes.map(({ name, slug, count }) => (
+                          <li key={slug}>
+                            <Link
+                              href={`/categorias/${slug}`}
+                              aria-label={name}
+                            >
+                              <span className="cat-count">{count}</span>
+                              <span>{name}</span>
+                            </Link>
+                          </li>
+                        ))}
                       </ul>
                     </div>
                   </div>
@@ -198,7 +229,6 @@ export const getStaticProps: GetStaticProps = async ({
 }) => {
   const data = await getPostAndMorePosts(params?.slug, preview, previewData);
 
-
   return {
     props: {
       preview,
@@ -207,7 +237,7 @@ export const getStaticProps: GetStaticProps = async ({
       previousPost: data.post.previousPost,
       nextPost: data.post.nextPost,
       categories: data.categories,
-      tags: data.tags
+      tags: data.tags,
     },
     revalidate: 10,
   };

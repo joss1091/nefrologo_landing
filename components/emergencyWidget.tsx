@@ -1,11 +1,12 @@
 import Image from "next/image";
-import Link from "next/link";
 
 export default function EmergencyWidget({ company }) {
   return (
     <div className="widget widget-help bg-overlay bg-overlay-secondary-gradient">
       <div className="bg-img">
-        <img
+        <Image
+          width={430}
+          height={600}
           src="/images/banners/5.jpg"
           alt="background"
         />

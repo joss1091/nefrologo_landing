@@ -9,6 +9,7 @@ import data from "../lib/data";
 import EmergencyWidget from "../components/emergencyWidget";
 import ScheduleWidget from "../components/scheduleWidget";
 import BreadCrumb from "../components/breadcrum";
+import Image from "next/image";
 
 export default function AboutUs({
   allPosts: { edges },
@@ -22,7 +23,9 @@ export default function AboutUs({
       <Container>
         <section className="page-title page-title-layout5">
           <div className="bg-img">
-            <img
+            <Image
+              width={430}
+              height={600}
               src="/images/backgrounds/6.jpg"
               alt="background"
             />
@@ -57,7 +60,12 @@ export default function AboutUs({
                   <div className="widget widget-member ">
                     <div className="member mb-0">
                       <div className="member__img">
-                        <img src={doctor.avatar} alt={doctor.name} />
+                        <Image
+                          width={430}
+                          height={600}
+                          src={doctor.avatar}
+                          alt={doctor.name}
+                        />
                       </div>
                       <div className="member__info">
                         <h5 className="member__name">

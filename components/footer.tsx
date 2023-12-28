@@ -1,5 +1,5 @@
 import Link from 'next/link'
-
+import Image from 'next/image'
 export default function Footer({services, company, doctor}) {
   return (
     
@@ -9,7 +9,7 @@ export default function Footer({services, company, doctor}) {
           <div className="row">
             <div className="col-sm-12 col-md-12 col-lg-3">
               <div className="footer-widget-about">
-                <img src={company.logos.light} alt="logo" className="mb-30" />
+                <Image width={185} height={50} src={company.logos.light} alt={company.name} className="mb-30" />
                 <p className="color-gray">{company.mission}
                 </p>
                 <Link href={company.appointment.url} target='_blank' className="btn btn__primary btn__primary-style2 btn__link">

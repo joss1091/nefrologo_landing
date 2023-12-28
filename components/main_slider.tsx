@@ -1,6 +1,6 @@
 import Slider from "react-slick";
 import React, { useEffect } from "react";
-import $ from "jquery";
+import Image from "next/image";
 
 export default function MainSlider({ sliders }) {
   const settings = {
@@ -20,7 +20,7 @@ export default function MainSlider({ sliders }) {
         {sliders.map(({ title, subtitle, items, image }) => (
           <div className="slide-item align-v-h " key={title}>
             <div className="bg-img">
-              <img src={image} alt="slide img" />
+              <Image width={1600}  height={630} src={image} alt="slide img" />
             </div>
             <div className="container">
               <div className="row align-items-center">

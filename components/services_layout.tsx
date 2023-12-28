@@ -1,6 +1,6 @@
 import Slider from "react-slick";
 import SlideItem from "./slide_item";
-
+import Image from "next/image";
 export default function ServicesLayout({ services }) {
   const settings = {
     dots: true,
@@ -19,7 +19,7 @@ export default function ServicesLayout({ services }) {
   return (
     <section className="services-layout1 services-carousel">
       <div className="bg-img">
-        <img
+        <Image width={400} height={400}
           src="/images/backgrounds/2.jpg"
           alt="background"
         />

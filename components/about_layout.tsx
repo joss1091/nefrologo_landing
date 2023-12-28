@@ -1,5 +1,5 @@
 import Link from "next/link";
-
+import Image from 'next/image'
 export default function AboutLayout({ data }) {
   return (
     <>
@@ -30,7 +30,14 @@ export default function AboutLayout({ data }) {
             </div>
             <div className="col-sm-12 col-md-12 col-lg-5">
               <div className="video-banner-layout2 bg-overlay">
-                <img src={data.doctor.avatar} alt="about" className="w-100" />
+                <Image
+                
+                  width={430}
+                  height={600}
+                  src={data.doctor.avatar}
+                  alt={data.doctor.name}
+                  className="w-100"
+                />
                 <a
                   className="video__btn video__btn-white popup-video"
                   href="https://www.youtube.com/watch?v=dLJOOvksRNA"
