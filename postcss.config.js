@@ -10,11 +10,11 @@ const purgecss  = [ [
       './components/**/*.{js,jsx,ts,tsx}'],
     defaultExtractor: (content) => content.match(/[\w-/:]+(?<!:)/g) || [],
     safelist: {
-      standard: ["html", "body", /slick$/],
+      standard: ["html", "body", /slick-$/],
       deep: [
-        /slick$/,
+        /slick-$/,
       ],
-      greedy: [/slick$/]
+      greedy: [/slick-$/]
     },
   }],
 ]
@@ -37,8 +37,8 @@ const cssdefault =  [
   
 ]
 
-var plugins = process.env.NODE_ENV == 'production' ? [...cssdefault, ...purgecss] : [...cssdefault]
-console.log(plugins)
+var plugins = process.env.NODE_ENV != 'production' ? [...cssdefault, ...purgecss] : [...cssdefault]
+plugins = [...cssdefault, ...purgecss]
 module.exports = {
   "plugins": plugins
 };

@@ -203,11 +203,11 @@
             @include prefix(transform, scale(1), webkit moz ms o);
         }
     }
-
+    /* purgecss ignore */
     .slick-list {
         padding-bottom: 50px;
     }
-
+    /* purgecss ignore */
     .slick-dots {
         margin-top: -50px;
     }
