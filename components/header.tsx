@@ -103,12 +103,12 @@ export default function Header({services, company}) {
         <div className="container-fluid">
           <a className="navbar-brand" href="/">
             <img
-              src="https://7oroof.com/demos/medcity/assets/images/logo/logo-light.png"
+              src="/images/logo/logo-light.png"
               className="logo-light"
               alt="logo"
             />
             <img
-              src="https://7oroof.com/demos/medcity/assets/images/logo/logo-dark.png"
+              src="/images/logo/logo-dark.png"
               className="logo-dark"
               alt="logo"
             />

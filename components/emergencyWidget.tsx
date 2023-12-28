@@ -6,7 +6,7 @@ export default function EmergencyWidget({ company }) {
     <div className="widget widget-help bg-overlay bg-overlay-secondary-gradient">
       <div className="bg-img">
         <img
-          src="https://7oroof.com/demos/medcity/assets/images/banners/5.jpg"
+          src="/images/banners/5.jpg"
           alt="background"
         />
       </div>

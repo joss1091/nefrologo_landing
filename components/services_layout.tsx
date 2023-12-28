@@ -20,7 +20,7 @@ export default function ServicesLayout({ services }) {
     <section className="services-layout1 services-carousel">
       <div className="bg-img">
         <img
-          src="https://7oroof.com/demos/medcity/assets/images/backgrounds/2.jpg"
+          src="/images/backgrounds/2.jpg"
           alt="background"
         />
       </div>

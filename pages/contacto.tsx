@@ -117,7 +117,7 @@ export default function Contacto({ allPosts: { edges }, location,preview }) {
                   </form>
                   <div className="contact-panel__info d-flex flex-column justify-content-between bg-overlay bg-overlay-primary-gradient">
                     <div className="bg-img">
-                      <img src="https://7oroof.com/demos/medcity/assets/images/banners/1.jpg" alt="banner" />
+                      <img src="/images/banners/1.jpg" alt="banner" />
                     </div>
                     <div>
                       <h4 className="contact-panel__title color-white">

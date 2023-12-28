@@ -50,7 +50,7 @@ export default function TeamLayout({  }) {
             
             <div className="member">
               <div className="member__img">
-                <img src="https://7oroof.com/demos/medcity/assets/images/team/1.jpg" alt="member img" />
+                <img src="/images/team/1.jpg" alt="member img" />
               </div>
               <div className="member__info">
                 <h5 className="member__name"><a href="doctors-single-doctor1.html">Mike Dooley</a></h5>
@@ -73,7 +73,7 @@ export default function TeamLayout({  }) {
            
             <div className="member">
               <div className="member__img">
-                <img src="https://7oroof.com/demos/medcity/assets/images/team/5.jpg" alt="member img" />
+                <img src="/images/team/5.jpg" alt="member img" />
               </div>
               <div className="member__info">
                 <h5 className="member__name"><a href="doctors-single-doctor1.html">Dermatologists</a></h5>
@@ -95,7 +95,7 @@ export default function TeamLayout({  }) {
             </div>
             <div className="member">
               <div className="member__img">
-                <img src="https://7oroof.com/demos/medcity/assets/images/team/5.jpg" alt="member img" />
+                <img src="/images/team/5.jpg" alt="member img" />
               </div>
               <div className="member__info">
                 <h5 className="member__name"><a href="doctors-single-doctor1.html">Maria Andaloro</a></h5>
@@ -118,7 +118,7 @@ export default function TeamLayout({  }) {
           
             <div className="member">
               <div className="member__img">
-                <img src="https://7oroof.com/demos/medcity/assets/images/team/5.jpg" alt="member img" />
+                <img src="/images/team/5.jpg" alt="member img" />
               </div>
               <div className="member__info">
                 <h5 className="member__name"><a href="doctors-single-doctor1.html">Dupree Black</a></h5>
@@ -141,7 +141,7 @@ export default function TeamLayout({  }) {
             </div>
             <div className="member">
               <div className="member__img">
-                <img src="https://7oroof.com/demos/medcity/assets/images/team/5.jpg" alt="member img" />
+                <img src="/images/team/5.jpg" alt="member img" />
               </div>
               <div className="member__info">
                 <h5 className="member__name"><a href="doctors-single-doctor1.html">Markus skar</a></h5>
@@ -164,7 +164,7 @@ export default function TeamLayout({  }) {
           
             <div className="member">
               <div className="member__img">
-                <img src="https://7oroof.com/demos/medcity/assets/images/team/5.jpg" alt="member img" />
+                <img src="/images/team/5.jpg" alt="member img" />
               </div>
               <div className="member__info">
                 <h5 className="member__name"><a href="doctors-single-doctor1.html">Kiano Barker</a></h5>

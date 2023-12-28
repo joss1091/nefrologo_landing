@@ -21,7 +21,7 @@ export default function Index({ service, otherServices, company, preview }) {
         <section className="page-title page-title-layout2 bg-overlay text-center pb-0">
           <div className="bg-img">
             <img
-              src="https://7oroof.com/demos/medcity/assets/images/page-titles/3.jpg"
+              src="/images/page-titles/3.jpg"
               alt="background"
             />
           </div>

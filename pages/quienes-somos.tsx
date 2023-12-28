@@ -23,7 +23,7 @@ export default function AboutUs({
         <section className="page-title page-title-layout5">
           <div className="bg-img">
             <img
-              src="https://7oroof.com/demos/medcity/assets/images/backgrounds/6.jpg"
+              src="/images/backgrounds/6.jpg"
               alt="background"
             />
           </div>

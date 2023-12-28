@@ -45,7 +45,7 @@ export default function WorkProcessLayout({ hospitals, company }) {
 
   return (
     <section className="work-process work-process-carousel pt-130 pb-0 bg-overlay bg-overlay-secondary">
-      <div className="bg-img"><img src="https://7oroof.com/demos/medcity/assets/images/banners/1.jpg" alt="background" /></div>
+      <div className="bg-img"><img src="/images/banners/1.jpg" alt="background" /></div>
       <div className="container">
         <div className="row heading-layout2">
           <div className="col-12">

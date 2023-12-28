@@ -6,7 +6,7 @@ export default function FeaturesLayout({ services }) {
 
   return (
     <section className="features-layout2 pt-130 bg-overlay bg-overlay-primary">
-    <div className="bg-img"><img src="https://7oroof.com/demos/medcity/assets/images/backgrounds/2.jpg" alt="background" /></div>
+    <div className="bg-img"><img src="/images/backgrounds/2.jpg" alt="background" /></div>
     <div className="container">
       <div className="row">
         <div className="col-sm-12 col-md-12 col-lg-8 offset-lg-1">
@@ -40,7 +40,7 @@ export default function FeaturesLayout({ services }) {
            <div key={slug} className="col-sm-6 col-md-6 col-lg-3">
            <div className="feature-item">
              <div className="feature__img">
-               <img src="https://7oroof.com/demos/medcity/assets/images/services/2.jpg" alt="service" loading="lazy" />
+               <img src="/images/services/2.jpg" alt="service" loading="lazy" />
              </div>
              <div className="feature__content">
                <div className="feature__icon">
