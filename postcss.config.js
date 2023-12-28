@@ -1,7 +1,7 @@
 // If you want to use other PostCSS plugins, see the following:
 // https://tailwindcss.com/docs/using-with-preprocessors
 
-const purgecss  = [
+const purgecss  = [ [
   // configure PurgeCSS
   "@fullhuman/postcss-purgecss",
   {
@@ -16,7 +16,7 @@ const purgecss  = [
       ],
       greedy: [/slick$/]
     },
-  },
+  }],
 ]
 
 const cssdefault =  [
@@ -36,6 +36,9 @@ const cssdefault =  [
   ]
   
 ]
+
+var plugins = process.env.NODE_ENV == 'production' ? [...cssdefault, ...purgecss] : [...cssdefault]
+console.log(plugins)
 module.exports = {
-  "plugins": process.env.NODE_ENV == 'production' ? [...cssdefault, ...purgecss] : [...cssdefault]
+  "plugins": plugins
 };
