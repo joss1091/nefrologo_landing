@@ -13,7 +13,7 @@ export default function ContactInfo({ company }) {
                 <i className="icon-call3"></i>
               </div>
               <div className="contact__content">
-                <h2 className="contact__title">Emergencia</h2>
+                <h2 className="contact__title">Atención</h2>
                 <p className="contact__desc">
                   Si tienes alguna pregunta o necesitas ayuda, no dudes en
                   contactarnos..

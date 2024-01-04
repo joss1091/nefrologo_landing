@@ -8,6 +8,7 @@ import Meta from "../components/meta";
 import EmergencyWidget from "../components/emergencyWidget";
 import ScheduleWidget from "../components/scheduleWidget";
 export default function Faqs({ faqs, company, preview }) {
+
   return (
     <Layout preview={preview}>
       <Meta title={"Preguntas Frecuentes"} />

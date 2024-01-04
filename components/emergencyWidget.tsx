@@ -15,7 +15,7 @@ export default function EmergencyWidget({ company }) {
         <div className="widget__icon">
           <i className="icon-call3"></i>
         </div>
-        <h4 className="widget__title">Emergencia</h4>
+        <h4 className="widget__title">Atención</h4>
         <p className="widget__desc">
           Si tienes alguna pregunta o necesitas ayuda, no dudes en contactarnos.
         </p>

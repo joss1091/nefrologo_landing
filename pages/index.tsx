@@ -23,7 +23,7 @@ export default function Index({ allPosts: { edges }, preview }) {
         <AboutLayout data={data} />
         <ServicesLayout services={data.services} />
         {/* <FeaturesLayout services={data.services} /> */}
-        <WorkProcessLayout hospitals={data.hospitals} company={data.company} />
+        <WorkProcessLayout hospitals={data.hospitals} company={data.company} workProgress={data.workProgress} />
         {edges && < MoreStories posts={edges} title={"Blog"} subtitle={"Articulos recientes"} />}
       </Container>
     </Layout>

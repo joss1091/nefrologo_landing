@@ -50,7 +50,10 @@ export default function Header({ services, company }) {
     });
   }, []);
 
-  const available_day = company.short_schedule[0];
+  const available_days = 
+  company.short_schedule
+  .filter(({details}) => !details.closed)
+  .map(({text, details}) => `${text} ${details.from} - ${details.to}`)
   return (
     <header className="header header-layout1">
       <div className="header-topbar">
@@ -62,7 +65,7 @@ export default function Header({ services, company }) {
                   <li>
                     <i className="icon-phone"></i>
                     <Link href={`tel:+52${company.appointment.phone}`}>
-                      Linea de emergencia: {company.appointment.phone}
+                      Linea de atención: {company.appointment.phone}
                     </Link>
                   </li>
                   <li>
@@ -74,8 +77,8 @@ export default function Header({ services, company }) {
                   <li>
                     <i className="icon-clock"></i>
                     <Link href="/contacto">
-                      {available_day.text} {available_day.details.from} -{" "}
-                      {available_day.details.to}
+                      {available_days.join(" / ")}
+                      
                     </Link>
                   </li>
                 </ul>
@@ -109,16 +112,17 @@ export default function Header({ services, company }) {
             <Image
               height={50}
               width={185}
-              src="/images/logo/logo-light.png"
+              src={company.logos.light}
               className="logo-light"
               alt={company.name}
             />
             <Image
               height={50}
               width={185}
-              src="/images/logo/logo-dark.png"
+              src={company.logos.dark}
               className="logo-dark"
               alt={company.name}
+              
             />
           </a>
           <button className="navbar-toggler" type="button">

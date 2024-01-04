@@ -20,7 +20,7 @@ export default function AboutLayout({ data }) {
           <div className="row">
             <div className="col-sm-12 col-md-12 col-lg-2">
               <div className="experience">
-                <h2 className="experience__years">20</h2>
+                <h2 className="experience__years">{data.doctor.experience_years}</h2>
                 <h3 className="experience__text">años de experiencia</h3>
                 <p>
                   Ofrecemos una amplia gama de atención y apoyo a nuestros

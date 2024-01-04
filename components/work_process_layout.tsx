@@ -2,7 +2,7 @@ import Link from "next/link";
 import Slider from "react-slick";
 import Image from "next/image";
 
-export default function WorkProcessLayout({ hospitals, company }) {
+export default function WorkProcessLayout({ hospitals, company, workProgress }) {
   const settings = {
     dots: false,
     arrows: false,
@@ -50,22 +50,22 @@ export default function WorkProcessLayout({ hospitals, company }) {
       <div className="container">
         <div className="row heading-layout2">
           <div className="col-12">
-            <h2 className="heading__subtitle color-primary">Caring For The Health Of You And Your Family.</h2>
+            <h2 className="heading__subtitle color-primary">{workProgress.subtitle}</h2>
           </div>
           <div className="col-sm-12 col-md-12 col-lg-6 col-xl-5">
-            <h3 className="heading__title color-white">Trabajamos con diversos Hospitales para el beneficio de tu salud
+            <h3 className="heading__title color-white">{workProgress.title}
             </h3>
           </div>
           <div className="col-sm-12 col-md-12 col-lg-6 col-xl-6 offset-xl-1">
             <p className="heading__desc font-weight-bold color-gray mb-40">
-Trabajaremos con usted para desarrollar planes de atención individualizados, incluido el manejo de enfermedades crónicas. Si no podemos ayudarlo, podemos brindarle referencias o asesoramiento sobre el tipo de médico que necesita. Tratamos todas las consultas con sensibilidad y con la más estricta confidencialidad.
+            {workProgress.description}
             </p>
             <ul className="list-items list-items-layout2 list-items-light list-horizontal list-unstyled">
-              <li>Fractures and dislocations</li>
-              <li>Health Assessments</li>
-              <li>Desensitisation injections</li>
-              <li>High Quality Care</li>
-              <li>Desensitisation injections</li>
+              {workProgress.items.map(( item, index) => (
+                <li key={index}>{item}</li>
+              ))}
+              
+             
             </ul>
           </div>
         </div>
