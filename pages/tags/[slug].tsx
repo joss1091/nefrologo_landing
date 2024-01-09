@@ -1,55 +1,57 @@
 import Container from "../../components/container";
 import Layout from "../../components/layout";
-import { getAllPostsByTag } from "../../lib/api";
-import GridPosts from "../../components/grid-posts";
+import { getAllPostsByTag, getAllTagsWithSlug } from "../../lib/api";
 import Meta from "../../components/meta";
+import LoadMorePosts from "../../components/loadmore";
+import { GetStaticPaths, GetStaticProps } from "next";
 
 export default function Index({
   allPosts: allPosts,
   preview,
-  haveMorePosts,
-  havepreviousPosts,
-  currentPage,
   tag,
 }) {
-  var edges = allPosts?.edges || [];
 
   return (
     <Layout preview={preview}>
       <Meta title={`${tag} | Blog`} />
       <Container>
-        <GridPosts
-          posts={edges}
-          haveMorePosts={haveMorePosts}
-          havepreviousPosts={havepreviousPosts}
-          currentPage={currentPage}
-          to="/posts"
+        <LoadMorePosts
+          posts={allPosts}
         />
       </Container>
     </Layout>
   );
 }
 
-export async function getServerSideProps({ req, res, query }) {
-  const currentPage = Number(query.page) || 1;
-
-  const allPosts = await getAllPostsByTag(false, {
-    currentPage,
-    tag: query.slug,
+export const getStaticProps: GetStaticProps = async ({
+  params,
+  preview = false,
+  previewData,
+}) => {
+  console.log(params)
+  const data = await getAllPostsByTag(previewData,{
+    after: null,
+    tag: params?.slug,
   });
-  const haveMorePosts = Boolean(allPosts?.pageInfo?.offsetPagination.hasMore);
-  const havepreviousPosts = Boolean(
-    allPosts?.pageInfo?.offsetPagination.hasPrevious
-  );
-
+  console.log(data)
   return {
     props: {
-      currentPage,
-      allPosts,
-      preview: false,
-      haveMorePosts,
-      havepreviousPosts,
-      tag: query.slug,
+      preview,
+      allPosts: data,
+      tag: params?.slug
     },
+    revalidate: 10,
   };
-}
+};
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const allPosts = await getAllTagsWithSlug();
+
+  return {
+    paths: allPosts.nodes.map(({ slug }) => `/tags/${slug}`) || [],
+    fallback: true,
+  };
+};
+
+
+

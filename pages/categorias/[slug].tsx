@@ -1,53 +1,55 @@
 import Container from "../../components/container";
 import Layout from "../../components/layout";
-import { getAllPostsByCategory } from "../../lib/api";
-import GridPosts from "../../components/grid-posts";
+import { getAllCategoriesWithSlug, getAllPostsByCategory } from "../../lib/api";
 import Meta from "../../components/meta";
+import LoadMorePosts from "../../components/loadmore";
+import { GetStaticPaths, GetStaticProps } from "next";
 
 export default function Index({
   allPosts: allPosts,
   preview,
-  currentPage,
-  haveMorePosts,
-  havepreviousPosts,
   categoryName,
 }) {
-  var edges = allPosts?.edges || [];
+  
   return (
     <Layout preview={preview}>
       <Meta title={`${categoryName} | Blog`} />
       <Container>
-        <GridPosts
-          posts={edges}
-          currentPage={currentPage}
-          haveMorePosts={haveMorePosts}
-          havepreviousPosts={havepreviousPosts}
-          to={`/categorias/${categoryName}`}
+        <LoadMorePosts
+          posts={allPosts}
+          
         />
       </Container>
     </Layout>
   );
 }
 
-export async function getServerSideProps({ req, res, query }) {
-  const currentPage = Number(query.page) || 1;
-  const allPosts = await getAllPostsByCategory(false, {
-    currentPage,
-    categoryName: query?.slug,
+export const getStaticProps: GetStaticProps = async ({
+  params,
+  preview = false,
+  previewData,
+}) => {
+  
+  const data = await getAllPostsByCategory(previewData,{
+    after: null,
+    categoryName: params?.slug,
   });
-  const haveMorePosts = Boolean(allPosts?.pageInfo?.offsetPagination.hasMore);
-  const havepreviousPosts = Boolean(
-    allPosts?.pageInfo?.offsetPagination.hasPrevious
-  );
-
   return {
     props: {
-      allPosts,
-      preview: false,
-      currentPage,
-      haveMorePosts,
-      havepreviousPosts,
-      categoryName: query?.slug,
+      preview,
+      allPosts: data,
+      tag: params?.slug
     },
+    revalidate: 10,
   };
-}
+};
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const categories = await getAllCategoriesWithSlug();
+
+  return {
+    paths: categories.edges.map(({ slug }) => `/categorias/${slug}`) || [],
+    fallback: true,
+  };
+};
+

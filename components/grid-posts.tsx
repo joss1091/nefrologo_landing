@@ -1,7 +1,7 @@
 import Link from "next/link";
 import PostPreview from "./post-preview";
 
-export default function GridPosts({ posts, currentPage, to , haveMorePosts,havepreviousPosts}) {
+export default function GridPosts({ posts}) {
   return (
     <section className="blog-grid">
       <div className="container">
@@ -19,34 +19,7 @@ export default function GridPosts({ posts, currentPage, to , haveMorePosts,havep
             />
           ))}
         </div>
-        <div className="row">
-          <div className="col-12 text-center">
-            <nav className="pagination-area">
-              <ul className="pagination justify-content-center">
-                <li>
-                  {havepreviousPosts && (
-                    <Link
-                      className="current"
-                      href={`${to}?page=${currentPage - 1}`}
-                    >
-                      <i className="fa fa-arrow-left"></i>
-                    </Link>
-                  )}
-                </li>
-                <li>
-                  {haveMorePosts  && (
-                    <Link
-                      className="current"
-                      href={`${to}?page=${currentPage + 1}`}
-                    >
-                     <i className="fa fa-arrow-right"></i>
-                    </Link>
-                  )}
-                </li>
-              </ul>
-            </nav>
-          </div>
-        </div>
+        
       </div>
     </section>
   );

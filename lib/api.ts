@@ -1,7 +1,11 @@
-const API_URL = process.env.WORDPRESS_API_URL
-const PAGE_SIZE = 12
+import client from "./cliet"
+import {  gql} from "@apollo/client";
+import {PostFragment, AuthorFragment, CategoryFragment} from "./fragments"
+const PAGE_SIZE = 3
 
-async function fetchAPI(query = '', { variables }: Record<string, any> = {}) {
+
+async function fetchAPI(query , { variables }: Record<string, any> = {}) {
+
   const headers = { 'Content-Type': 'application/json' }
 
   if (process.env.WORDPRESS_AUTH_REFRESH_TOKEN) {
@@ -11,27 +15,16 @@ async function fetchAPI(query = '', { variables }: Record<string, any> = {}) {
   }
 
   // WPGraphQL Plugin must be enabled
+  const { data,  error } = await client.query({query, variables})
+  if (error) return error.message
 
-  const res = await fetch(API_URL, {
-    headers,
-    method: 'POST',
-    body: JSON.stringify({
-      query,
-      variables,
-    }),
-  })
-
-  const json = await res.json()
-  if (json.errors) {
-    console.error(json.errors)
-    throw new Error('Failed to fetch API')
-  }
-  return json.data
+  return data
+  
 }
 
 export async function getPreviewPost(id, idType = 'DATABASE_ID') {
   const data = await fetchAPI(
-    `
+    gql `
     query PreviewPost($id: ID!, $idType: PostIdType!) {
       post(id: $id, idType: $idType) {
         databaseId
@@ -48,7 +41,7 @@ export async function getPreviewPost(id, idType = 'DATABASE_ID') {
 }
 
 export async function getAllPostsWithSlug() {
-  const data = await fetchAPI(`
+  const data = await fetchAPI(gql`
     {
       posts(first: 10000) {
         edges {
@@ -63,62 +56,64 @@ export async function getAllPostsWithSlug() {
   return data?.posts
 }
 
-
-
-export async function getPosts({ currentPage}, preview) {
-  let offset  = calculateOffset(currentPage)
-  
-  const data = await fetchAPI(
-    `
-    query AllPosts($offset: Int!, $pageSize: Int!) {
-      posts( where: { offsetPagination: {offset: $offset, size: $pageSize} orderby: { field: DATE, order: DESC } }) {
-        pageInfo {
-          offsetPagination {
-            hasMore
-            hasPrevious
-            total
-          }
+export async function getAllTagsWithSlug() {
+  const data = await fetchAPI(gql `
+    {
+      tags {
+        nodes {
+          name
+          slug
         }
+      }
+    }
+  `)
+
+  return data?.tags
+}
+
+export async function getAllCategoriesWithSlug() {
+  const data = await fetchAPI(gql`
+    {
+      categories(first: 10000) {
         edges {
           node {
-            title
-            excerpt
             slug
-            date
-            featuredImage {
-              node {
-                sourceUrl
-              }
-            }
-            categories{
-              edges {
-                node {
-                  slug
-                  name
-                }
-              }
-            }
-            author {
-              node {
-                name
-                firstName
-                lastName
-                avatar {
-                  url
-                }
-              }
-            }
           }
         }
       }
     }
+  `)
+
+  return data?.categories
+}
+
+
+export async function getPosts({  after}, preview) {
+  const data = await fetchAPI(
+    gql `
+    query AllPosts($first: Int, $after: String) {
+      posts(first: $first, after: $after,  where: { orderby: { field: DATE, order: DESC } }) {
+        pageInfo {
+          hasNextPage
+          endCursor
+        }
+        edges {
+          node {
+            ...PostFragment
+          }
+        }
+      }
+    }
+    ${PostFragment}
+    ${AuthorFragment}
+    ${CategoryFragment}
   `,
     {
       variables: {
         onlyEnabled: !preview,
         preview,
-        pageSize: PAGE_SIZE,
-        offset: offset
+        first: PAGE_SIZE,
+        after
       },
     }
   )
@@ -128,42 +123,19 @@ export async function getPosts({ currentPage}, preview) {
 
 export async function getAllPostsForHome(preview) {
   const data = await fetchAPI(
-    `
+    gql `
     query AllPosts {
       posts(first: 3, where: { orderby: { field: DATE, order: DESC } }) {
         edges {
           node {
-            title
-            excerpt
-            slug
-            date
-            featuredImage {
-              node {
-                sourceUrl
-              }
-            }
-            categories{
-              edges {
-                node {
-                  slug
-                  name
-                }
-              }
-            }
-            author {
-              node {
-                name
-                firstName
-                lastName
-                avatar {
-                  url
-                }
-              }
-            }
+            ...PostFragment
           }
         }
       }
     }
+    ${PostFragment}
+    ${AuthorFragment}
+    ${CategoryFragment}
   `,
     {
       variables: {
@@ -177,60 +149,34 @@ export async function getAllPostsForHome(preview) {
 }
 
 
-export async function getAllPostsByCategory(preview, {currentPage, categoryName}) {
-  let offset = calculateOffset(currentPage)
+export async function getAllPostsByCategory(preview, {categoryName, after}) {
+  
   const data = await fetchAPI(
-    `
-    query AllPosts($categoryName: String, $offset: Int!, $pageSize: Int!) {
-      posts( where: {offsetPagination: {offset: $offset, size: $pageSize}, categoryName: $categoryName, orderby: { field: DATE, order: DESC } }) {
+    gql `
+    query AllPosts($categoryName: String, $first: Int, $after: String) {
+      posts( first: $first, after: $after, where: { categoryName: $categoryName, orderby: { field: DATE, order: DESC } }) {
         pageInfo {
-          offsetPagination {
-            hasMore
-            hasPrevious
-            total
-          }
+          hasNextPage
+          endCursor
         }
         edges {
           node {
-            title
-            excerpt
-            slug
-            date
-            featuredImage {
-              node {
-                sourceUrl
-              }
-            }
-            categories{
-              edges {
-                node {
-                  slug
-                  name
-                }
-              }
-            }
-            author {
-              node {
-                name
-                firstName
-                lastName
-                avatar {
-                  url
-                }
-              }
-            }
+            ...PostFragment
           }
         }
       }
     }
+    ${PostFragment}
+    ${AuthorFragment}
+    ${CategoryFragment}
   `,
     {
       variables: {
         onlyEnabled: !preview,
         preview,
         categoryName: categoryName,
-        offset: offset,
-        pageSize: PAGE_SIZE
+        first: PAGE_SIZE,
+        after
       },
     }
   )
@@ -238,60 +184,34 @@ export async function getAllPostsByCategory(preview, {currentPage, categoryName}
   return data?.posts
 }
 
-export async function getAllPostsByTag(preview, {tag, currentPage}) {
-  let offset = calculateOffset(currentPage)
+export async function getAllPostsByTag(preview, {tag,after}) {
+  
   const data = await fetchAPI(
-    `
-    query AllPosts($tag: String, $offset: Int!, $pageSize: Int!) {
-      posts( where: {offsetPagination: {offset: $offset, size: $pageSize} , tag: $tag, orderby: { field: DATE, order: DESC } }) {
+    gql `
+    query AllPosts($tag: String, $first: Int, $after: String) {
+      posts( first: $first, after: $after , where: { tag: $tag, orderby: { field: DATE, order: DESC } }) {
         pageInfo {
-          offsetPagination {
-            hasMore
-            hasPrevious
-            total
-          }
+          hasNextPage
+          endCursor
         }
         edges {
           node {
-            title
-            excerpt
-            slug
-            date
-            featuredImage {
-              node {
-                sourceUrl
-              }
-            }
-            categories{
-              edges {
-                node {
-                  slug
-                  name
-                }
-              }
-            }
-            author {
-              node {
-                name
-                firstName
-                lastName
-                avatar {
-                  url
-                }
-              }
-            }
+            ...PostFragment
           }
         }
       }
     }
+    ${PostFragment}
+    ${AuthorFragment}
+    ${CategoryFragment}
   `,
     {
       variables: {
         onlyEnabled: !preview,
         preview,
         tag: tag,
-        pageSize: PAGE_SIZE,
-        offset
+        first: PAGE_SIZE,
+        after
       },
     }
   )
@@ -310,51 +230,12 @@ export async function getPostAndMorePosts(slug, preview, previewData) {
   const isDraft = isSamePost && postPreview?.status === 'draft'
   const isRevision = isSamePost && postPreview?.status === 'publish'
   const data = await fetchAPI(
-    `
-    fragment AuthorFields on User {
-      name
-      firstName
-      lastName
-      description
-      avatar {
-        url
-      }
-    }
-    fragment PostFields on Post {
-      title
-      excerpt
-      slug
-      date
-      featuredImage {
-        node {
-          sourceUrl
-        }
-      }
-      author {
-        node {
-          ...AuthorFields
-        }
-      }
-      categories {
-        edges {
-          node {
-            name
-            slug
-          }
-        }
-      }
-      tags {
-        edges {
-          node {
-            name
-            slug
-          }
-        }
-      }
-    }
+    gql `
+   
+    
     query PostBySlug($id: ID!, $idType: PostIdType!) {
       post(id: $id, idType: $idType) {
-        ...PostFields
+        ...PostFragment
         content
         previousPost {
           title
@@ -378,7 +259,7 @@ export async function getPostAndMorePosts(slug, preview, previewData) {
       posts(first: 3, where: { orderby: { field: DATE, order: DESC } }) {
         edges {
           node {
-            ...PostFields
+            ...PostFragment
           }
         }
       }
@@ -399,6 +280,9 @@ export async function getPostAndMorePosts(slug, preview, previewData) {
         }
       }
     }
+    ${PostFragment}
+    ${AuthorFragment}
+    ${CategoryFragment}
   `,
     {
       variables: {
@@ -408,8 +292,7 @@ export async function getPostAndMorePosts(slug, preview, previewData) {
     }
   )
 
-  
-
+ 
   // Draft posts may not have an slug
   if (isDraft) data.post.slug = postPreview.id
   // Apply a revision (changes in a published post)
@@ -421,11 +304,35 @@ export async function getPostAndMorePosts(slug, preview, previewData) {
   }
 
   // Filter out the main post
-  data.posts.edges = data.posts.edges.filter(({ node }) => node.slug !== slug)
+  // var edges = data.posts.edges.filter(({ node }) => node.slug !== slug)
+  // {...data, }
   // If there are still 3 posts, remove the last one
-  if (data.posts.edges.length > 2) data.posts.edges.pop()
+  // if (data.posts.edges.length > 2) data.posts.edges.pop()
   return data
 }
-let calculateOffset = (currentPage) => {
-  return (currentPage - 1 ) * (PAGE_SIZE + 1)
-}
+
+
+ export const GET_POSTS = gql`
+  query GET_NEWS(  $first: Int, $after: String ) {
+    
+      posts: posts(first: $first, after: $after,  where: { orderby: { field: DATE, order: DESC } }) {
+        pageInfo {
+          hasNextPage
+          endCursor
+        }
+        edges {
+          node {
+            ...PostFragment
+          }
+        }
+      }
+
+    }
+    ${PostFragment}
+    ${AuthorFragment}
+    ${CategoryFragment}
+`;
+
+
+
+
