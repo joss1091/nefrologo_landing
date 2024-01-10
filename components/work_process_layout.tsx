@@ -76,9 +76,7 @@ export default function WorkProcessLayout({ hospitals, company, workProgress }) 
                 {hospitals.map(({name, url, logo, description}, index) => (
                   <div className="process-item" key={index}>
                   
-                  <div className="process__icon ">
-                    <Image width={225} height={47} className="icon-health-report" src={logo} alt={name} />
-                  </div>
+                  
                   <h4 className="process__title pt-30">{name}</h4>
                   <p className="process__desc">{description}</p>
                   <Link href={url} target="_blank" className="btn btn__secondary btn__link">

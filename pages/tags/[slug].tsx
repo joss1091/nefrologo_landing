@@ -28,12 +28,10 @@ export const getStaticProps: GetStaticProps = async ({
   preview = false,
   previewData,
 }) => {
-  console.log(params)
   const data = await getAllPostsByTag(previewData,{
     after: null,
     tag: params?.slug,
   });
-  console.log(data)
   return {
     props: {
       preview,

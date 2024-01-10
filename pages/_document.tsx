@@ -1,4 +1,6 @@
 import { Html, Head, Main, NextScript } from 'next/document'
+import Script from 'next/script'
+
 
 export default function Document() {
   return (
@@ -8,6 +10,7 @@ export default function Document() {
     href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Roboto:wght@400;700&display=swap" />
       
       </Head>
+      
       <body>
         <Main />
         <NextScript />

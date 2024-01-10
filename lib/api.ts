@@ -1,7 +1,7 @@
 import client from "./cliet"
 import {  gql} from "@apollo/client";
 import {PostFragment, AuthorFragment, CategoryFragment} from "./fragments"
-const PAGE_SIZE = 3
+const PAGE_SIZE = 6
 
 
 async function fetchAPI(query , { variables }: Record<string, any> = {}) {

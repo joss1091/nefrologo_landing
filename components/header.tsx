@@ -82,25 +82,7 @@ export default function Header({ services, company }) {
                     </Link>
                   </li>
                 </ul>
-                <div className="d-flex">
-                  <ul className="social-icons list-unstyled mb-0 mr-30">
-                    <li>
-                      <a href="#">
-                        <i className="fab fa-facebook-f"></i>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#">
-                        <i className="fab fa-instagram"></i>
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#">
-                        <i className="fab fa-twitter"></i>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
+                
               </div>
             </div>
           </div>

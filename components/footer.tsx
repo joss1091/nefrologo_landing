@@ -58,13 +58,9 @@ export default function Footer({services, company, doctor}) {
                 </ul>
                 <div className="d-flex align-items-center">
                   <Link href="/contacto" className="btn btn__primary btn__link mr-30">
-                    <i className="icon-arrow-right"></i> <span>Get Directions</span>
+                    <i className="icon-arrow-right"></i> <span>Contacto</span>
                   </Link>
-                  <ul className="social-icons list-unstyled mb-0">
-                    <li><a href="#"><i className="fab fa-facebook-f"></i></a></li>
-                    <li><a href="#"><i className="fab fa-instagram"></i></a></li>
-                    <li><a href="#"><i className="fab fa-twitter"></i></a></li>
-                  </ul>
+                  
                 </div>
               </div>
             </div>
@@ -75,7 +71,7 @@ export default function Footer({services, company, doctor}) {
         <div className="container">
           <div className="row align-items-center">
             <div className="col-sm-12 col-md-6 col-lg-6">
-              <span className="fz-14">&copy; 2023  All Rights Reserved. </span>
+              <span className="fz-14">&copy; 2023  Todos los derechos reservados. </span>
             </div>
             
           </div>

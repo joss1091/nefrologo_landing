@@ -10,6 +10,7 @@ import EmergencyWidget from "../../components/emergencyWidget";
 import ScheduleWidget from "../../components/scheduleWidget";
 import ErrorPage from "next/error";
 import Image from "next/image";
+import DescriptionDisplayer from "../../components/description_displayer";
 
 export default function Index({ service, otherServices, company, preview }) {
   if (!service) {
@@ -31,12 +32,10 @@ export default function Index({ service, otherServices, company, preview }) {
           <div className="container">
             <div className="row">
               <div className="col-sm-12 col-md-12 col-lg-12 col-xl-8 offset-xl-2">
-                <div className="pagetitle__icon">
-                  <i className="icon-microscope"></i>
-                </div>
+                
                 <h1 className="pagetitle__heading">{service?.name}</h1>
                 <p className="pagetitle__desc mb-30">
-                  {service.short_description}
+                  {service.short_description.content}
                 </p>
                 <a href="#content" className="scroll-down">
                   <i className="fas fa-long-arrow-alt-down"></i>
@@ -51,28 +50,14 @@ export default function Index({ service, otherServices, company, preview }) {
             <div className="row">
               <div className="col-sm-12 col-md-12 col-lg-8">
                 <div className="text-block mb-50">
-                  <p className="text-block__desc mb-20 ">
-                    {service.long_description}
-                  </p>
+                {service.description.map((descriptionItem, index) => (
+                  <DescriptionDisplayer key={`description-item-${index}`} {...descriptionItem} />
+                ))}
+                  
+
                 </div>
 
-                <ul className="list-items list-unstyled mb-60 pl-40">
-                  <li>
-                    If your blood doesn’t clot properly – it’s a haematologist
-                    who will conduct the blood tests, confirm if you have
-                    haemophilia, and offer treatment.
-                  </li>
-                  <li>
-                    When there’s an outbreak of infection in a hospital, it’s a
-                    medical microbiologist or infection doctor who will advise
-                    the infection control teams and work hard to contain it.
-                  </li>
-                  <li>
-                    For those having trouble getting pregnant – it’s a
-                    reproductive scientist who will investigate, diagnose and,
-                    where possible, treat any infertility issues.
-                  </li>
-                </ul>
+                
                 <div className="widget-plan mb-60">
                   <div className="widget__body">
                     <h5 className="widget__title">Health Care Plans</h5>

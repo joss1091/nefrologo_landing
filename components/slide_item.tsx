@@ -10,10 +10,10 @@ export default function SlideItem({service}) {
     <div className="service__content">
       <h4 className="service__title">{service.name}</h4>
       <p className="service__desc">
-        {service.short_description}
+        {service.short_description.content}
       </p>
       <ul className="list-items list-items-layout1 list-unstyled">
-        {service.items.map((item, index) => (
+        {service.short_description.items.map((item, index) => (
            <li key={index}>{item}</li>
         ))}
       </ul>
