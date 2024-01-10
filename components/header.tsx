@@ -50,10 +50,9 @@ export default function Header({ services, company }) {
     });
   }, []);
 
-  const available_days = 
-  company.short_schedule
-  .filter(({details}) => !details.closed)
-  .map(({text, details}) => `${text} ${details.from} - ${details.to}`)
+  const available_days = company.short_schedule
+    .filter(({ details }) => !details.closed)
+    .map(({ text, details }) => `${text} ${details.from} - ${details.to}`);
   return (
     <header className="header header-layout1">
       <div className="header-topbar">
@@ -76,13 +75,9 @@ export default function Header({ services, company }) {
                   </li>
                   <li>
                     <i className="icon-clock"></i>
-                    <Link href="/contacto">
-                      {available_days.join(" / ")}
-                      
-                    </Link>
+                    <Link href="/contacto">{available_days.join(" / ")}</Link>
                   </li>
                 </ul>
-                
               </div>
             </div>
           </div>
@@ -104,7 +99,6 @@ export default function Header({ services, company }) {
               src={company.logos.dark}
               className="logo-dark"
               alt={company.name}
-              
             />
           </a>
           <button className="navbar-toggler" type="button">
@@ -161,6 +155,16 @@ export default function Header({ services, company }) {
             <button className="close-mobile-menu d-block d-lg-none">
               <i className="fas fa-times"></i>
             </button>
+          </div>
+          <div className="d-none d-xl-flex align-items-center position-relative ml-30">
+            <Link
+              href={company.appointment.url}
+              target="_blank"
+              className="btn btn__primary btn__rounded ml-30"
+            >
+              <i className="icon-calendar"></i>
+              <span>Agendar cita</span>
+            </Link>
           </div>
         </div>
       </nav>

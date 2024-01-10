@@ -4,17 +4,32 @@ import { getAllCategoriesWithSlug, getAllPostsByCategory } from "../../lib/api";
 import Meta from "../../components/meta";
 import LoadMorePosts from "../../components/loadmore";
 import { GetStaticPaths, GetStaticProps } from "next";
+import SectionHeader from "../../components/section_header";
 
 export default function Index({
   allPosts: allPosts,
   preview,
-  categoryName,
+  categoryName
 }) {
   
   return (
     <Layout preview={preview}>
       <Meta title={`${categoryName} | Blog`} />
       <Container>
+      <SectionHeader
+          breadcrumItems={[
+            {
+              label: "Home",
+              to: "/",
+              active: false,
+            },
+            {
+              label: categoryName,
+              active: true,
+            },
+          ]}
+          title={categoryName}
+        />
         <LoadMorePosts
           posts={allPosts}
           
@@ -34,11 +49,13 @@ export const getStaticProps: GetStaticProps = async ({
     after: null,
     categoryName: params?.slug,
   });
+  console.log(data)
+  console.log(params)
   return {
     props: {
       preview,
       allPosts: data,
-      tag: params?.slug
+      categoryName: params?.slug
     },
     revalidate: 10,
   };

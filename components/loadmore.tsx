@@ -1,31 +1,29 @@
-
 import GridPosts from "./grid-posts";
-import { useLazyQuery} from "@apollo/client";
-import client from "../lib/cliet"
-import { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
-import { GET_POSTS } from '../lib/api';
+import { useLazyQuery } from "@apollo/client";
+import client from "../lib/cliet";
+import { useEffect, useState } from "react";
+import PropTypes from "prop-types";
+import { GET_POSTS } from "../lib/api";
 
-const LoadMorePosts = ( { posts, classes, graphQLQuery } ) => {
-
+const LoadMorePosts = ({ posts, classes, graphQLQuery }) => {
   /**
    * First set the posts data and pageInfo received from server side,
    * as initial postsData and pageInfo, so that
    * it sever side posts can be fetched, and the new endcursor( contained in pageInfo )
    * can be sent to get the next set of posts.
    */
-  const [ postsData, setPostsData ] = useState( posts?.edges ?? [] );
-  const [ pageInfo, setPageInfo ] = useState( posts?.pageInfo );
+  const [postsData, setPostsData] = useState(posts?.edges ?? []);
+  const [pageInfo, setPageInfo] = useState(posts?.pageInfo);
 
-  const [ error, setError ] = useState( null );
+  const [error, setError] = useState(null);
 
   /**
    * If value of 'posts' passed to this component changes, set new post data and page info.
    */
-  useEffect( () => {
-    setPostsData( posts?.edges );
-    setPageInfo( posts?.pageInfo );
-  }, [ posts?.edges ] );
+  useEffect(() => {
+    setPostsData(posts?.edges);
+    setPageInfo(posts?.pageInfo);
+  }, [posts?.edges]);
 
   /**
    * Set posts.
@@ -34,8 +32,8 @@ const LoadMorePosts = ( { posts, classes, graphQLQuery } ) => {
    *
    * @return {void}
    */
-  const setPosts = ( posts ) => {
-    if ( ! posts || ! posts?.edges || ! posts?.pageInfo ) {
+  const setPosts = (posts) => {
+    if (!posts || !posts?.edges || !posts?.pageInfo) {
       return;
     }
 
@@ -45,31 +43,29 @@ const LoadMorePosts = ( { posts, classes, graphQLQuery } ) => {
      * when user clicks on loadmore again, next set of posts can be fetched again.
      * Same process if repeated to it gets concatenated everytime to the existing posts array.
      */
-    const newPosts = postsData.concat( posts?.edges );
-    setPostsData( newPosts );
-    setPageInfo( { ...posts?.pageInfo } );
+    const newPosts = postsData.concat(posts?.edges);
+    setPostsData(newPosts);
+    setPageInfo({ ...posts?.pageInfo });
   };
 
-  const [ fetchPosts, { loading } ] = useLazyQuery( graphQLQuery, {
+  const [fetchPosts, { loading }] = useLazyQuery(graphQLQuery, {
     notifyOnNetworkStatusChange: true,
     client: client,
-    onCompleted: ( data ) => {
-  
+    onCompleted: (data) => {
       /**
        * Call setPosts to concat the new set of posts to existing one and update pageInfo
        * that contains the cursor and the information about whether we have the next page.
        */
       // console.log(data)
-      setPosts( data?.posts ?? [] );
-      
+      setPosts(data?.posts ?? []);
     },
-    onError: ( error ) => {
-      console.log(error, "error")
-      setError( error?.graphQLErrors ?? '' );
+    onError: (error) => {
+      console.log(error, "error");
+      setError(error?.graphQLErrors ?? "");
     },
-  } );
-//   loadMoreQuery( graphQLQuery,setPosts, setError );
- 
+  });
+  //   loadMoreQuery( graphQLQuery,setPosts, setError );
+
   /**
    * Calls fetchPosts
    *
@@ -78,20 +74,19 @@ const LoadMorePosts = ( { posts, classes, graphQLQuery } ) => {
    *
    * @param {String} endCursor Endcursor used to fetch the next set of posts.
    */
-  const loadMoreItems = ( endCursor = null ) => {
-
+  const loadMoreItems = (endCursor = null) => {
     let queryVariables = {
       after: endCursor,
     };
-    
+
     // If its a search query then add the query in the query variables.
     // if ( ! isEmpty( searchQuery ) ) {
     //   queryVariables.query = searchQuery;
     // }
 
-    fetchPosts( {
+    fetchPosts({
       variables: queryVariables,
-    } );
+    });
   };
 
   /**
@@ -102,27 +97,41 @@ const LoadMorePosts = ( { posts, classes, graphQLQuery } ) => {
    */
   const { endCursor, hasNextPage } = pageInfo || {};
 
-
   return (
-    <div className={ classes }>
-      <GridPosts posts={ postsData }/>
-      { hasNextPage ? (
-        <div className="w-full flex justify-center lg:my-10">
-          { loading ? (
-            <div className="flex justify-center w-full border border-white px-3 py-2 my-8">
-              cargando...
-            </div>
-          ) : (
-            <button
-              className="flex items-center cursor-pointer	bg-gray-100 hover:bg-gray-600 hover:text-white transition-colors duration-500 border border-gray-500 px-4 py-3"
-              onClick={ () => loadMoreItems( endCursor ) }
-            >
-              Ver más
-            </button>
-          ) }
+    <div className={classes}>
+      <GridPosts posts={postsData} />
+      {hasNextPage ? (
+        <div className="row">
+          <div className="col-12 text-center">
+            <nav className="pagination-area">
+              <ul className="pagination justify-content-center">
+                {loading ? (
+                  <li>
+                    <a className="current" href="#">
+                      cargando...
+                    </a>
+                  </li>
+                ) : (
+
+                  <li>
+                    
+                    <button
+                    className="current"
+                    onClick={() => loadMoreItems(endCursor)}
+                  >
+                    Ver más
+                  </button>
+                  </li>
+                  
+                )}
+              </ul>
+            </nav>
+          </div>
         </div>
-      ) : null }
-      { error && <div className="w-full flex justify-center my-10">No hay mas posts</div> }
+      ) : null}
+      {error && (
+        <div className="w-full flex justify-center my-10">No hay mas posts</div>
+      )}
     </div>
   );
 };
@@ -136,9 +145,9 @@ LoadMorePosts.propTypes = {
 
 LoadMorePosts.defaultProps = {
   posts: {},
-  classes: '',
+  classes: "",
   graphQLQuery: GET_POSTS,
-  searchQuery: ''
+  searchQuery: "",
 };
 
 export default LoadMorePosts;

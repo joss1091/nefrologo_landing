@@ -4,6 +4,7 @@ import { getAllPostsByTag, getAllTagsWithSlug } from "../../lib/api";
 import Meta from "../../components/meta";
 import LoadMorePosts from "../../components/loadmore";
 import { GetStaticPaths, GetStaticProps } from "next";
+import SectionHeader from "../../components/section_header";
 
 export default function Index({
   allPosts: allPosts,
@@ -15,6 +16,20 @@ export default function Index({
     <Layout preview={preview}>
       <Meta title={`${tag} | Blog`} />
       <Container>
+      <SectionHeader
+          breadcrumItems={[
+            {
+              label: "Home",
+              to: "/",
+              active: false,
+            },
+            {
+              label: tag,
+              active: true,
+            },
+          ]}
+          title={tag}
+        />
         <LoadMorePosts
           posts={allPosts}
         />
