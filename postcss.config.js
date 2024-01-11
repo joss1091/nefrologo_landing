@@ -31,8 +31,6 @@ const cssdefault =  [
   
 ]
 
-var plugins = process.env.NODE_ENV == 'production' ? [...cssdefault, ...purgecss] : [...cssdefault]
-// plugins = [...cssdefault]
 module.exports = {
-  "plugins": plugins
+  "plugins": [...cssdefault, ...purgecss]
 };
