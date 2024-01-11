@@ -56,7 +56,6 @@ const LoadMorePosts = ({ posts, classes, graphQLQuery }) => {
        * Call setPosts to concat the new set of posts to existing one and update pageInfo
        * that contains the cursor and the information about whether we have the next page.
        */
-      // console.log(data)
       setPosts(data?.posts ?? []);
     },
     onError: (error) => {

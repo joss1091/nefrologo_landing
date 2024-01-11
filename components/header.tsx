@@ -136,7 +136,7 @@ export default function Header({ services, company }) {
               </li>
 
               <li className="nav__item">
-                <Link href="/posts" className="nav__item-link">
+                <Link href="/blog" className="nav__item-link">
                   Blog
                 </Link>
               </li>

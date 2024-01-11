@@ -58,7 +58,7 @@ export default function Post({
                     },
                     {
                       label: "Blog",
-                      to: "/posts",
+                      to: "/blog",
                       active: false,
                     },
                     {
@@ -110,17 +110,17 @@ export default function Post({
                         </FacebookShareButton>
                       </li>
                       <li>
-                        <TwitterShareButton url={`https://www.nefrologojosuemolina.com.mx/posts/${post.slug}`}>
+                        <TwitterShareButton url={`https://www.nefrologojosuemolina.com.mx/blog/${post.slug}`}>
                           <TwitterIcon size={32} round />
                         </TwitterShareButton>
                       </li>
                       <li>
-                        <LinkedinShareButton url={`https://www.nefrologojosuemolina.com.mx/posts/${post.slug}`}>
+                        <LinkedinShareButton url={`https://www.nefrologojosuemolina.com.mx/blog/${post.slug}`}>
                           <LinkedinIcon size={32} round />
                         </LinkedinShareButton>
                       </li>
                       <li>
-                        <WhatsappShareButton url={`https://www.nefrologojosuemolina.com.mx/posts/${post.slug}`}>
+                        <WhatsappShareButton url={`https://www.nefrologojosuemolina.com.mx/blog/${post.slug}`}>
                           <WhatsappIcon size={32} round />
                         </WhatsappShareButton>
                       </li>
@@ -195,7 +195,7 @@ export default function Post({
                         {categories.nodes.map(({ name, slug, count }) => (
                           <li key={slug}>
                             <Link
-                              href={`/categorias/${slug}`}
+                              href={`/blog/categorias/${slug}`}
                               aria-label={name}
                             >
                               <span className="cat-count">{count}</span>
@@ -247,7 +247,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const allPosts = await getAllPostsWithSlug();
 
   return {
-    paths: allPosts.edges.map(({ node }) => `/posts/${node.slug}`) || [],
+    paths: allPosts.edges.map(({ node }) => `/blog/${node.slug}`) || [],
     fallback: true,
   };
 };

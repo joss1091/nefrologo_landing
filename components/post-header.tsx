@@ -14,7 +14,7 @@ export default function PostHeader({
     <>
       <div className="post__meta-cat">
       {categories.edges.map(({ node }) => (
-        <Link href={`/categorias/${node.slug}`} key={node.name}>{node.name}</Link>
+        <Link href={`/blog/categorias/${node.slug}`} key={node.name}>{node.name}</Link>
       ))}
       </div>
       <div className="post__meta d-flex align-items-center mb-20">

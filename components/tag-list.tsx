@@ -5,7 +5,7 @@ export default function TagList({ tags }) {
     <ul className="list-unstyled mb-0">
       {tags.edges.map(({ node }) => (
         <li key={node.name}>
-          <Link href={`/tags/${node.slug}`}>{node.name}</Link>
+          <Link href={`/blog/tags/${node.slug}`}>{node.name}</Link>
         </li>
       ))}
     </ul>

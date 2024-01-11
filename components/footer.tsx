@@ -38,7 +38,7 @@ export default function Footer({services, company, doctor}) {
                   <ul className="list-unstyled">
                     <li><Link href="/quienes-somos">Acerca de nosotros</Link></li>
                     <li><Link href="/preguntas-frecuentes">Faqs</Link></li>
-                    <li><Link href="/posts">Blog</Link></li>
+                    <li><Link href="/blog">Blog</Link></li>
                     <li><Link href={company.appointment.url}>Citas</Link></li>
                   </ul>
                 </nav>

@@ -1,10 +1,10 @@
-import Container from "../../components/container";
-import Layout from "../../components/layout";
-import { getAllPostsByTag, getAllTagsWithSlug } from "../../lib/api";
-import Meta from "../../components/meta";
-import LoadMorePosts from "../../components/loadmore";
+import Container from "../../../components/container";
+import Layout from "../../../components/layout";
+import { getAllPostsByTag, getAllTagsWithSlug } from "../../../lib/api";
+import Meta from "../../../components/meta";
+import LoadMorePosts from "../../../components/loadmore";
 import { GetStaticPaths, GetStaticProps } from "next";
-import SectionHeader from "../../components/section_header";
+import SectionHeader from "../../../components/section_header";
 
 export default function Index({
   allPosts: allPosts,
@@ -21,6 +21,11 @@ export default function Index({
             {
               label: "Home",
               to: "/",
+              active: false,
+            },
+            {
+              label: "Blog",
+              to: "/blog",
               active: false,
             },
             {
@@ -61,7 +66,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const allPosts = await getAllTagsWithSlug();
 
   return {
-    paths: allPosts.nodes.map(({ slug }) => `/tags/${slug}`) || [],
+    paths: allPosts.nodes.map(({ slug }) => `/blog/tags/${slug}`) || [],
     fallback: true,
   };
 };

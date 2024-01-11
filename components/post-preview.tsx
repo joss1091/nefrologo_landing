@@ -10,41 +10,42 @@ export default function PostPreview({
   excerpt,
   author,
   slug,
-  categories
+  categories,
 }) {
   return (
     <div className="col-sm-12 col-md-6 col-lg-4">
       <div className="post-item">
         <div className="post__img">
-          
           {coverImage && (
-          <CoverImage title={title} coverImage={coverImage} slug={slug} height={237} width={325} />
-        )}
+            <CoverImage
+              title={title}
+              coverImage={coverImage}
+              slug={slug}
+              height={237}
+              width={325}
+            />
+          )}
         </div>
         <div className="post__body">
           <div className="post__meta-cat">
-            {categories.edges.map(({node}) => (
+            {categories.edges.map(({ node }) => (
               <Link
-              key={node.slug}
-              href={`/categorias/${node.slug}`}
-              className="hover:underline"
-              dangerouslySetInnerHTML={{ __html: node.name }}
-            ></Link>
+                key={node.slug}
+                href={`/blog/categorias/${node.slug}`}
+                className="hover:underline"
+                dangerouslySetInnerHTML={{ __html: node.name }}
+              ></Link>
             ))}
-            
-            
           </div>
           <div className="post__meta d-flex">
             <span className="post__meta-date">
               <Date dateString={date} />
             </span>
-             
-            <Link className="post__meta-author" href="#">
-              {author.node.name}
-            </Link>
+
+            <span className="post__meta-author">{author.node.name}</span>
           </div>
           <h4 className="post__title">
-            <Link href={`/posts/${slug}`}>{title}</Link>
+            <Link href={`/blog/${slug}`}>{title}</Link>
           </h4>
 
           <div
@@ -52,7 +53,7 @@ export default function PostPreview({
             dangerouslySetInnerHTML={{ __html: excerpt }}
           ></div>
           <Link
-            href={`/posts/${slug}`}
+            href={`/blog/${slug}`}
             className="btn btn__secondary btn__link btn__rounded"
           >
             <span>Leer más</span>

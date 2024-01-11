@@ -18,7 +18,7 @@ export default function PostDate({ posts }) {
             <div className="widget-post__content">
               <span className="widget-post__date"><Date dateString={node.date} /></span>
               <h4 className="widget-post__title">
-              <Link href={`/posts/${node.slug}`} aria-label={node.title}>{node.title}</Link>
+              <Link href={`/blog/${node.slug}`} aria-label={node.title}>{node.title}</Link>
                 
               </h4>
             </div>

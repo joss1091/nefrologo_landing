@@ -5,7 +5,7 @@ export default function PrevioutNextPostPreview({ post, label, arrow }) {
     <>
       {post ? (
         <Link
-          href={`/posts/${post.slug}`}
+          href={`/blog/${post.slug}`}
           className={
             arrow == "prev"
               ? "widget-nav__prev d-flex flex-wrap"
