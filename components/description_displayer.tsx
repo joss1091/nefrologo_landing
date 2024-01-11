@@ -44,8 +44,8 @@ export default function DescriptionDisplayer({
                 skills and trained to assist you with all medical enquiries.
               </p>
               <div className="row">
-                {details.groupItems.map((groupItem) => (
-                  <div className="col-sm-12 col-md-6">
+                {details.groupItems.map((groupItem, index) => (
+                  <div className="col-sm-12 col-md-6" key={`group-item-${index}`}>
                     <div className="plan__items">
                       <ul className="list-items list-items-layout2 list-unstyled mb-0">
                         {groupItem.map((text, index) => (
