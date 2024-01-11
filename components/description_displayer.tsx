@@ -18,14 +18,17 @@ export default function DescriptionDisplayer({
       );
     case "textWithList":
       return (
-        <>
-          <p className="text-block__desc mb-20 ">{content}</p>
+        <div className="text-block mb-50">
+        {content.title && (
+            <h5 className="text-block__title">{content.title}</h5>
+          )}
+          <p className="text-block__desc mb-20 ">{content.text}</p>
           <ul className="list-items list-unstyled mb-60 pl-40">
             {details.items.map((item, index) => (
               <li key={`item-description-${index}`}>{item}</li>
             ))}
           </ul>
-        </>
+        </div>
       );
     case "widgetWithList":
       return (
