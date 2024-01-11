@@ -48,6 +48,7 @@ export default function Header({ services, company }) {
       }
       $(this).remove();
     });
+    
   }, []);
 
   const available_days = company.short_schedule

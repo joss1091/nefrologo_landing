@@ -8,9 +8,11 @@ export default function Document() {
           rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Roboto:wght@400;700&display=swap"
         />
+       
       </Head>
 
       <body>
+        
         <Main />
         <NextScript />
       </body>
