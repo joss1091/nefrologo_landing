@@ -1,12 +1,11 @@
-const Container = dynamic(() => import("../../../components/container"));
-const Layout = dynamic(() => import("../../../components/layout"));
-const Meta = dynamic(() => import("../../../components/meta"));
-const LoadMorePosts = dynamic(() => import("../../../components/loadmore"));
-const SectionHeader = dynamic(() => import("../../../components/section_header"));
-
-import dynamic from "next/dynamic";
+import Container from "../../../components/container";
+import Layout from "../../../components/layout";
 import { getAllCategoriesWithSlug, getAllPostsByCategory } from "../../../lib/api";
+import Meta from "../../../components/meta";
+import LoadMorePosts from "../../../components/loadmore";
 import { GetStaticPaths, GetStaticProps } from "next";
+import SectionHeader from "../../../components/section_header";
+
 export default function Index({
   allPosts: allPosts,
   preview,

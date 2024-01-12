@@ -1,19 +1,16 @@
-
-const Container = dynamic(() => import("../../components/container"));
-const Layout = dynamic(() => import("../../components/layout"));
-const Meta = dynamic(() => import("../../components/meta"));
-const Questions = dynamic(() => import("../../components/questions"));
-const ErrorPage = dynamic(() => import("next/error"));
-const ServiceListWidget = dynamic(() => import("../../components/serviceListWidget"));
-const EmergencyWidget = dynamic(() => import("../../components/emergencyWidget"));
-const ScheduleWidget = dynamic(() => import("../../components/scheduleWidget"));
-const DescriptionDisplayer = dynamic(() => import("../../components/description_displayer"));
-
-const Image = dynamic(() => import("next/image"));
-import Data from "../../lib/data";
 import { GetStaticPaths, GetStaticProps } from "next";
-import dynamic from "next/dynamic";
-
+import Container from "../../components/container";
+import Layout from "../../components/layout";
+import Data from "../../lib/data";
+import Meta from "../../components/meta";
+import Questions from "../../components/questions";
+import Link from "next/link";
+import ServiceListWidget from "../../components/serviceListWidget";
+import EmergencyWidget from "../../components/emergencyWidget";
+import ScheduleWidget from "../../components/scheduleWidget";
+import ErrorPage from "next/error";
+import Image from "next/image";
+import DescriptionDisplayer from "../../components/description_displayer";
 
 export default function Index({ service, otherServices, company, preview }) {
   if (!service) {
