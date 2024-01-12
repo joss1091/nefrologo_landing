@@ -1,21 +1,49 @@
-
 import dynamic from "next/dynamic";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { getAllPostsWithSlug, getPostAndMorePosts } from "../../lib/api";
 
-const ErrorPage = dynamic(() => import("next/error"));
-const Container = dynamic(() => import("../../components/container"));
-const PostBody = dynamic(() => import("../../components/post-body"));
-const PostHeader = dynamic(() => import("../../components/post-header"));
-const Layout = dynamic(() => import("../../components/layout"));
-const CoverImage = dynamic(() => import("../../components/cover-image"));
-const PostWidget = dynamic(() => import("../../components/post-widget"));
-const Avatar = dynamic(() => import("../../components/avatar"));
-const TagList = dynamic(() => import("../../components/tag-list"));
-const Link = dynamic(() => import("next/link"));
-const BreadCrumb = dynamic(() => import("../../components/breadcrum"));
-const PrevioutNextPostPreview = dynamic(() => import("../../components/previous_next_post_preview"));
-const Meta = dynamic(() => import("../../components/meta"));
+const ErrorPage = dynamic(() => import("next/error"), {
+  ssr: false,
+});
+const Container = dynamic(() => import("../../components/container"), {
+  ssr: false,
+});
+const PostBody = dynamic(() => import("../../components/post-body"), {
+  ssr: false,
+});
+const PostHeader = dynamic(() => import("../../components/post-header"), {
+  ssr: false,
+});
+const Layout = dynamic(() => import("../../components/layout"), {
+  ssr: false,
+});
+const CoverImage = dynamic(() => import("../../components/cover-image"), {
+  ssr: false,
+});
+const PostWidget = dynamic(() => import("../../components/post-widget"), {
+  ssr: false,
+});
+const Avatar = dynamic(() => import("../../components/avatar"), {
+  ssr: false,
+});
+const TagList = dynamic(() => import("../../components/tag-list"), {
+  ssr: false,
+});
+const Link = dynamic(() => import("next/link"), {
+  ssr: false,
+});
+const BreadCrumb = dynamic(() => import("../../components/breadcrum"), {
+  ssr: false,
+});
+const PrevioutNextPostPreview = dynamic(
+  () => import("../../components/previous_next_post_preview"),
+  {
+    ssr: false,
+  }
+);
+const Meta = dynamic(() => import("../../components/meta"), {
+  ssr: false,
+});
 import {
   FacebookShareButton,
   FacebookIcon,
@@ -111,17 +139,23 @@ export default function Post({
                         </FacebookShareButton>
                       </li>
                       <li>
-                        <TwitterShareButton url={`https://www.nefrologojosuemolina.com.mx/blog/${post.slug}`}>
+                        <TwitterShareButton
+                          url={`https://www.nefrologojosuemolina.com.mx/blog/${post.slug}`}
+                        >
                           <TwitterIcon size={32} round />
                         </TwitterShareButton>
                       </li>
                       <li>
-                        <LinkedinShareButton url={`https://www.nefrologojosuemolina.com.mx/blog/${post.slug}`}>
+                        <LinkedinShareButton
+                          url={`https://www.nefrologojosuemolina.com.mx/blog/${post.slug}`}
+                        >
                           <LinkedinIcon size={32} round />
                         </LinkedinShareButton>
                       </li>
                       <li>
-                        <WhatsappShareButton url={`https://www.nefrologojosuemolina.com.mx/blog/${post.slug}`}>
+                        <WhatsappShareButton
+                          url={`https://www.nefrologojosuemolina.com.mx/blog/${post.slug}`}
+                        >
                           <WhatsappIcon size={32} round />
                         </WhatsappShareButton>
                       </li>

@@ -1,12 +1,20 @@
 import { GetStaticProps } from "next";
-import Container from "../components/container";
-import Layout from "../components/layout";
+import dynamic from "next/dynamic";
+const Container = dynamic(() => import("../components/container"), {
+  ssr: false,
+});
+const Layout = dynamic(() => import("../components/layout"), {
+  ssr: false,
+});
 
-import Meta from "../components/meta";
+const Meta = dynamic(() => import("../components/meta"), {
+  ssr: false,
+});
+
+const Image = dynamic(() => import("next/image"), {
+  ssr: false,
+});
 import Data from "../lib/data";
-import Image from "next/image";
-import Link from "next/link";
-
 export default function Contacto({ preview, company }) {
   return (
     <Layout preview={preview}>
@@ -32,7 +40,6 @@ export default function Contacto({ preview, company }) {
                         <h4 className="contact-panel__title">
                           Como podemos ayudarte?
                         </h4>
-                        
                       </div>
                       <div className="col-sm-6 col-md-6 col-lg-6">
                         <div className="form-group">
@@ -86,7 +93,7 @@ export default function Contacto({ preview, company }) {
                           />
                         </div>
                       </div>
-                      
+
                       <div className="col-12">
                         <div className="form-group">
                           <i className="icon-alert form-group-icon"></i>
@@ -122,7 +129,8 @@ export default function Contacto({ preview, company }) {
                         Contacto
                       </h4>
                       <p className="contact-panel__desc font-weight-bold color-white mb-30">
-                      Si tienes alguna pregunta o necesitas ayuda, no dudes en contactarnos.
+                        Si tienes alguna pregunta o necesitas ayuda, no dudes en
+                        contactarnos.
                       </p>
                     </div>
                     <div>
@@ -137,19 +145,20 @@ export default function Contacto({ preview, company }) {
                           <i className="icon-location"></i>
                           <a href="#">{company.location.address}</a>
                         </li>
-                        {company.short_schedule.map(({ text, details }, index) => (
-                          <li key={`schedule-${index}`} >
-                            <i className="icon-clock"></i>
-                            <span>
-                              {text}
-                              {details.closed
-                                ? " Cerrado"
-                                : ` ${details.from} - ${details.to}`}
-                            </span>
-                          </li>
-                        ))}
+                        {company.short_schedule.map(
+                          ({ text, details }, index) => (
+                            <li key={`schedule-${index}`}>
+                              <i className="icon-clock"></i>
+                              <span>
+                                {text}
+                                {details.closed
+                                  ? " Cerrado"
+                                  : ` ${details.from} - ${details.to}`}
+                              </span>
+                            </li>
+                          )
+                        )}
                       </ul>
-                     
                     </div>
                   </div>
                 </div>

@@ -1,12 +1,22 @@
-const Container = dynamic(() => import("../../components/container"));
-const Layout = dynamic(() => import("../../components/layout"));
-const Meta = dynamic(() => import("../../components/meta"));
-const LoadMorePosts = dynamic(() => import("../../components/loadmore"));
-const SectionHeader = dynamic(() => import("../../components/section_header"));
+const Container = dynamic(() => import("../../components/container"), {
+  ssr: false,
+});
+const Layout = dynamic(() => import("../../components/layout"), {
+  ssr: false,
+});
+const Meta = dynamic(() => import("../../components/meta"), {
+  ssr: false,
+});
+const LoadMorePosts = dynamic(() => import("../../components/loadmore"), {
+  ssr: false,
+});
+const SectionHeader = dynamic(() => import("../../components/section_header"), {
+  ssr: false,
+});
 import { GetStaticProps } from "next";
 import { getPosts } from "../../lib/api";
 import dynamic from "next/dynamic";
-
+import { GET_POSTS } from "../../lib/api";
 
 export default function Index({ allPosts: allPosts, preview, title }) {
   return (
@@ -27,7 +37,7 @@ export default function Index({ allPosts: allPosts, preview, title }) {
           ]}
           title={title}
         />
-        <LoadMorePosts posts={allPosts} />
+        <LoadMorePosts posts={allPosts} classes={""} graphQLQuery={GET_POSTS}/>
       </Container>
     </Layout>
   );

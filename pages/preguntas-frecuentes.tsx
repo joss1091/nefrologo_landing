@@ -1,14 +1,27 @@
 import { GetStaticProps } from "next";
-import Container from "../components/container";
-
-import Layout from "../components/layout";
 import Data from "../lib/data";
-import Questions from "../components/questions";
-import Meta from "../components/meta";
-import EmergencyWidget from "../components/emergencyWidget";
-import ScheduleWidget from "../components/scheduleWidget";
-export default function Faqs({ faqs, company, preview }) {
+import dynamic from "next/dynamic";
 
+const Container = dynamic(() => import("../components/container"), {
+  ssr: false,
+});
+const Layout = dynamic(() => import("../components/layout"), {
+  ssr: false,
+});
+const Questions = dynamic(() => import("../components/questions"), {
+  ssr: false,
+});
+const Meta = dynamic(() => import("../components/meta"), {
+  ssr: false,
+});
+const EmergencyWidget = dynamic(() => import("../components/emergencyWidget"), {
+  ssr: false,
+});
+const ScheduleWidget = dynamic(() => import("../components/scheduleWidget"), {
+  ssr: false,
+});
+
+export default function Faqs({ faqs, company, preview }) {
   return (
     <Layout preview={preview}>
       <Meta title={"Preguntas Frecuentes"} />
