@@ -1,35 +1,15 @@
-const Container = dynamic(() => import("../components/container"), {
-  ssr: false,
-});
-const MoreStories = dynamic(() => import("../components/more-stories"), {
-  ssr: false,
-});
-const Layout = dynamic(() => import("../components/layout"), {
-  ssr: false,
-});
-const Meta = dynamic(() => import("../components/meta"), {
-  ssr: false,
-});
-const Link = dynamic(() => import("next/link"), {
-  ssr: false,
-});
-const EmergencyWidget = dynamic(() => import("../components/emergencyWidget"), {
-  ssr: false,
-});
-const ScheduleWidget = dynamic(() => import("../components/scheduleWidget"), {
-  ssr: false,
-});
-const BreadCrumb = dynamic(() => import("../components/breadcrum"), {
-  ssr: false,
-});
-const Image = dynamic(() => import("next/image"), {
-  ssr: false,
-});
-
-import data from "../lib/data";
 import { GetStaticProps } from "next";
+import Container from "../components/container";
+import MoreStories from "../components/more-stories";
+import Layout from "../components/layout";
 import { getAllPostsForHome } from "../lib/api";
-import dynamic from "next/dynamic";
+import Meta from "../components/meta";
+import Link from "next/link";
+import data from "../lib/data";
+import EmergencyWidget from "../components/emergencyWidget";
+import ScheduleWidget from "../components/scheduleWidget";
+import BreadCrumb from "../components/breadcrum";
+import Image from "next/image";
 
 export default function AboutUs({
   allPosts: { edges },
