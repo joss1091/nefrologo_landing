@@ -1,20 +1,21 @@
-import ErrorPage from "next/error";
-import { GetStaticPaths, GetStaticProps } from "next";
-import Container from "../../components/container";
-import PostBody from "../../components/post-body";
-import PostHeader from "../../components/post-header";
-import Layout from "../../components/layout";
 
+import dynamic from "next/dynamic";
+import { GetStaticPaths, GetStaticProps } from "next";
 import { getAllPostsWithSlug, getPostAndMorePosts } from "../../lib/api";
 
-import CoverImage from "../../components/cover-image";
-import PostWidget from "../../components/post-widget";
-import Avatar from "../../components/avatar";
-import TagList from "../../components/tag-list";
-import Link from "next/link";
-import BreadCrumb from "../../components/breadcrum";
-import PrevioutNextPostPreview from "../../components/previous_next_post_preview";
-import Meta from "../../components/meta";
+const ErrorPage = dynamic(() => import("next/error"));
+const Container = dynamic(() => import("../../components/container"));
+const PostBody = dynamic(() => import("../../components/post-body"));
+const PostHeader = dynamic(() => import("../../components/post-header"));
+const Layout = dynamic(() => import("../../components/layout"));
+const CoverImage = dynamic(() => import("../../components/cover-image"));
+const PostWidget = dynamic(() => import("../../components/post-widget"));
+const Avatar = dynamic(() => import("../../components/avatar"));
+const TagList = dynamic(() => import("../../components/tag-list"));
+const Link = dynamic(() => import("next/link"));
+const BreadCrumb = dynamic(() => import("../../components/breadcrum"));
+const PrevioutNextPostPreview = dynamic(() => import("../../components/previous_next_post_preview"));
+const Meta = dynamic(() => import("../../components/meta"));
 import {
   FacebookShareButton,
   FacebookIcon,

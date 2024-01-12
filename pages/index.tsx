@@ -1,16 +1,19 @@
 import { GetStaticProps } from "next";
-import Container from "../components/container";
-import MoreStories from "../components/more-stories";
-import Layout from "../components/layout";
+import dynamic from "next/dynamic";
+import {getAllPostsForHome} from "../lib/api";
+import data from "../lib/data.js";
 
-import MainSlider from "../components/main_slider";
-import ContactInfo from "../components/contact_info";
-import AboutLayout from "../components/about_layout";
-import ServicesLayout from "../components/services_layout";
-import WorkProcessLayout from "../components/work_process_layout";
-import { getAllPostsForHome } from "../lib/api";
-import data from "../lib/data.js"
-import Meta from "../components/meta";
+
+const Container  = dynamic(() => import("../components/container"));
+const MoreStories =  dynamic(() => import("../components/more-stories"));
+const Layout = dynamic(() => import("../components/layout"));
+const MainSlider = dynamic(() => import("../components/main_slider"));
+const ContactInfo = dynamic(() => import("../components/contact_info"));
+const AboutLayout = dynamic(() => import("../components/about_layout"));
+const ServicesLayout = dynamic(() => import("../components/services_layout"));
+const WorkProcessLayout = dynamic(() => import("../components/work_process_layout"));
+const Meta = dynamic(() => import("../components/meta"));
+
 export default function Index({ allPosts: { edges }, preview }) {
 
   return (
@@ -22,7 +25,6 @@ export default function Index({ allPosts: { edges }, preview }) {
         <ContactInfo company={data.company} />
         <AboutLayout data={data} />
         <ServicesLayout services={data.services} />
-        {/* <FeaturesLayout services={data.services} /> */}
         <WorkProcessLayout hospitals={data.hospitals} company={data.company} workProgress={data.workProgress} />
         {edges && < MoreStories posts={edges} title={"Blog"} subtitle={"Articulos recientes"} />}
       </Container>

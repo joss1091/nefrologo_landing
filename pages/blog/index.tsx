@@ -1,12 +1,12 @@
-import Container from "../../components/container";
-import Layout from "../../components/layout";
-import { getPosts } from "../../lib/api";
-import Meta from "../../components/meta";
-import LoadMorePosts from "../../components/loadmore";
+const Container = dynamic(() => import("../../components/container"));
+const Layout = dynamic(() => import("../../components/layout"));
+const Meta = dynamic(() => import("../../components/meta"));
+const LoadMorePosts = dynamic(() => import("../../components/loadmore"));
+const SectionHeader = dynamic(() => import("../../components/section_header"));
 import { GetStaticProps } from "next";
-import Image from "next/image";
-import BreadCrumb from "../../components/breadcrum";
-import SectionHeader from "../../components/section_header";
+import { getPosts } from "../../lib/api";
+import dynamic from "next/dynamic";
+
 
 export default function Index({ allPosts: allPosts, preview, title }) {
   return (
