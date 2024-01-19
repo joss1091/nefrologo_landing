@@ -1,9 +1,36 @@
 import Head from 'next/head'
-import { CMS_NAME, HOME_OG_IMAGE_URL } from '../lib/constants'
+import { DefaultSeo } from 'next-seo';
+import meta from "../lib/data/meta"
+const URL = "https://www.nefrologojosuemolina.com.mx"
 
-export default function Meta({title = "Especialista en Nefrologia"}) {
-  const prefix = "| Dr. Josue molina | Nefrologo en Cancun"
+import { useRouter } from 'next/router'
+export default function Meta({title }) {
+  const router = useRouter()
+  console.log(router)
+  const prefix = "Dr. Josue Molina | Nefrologo en Cancun | Especialista en nefrologia"
   return (
+    <>
+    <DefaultSeo 
+      title={`${title}`}
+      titleTemplate={` %s | ${prefix}`}
+      defaultTitle="Especialista en Nefrologia"
+      description={meta.description} 
+      canonical={`${URL}${router.asPath}`}
+      themeColor='#000'
+      openGraph={{
+        url: `${URL}${router.asPath}`,
+        title: `${title} | ${prefix}`,
+        description: meta.description,
+        
+        
+        siteName: 'Dr ',
+      }}
+      twitter={{
+        handle: '@handle',
+        site: '@site',
+        cardType: 'summary_large_image',
+      }}
+      />
     <Head>
       <link
         rel="apple-touch-icon"
@@ -31,14 +58,13 @@ export default function Meta({title = "Especialista en Nefrologia"}) {
       <link rel="shortcut icon" href="/favicon/favicon.ico" />
       <meta name="msapplication-TileColor" content="#000000" />
       <meta name="msapplication-config" content="/favicon/browserconfig.xml" />
-      <meta name="theme-color" content="#000" />
+     
       <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
-      <meta
-        name="description"
-        content={`A statically generated blog example using Next.js and ${CMS_NAME}.`}
-      />
-      <title>{`${title} ${prefix} `}</title>
-      <meta property="og:image" content={HOME_OG_IMAGE_URL} />
+
+     
+      
+     
     </Head>
+    </>
   )
 }

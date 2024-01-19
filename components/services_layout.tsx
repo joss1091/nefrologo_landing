@@ -43,6 +43,7 @@ export default function ServicesLayout({ services }) {
               ))}
             </Slider>
           </div>
+          
         </div>
       </div>
     </section>

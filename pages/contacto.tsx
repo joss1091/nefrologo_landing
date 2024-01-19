@@ -5,7 +5,6 @@ import Layout from "../components/layout";
 import Meta from "../components/meta";
 import Data from "../lib/data";
 import Image from "next/image";
-import Link from "next/link";
 
 export default function Contacto({ preview, company }) {
   return (
@@ -21,93 +20,10 @@ export default function Contacto({ preview, company }) {
             <div className="row">
               <div className="col-12">
                 <div className="contact-panel d-flex flex-wrap">
-                  <form
-                    className="contact-panel__form"
-                    method="post"
-                    action="https://7oroof.com/demos/medcity/assets/php/contact.php"
-                    id="contactForm"
-                  >
-                    <div className="row">
-                      <div className="col-sm-12">
-                        <h4 className="contact-panel__title">
-                          Como podemos ayudarte?
-                        </h4>
-                        
-                      </div>
-                      <div className="col-sm-6 col-md-6 col-lg-6">
-                        <div className="form-group">
-                          <i className="icon-user form-group-icon"></i>
-                          <input
-                            type="text"
-                            className="form-control"
-                            placeholder="Nombre"
-                            id="contact-name"
-                            name="contact-name"
-                            required
-                          />
-                        </div>
-                      </div>
-                      <div className="col-sm-6 col-md-6 col-lg-6">
-                        <div className="form-group">
-                          <i className="icon-email form-group-icon"></i>
-                          <input
-                            type="email"
-                            className="form-control"
-                            placeholder="Correo electronico"
-                            id="contact-email"
-                            name="contact-email"
-                            required
-                          />
-                        </div>
-                      </div>
-                      <div className="col-sm-6 col-md-6 col-lg-6">
-                        <div className="form-group">
-                          <i className="icon-phone form-group-icon"></i>
-                          <input
-                            type="text"
-                            className="form-control"
-                            placeholder="Telefono"
-                            id="contact-Phone"
-                            name="contact-phone"
-                            required
-                          />
-                        </div>
-                      </div>
-                      <div className="col-sm-6 col-md-6 col-lg-6">
-                        <div className="form-group">
-                          <i className="icon-news form-group-icon"></i>
-                          <input
-                            type="text"
-                            className="form-control"
-                            placeholder="Motivo"
-                            id="contact-subject"
-                            name="contact-subject"
-                            required
-                          />
-                        </div>
-                      </div>
-                      
-                      <div className="col-12">
-                        <div className="form-group">
-                          <i className="icon-alert form-group-icon"></i>
-                          <textarea
-                            className="form-control"
-                            placeholder="Mesaje"
-                            id="contact-message"
-                            name="contact-message"
-                          ></textarea>
-                        </div>
-                        <button
-                          type="submit"
-                          className="btn btn__secondary btn__rounded btn__block btn__xhight mt-10"
-                        >
-                          <span>Enviar</span>{" "}
-                          <i className="icon-arrow-right"></i>
-                        </button>
-                        <div className="contact-result"></div>
-                      </div>
-                    </div>
-                  </form>
+                  <div className="contact-panel__form">
+                  <a id="zl-url" className="zl-url" href="https://www.doctoralia.com.mx/josue-molina-ruiz/nefrologo-medico-general/cancun" rel="nofollow" data-zlw-doctor="josue-molina-ruiz" data-zlw-type="big_with_calendar" data-zlw-opinion="false" data-zlw-hide-branding="true" data-zlw-saas-only="false">Josue Molina Ruiz - Doctoralia.com.mx</a>
+                  </div>
+              
                   <div className="contact-panel__info d-flex flex-column justify-content-between bg-overlay bg-overlay-primary-gradient">
                     <div className="bg-img">
                       <Image

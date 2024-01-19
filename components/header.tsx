@@ -70,7 +70,7 @@ export default function Header({ services, company }) {
                   </li>
                   <li>
                     <i className="icon-location"></i>
-                    <Link href="#">
+                    <Link href="/contacto">
                       Ubicacion: {company.location.short_address}
                     </Link>
                   </li>
