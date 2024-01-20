@@ -5,7 +5,7 @@ import Link from "next/link";
 export default function PostDate({ posts }) {
   return (
     <div className="widget widget-posts">
-      <h5 className="widget__title">Recent Posts</h5>
+      <h5 className="widget__title">Entradas Recientes</h5>
       {posts.map(({ node }) => (
         <div className="widget__content" key={node.slug}>
           <div className="widget-post-item d-flex align-items-center">

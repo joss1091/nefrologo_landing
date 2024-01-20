@@ -159,28 +159,7 @@ export default function Post({
                     <p className="blog-author__bio">
                       {post.author.node.description}
                     </p>
-                    <ul className="social-icons list-unstyled mb-0">
-                      <li>
-                        <a href="#">
-                          <i className="fab fa-facebook-f"></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <i className="fab fa-twitter"></i>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <i className="fab fa-vimeo-v"></i>
-                        </a>{" "}
-                      </li>
-                      <li>
-                        <a href="#">
-                          <i className="fab fa-linkedin"></i>
-                        </a>{" "}
-                      </li>
-                    </ul>
+                    
                   </div>
                 </div>
               </div>
@@ -189,7 +168,7 @@ export default function Post({
                   {morePosts.length > 0 && <PostWidget posts={morePosts} />}
 
                   <div className="widget widget-categories">
-                    <h5 className="widget__title">Categories</h5>
+                    <h5 className="widget__title">Categorias</h5>
                     <div className="widget-content">
                       <ul className="list-unstyled mb-0">
                         {categories.nodes.map(({ name, slug, count }) => (

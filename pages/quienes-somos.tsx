@@ -75,28 +75,7 @@ export default function AboutUs({
                         </h5>
                         <p className="member__job">{doctor.speciality}</p>
                         <p className="member__desc">{doctor.desciption}</p>
-                        <div className="mt-20 d-flex flex-wrap justify-content-between align-items-center">
-                          <ul className="social-icons list-unstyled mb-0">
-                            <li>
-                              <a href="#" className="facebook">
-                                <i className="fab fa-facebook-f"></i>
-                              </a>
-                            </li>
-                            <li>
-                              <a href="#" className="twitter">
-                                <i className="fab fa-twitter"></i>
-                              </a>
-                            </li>
-                            <li>
-                              <Link
-                                href={`tel:+52${company.appointment.phone}`}
-                                className="phone"
-                              >
-                                <i className="fas fa-phone-alt"></i>
-                              </Link>
-                            </li>
-                          </ul>
-                        </div>
+                        
                       </div>
                     </div>
                   </div>
