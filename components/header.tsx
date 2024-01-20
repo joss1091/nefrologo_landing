@@ -87,16 +87,17 @@ export default function Header({ services, company }) {
       <nav className="navbar navbar-expand-lg sticky-navbar">
         <div className="container-fluid">
           <a className="navbar-brand" href="/">
+            
             <Image
-              height={50}
-              width={185}
+              height={79}
+              width={150}
               src={company.logos.light}
               className="logo-light"
               alt={company.name}
             />
             <Image
-              height={50}
-              width={185}
+              height={79}
+              width={150}
               src={company.logos.dark}
               className="logo-dark"
               alt={company.name}

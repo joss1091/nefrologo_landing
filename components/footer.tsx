@@ -9,8 +9,8 @@ export default function Footer({ services, company, doctor }) {
             <div className="col-sm-12 col-md-12 col-lg-3">
               <div className="footer-widget-about">
                 <Image
-                  width={185}
-                  height={50}
+                  width={150}
+                  height={79}
                   src={company.logos.light}
                   alt={company.name}
                   className="mb-30"
