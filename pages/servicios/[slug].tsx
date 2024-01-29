@@ -57,28 +57,32 @@ export default function Index({ service, otherServices, company, preview }) {
                   />
                 ))}
                 <section className="notes border-top pt-60 pb-60">
-      <div className="container">
-        <div className="row">
-          <div className="col-sm-12 col-md-12 col-lg-6">
-            <div className="note font-weight-bold">
-              <i className="far fa-file-alt color-primary"></i>
-              <span>Brindando la atención médica del mañana para su familia.</span>
-              
-            </div>
-          </div>
-          <div className="col-sm-12 col-md-12 col-lg-6">
-            <div className="info__meta d-flex flex-wrap justify-content-between align-items-center">
-              <div className="testimonials__rating">
-                
-              </div>
-              <Link href="/contacto" className="btn btn__primary btn__rounded">
-                <span>Agendar cita</span> <i className="icon-arrow-right"></i>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+                  <div className="container">
+                    <div className="row">
+                      <div className="col-sm-12 col-md-12 col-lg-6">
+                        <div className="note font-weight-bold">
+                          <i className="far fa-file-alt color-primary"></i>
+                          <span>
+                            Brindando la atención médica del mañana para su
+                            familia.
+                          </span>
+                        </div>
+                      </div>
+                      <div className="col-sm-12 col-md-12 col-lg-6">
+                        <div className="info__meta d-flex flex-wrap justify-content-between align-items-center">
+                          <div className="testimonials__rating"></div>
+                          <Link
+                            href="/contacto"
+                            className="btn btn__primary btn__rounded"
+                          >
+                            <span>Agendar cita</span>{" "}
+                            <i className="icon-arrow-right"></i>
+                          </Link>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </section>
                 <Questions questions={service.faqs} />
               </div>
 

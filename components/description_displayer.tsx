@@ -140,7 +140,7 @@ export default function DescriptionDisplayer({
       );
     case "image":
       return (
-        <div className="video-banner-layout3 bg-overlay mb-50">
+        <div className=" mb-50">
           <Image
             src={content}
             width={details.width}

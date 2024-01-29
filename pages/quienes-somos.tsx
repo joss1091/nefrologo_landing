@@ -152,44 +152,7 @@ export default function AboutUs({
                   
                   
                 </div>
-                <div className="text-block mb-40">
-                  <h5 className="text-block__title">Doctor’s Skills</h5>
-                  <p className="text-block__desc mb-20">
-                    He completed his Internal Medicine Residency at the
-                    University of Alabama in Birmingham, AL where he was
-                    selected as a Chief Internal Medicine Resident. He then went
-                    to LSU Medical School in New Orleans where he was an Honors
-                    Program Graduate and finished in the top quartile of his
-                    graduating class.
-                  </p>
-                </div>
-                <div className="animated-Progressbars mb-60">
-                  <div className="progress-item">
-                    <h5 className="progress__title">Cardiac Rehabilitation</h5>
-                    <div className="progress">
-                      <div className="progress-bar" role="progressbar">
-                        <span className="progress__percentage"></span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="progress-item">
-                    <h5 className="progress__title">Nuclear Cardiology</h5>
-                    <div className="progress">
-                      <div className="progress-bar" role="progressbar">
-                        <span className="progress__percentage"></span>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="progress-item">
-                    <h5 className="progress__title">Neurocritical Care</h5>
-                    <div className="progress">
-                      <div className="progress-bar" role="progressbar">
-                        <span className="progress__percentage"></span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                
                 <section className="contact-layout4 bg-overlay bg-overlay-secondary-gradient pb-50 pb-50">
                   <div className="col-12">
                     <Link
