@@ -9,7 +9,7 @@ const purgecss  = [ [
       './components/**/*.{js,jsx,ts,tsx}'],
     defaultExtractor: (content) => content.match(/[\w-/:]+(?<!:)/g) || [],
     safelist: {
-      standart: ["html", "body",/^d-/, /^slick-/, /^fa-/],
+      standard: ["html", "body",/^d-/, /^slick-/, /^fa-/],
       deep: [/^fa/],
       greedy: [/^fa/]
     }
