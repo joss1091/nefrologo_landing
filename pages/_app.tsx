@@ -1,6 +1,7 @@
 import { AppProps } from 'next/app'
-
-import "@fortawesome/fontawesome-free/css/all.min.css"
+import "@fortawesome/fontawesome-free/scss/solid.scss"
+import "@fortawesome/fontawesome-free/scss/regular.scss"
+import "@fortawesome/fontawesome-free/scss/fontawesome.scss"
 import '../styles/libraries.css'
 import '../styles/slicky-carousel.css'
 import "../styles/scss/style.scss"
