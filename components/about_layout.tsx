@@ -23,8 +23,7 @@ export default function AboutLayout({ data }) {
                 <h2 className="experience__years">{data.doctor.experience_years}</h2>
                 <h3 className="experience__text">años de experiencia</h3>
                 <p>
-                  Ofrecemos una amplia gama de atención y apoyo a nuestros
-                  pacientes, desde el diagnóstico hasta la rehabilitación.
+                Amplía experiencia en manejo integral de nuestros pacientes, desde diabetes  hasta trasplante renal, incluyendo pacientes críticamente enfermos.
                 </p>
               </div>
             </div>
@@ -38,23 +37,13 @@ export default function AboutLayout({ data }) {
                   alt={data.doctor.name}
                   className="w-100"
                 />
-                <a
-                  className="video__btn video__btn-white popup-video"
-                  href="https://www.youtube.com/watch?v=dLJOOvksRNA"
-                >
-                  <div className="video__player">
-                    <i className="fa fa-play"></i>
-                  </div>
-                  <span className="video__btn-title color-white">
-                    Ver video!
-                  </span>
-                </a>
+               
               </div>
             </div>
             <div className="col-sm-12 col-md-12 col-lg-5">
               <div className="about__text">
                 <div className="text__icon">
-                  <i className="icon-doctor"></i>
+                  <i className="fa fa-user-doctor"></i>
                 </div>
                 <p className="heading__desc font-weight-bold color-secondary mb-30">
                   {data.about.question.answer}

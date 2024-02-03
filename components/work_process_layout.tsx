@@ -105,41 +105,7 @@ export default function WorkProcessLayout({
           </div>
         </div>
       </div>
-      <div className="cta bg-light-blue">
-        <div className="container">
-          <div className="row align-items-center">
-            <div className="col-sm-12 col-md-2 col-lg-2">
-              <Image
-                width={170}
-                height={144}
-                src="/images/icons/alert2.png"
-                className="cta__img"
-                alt="alert"
-              />
-            </div>
-            <div className="col-sm-12 col-md-7 col-lg-7">
-              <h4 className="cta__title">
-                ¡Verdadera atención médica para su familia!
-              </h4>
-              <p className="cta__desc">
-                Servir a la comunidad mejorando la calidad de vida a través de
-                una mejor salud. Hemos implementado protocolos para proteger a
-                nuestros pacientes y personal mientras continuamos brindando
-                atención médicamente necesaria.
-              </p>
-            </div>
-            <div className="col-sm-12 col-md-12 col-lg-3">
-              <Link
-                href={company.appointment.url}
-                className="btn btn__primary btn__secondary-style2 btn__rounded"
-              >
-                <span>Agendar cita</span>
-                <i className="icon-arrow-right"></i>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </div>
+      
     </section>
   );
 }

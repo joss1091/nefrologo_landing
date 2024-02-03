@@ -6,7 +6,6 @@ const URL = "https://www.nefrologojosuemolina.com.mx"
 import { useRouter } from 'next/router'
 export default function Meta({title }) {
   const router = useRouter()
-  console.log(router)
   const prefix = "Dr. Josue Molina | Nefrologo en Cancun | Especialista en nefrologia"
   return (
     <>

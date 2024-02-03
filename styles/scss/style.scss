@@ -1,4 +1,11 @@
+.feature-item {
+    i {
+        color: #023c98;
+    }
+}
 @import "bootstrap/scss/bootstrap.scss";
+@import "~@flaticon/flaticon-uicons/css/regular/all";
+
 
 // Global
 @import "global/vars";

@@ -50,6 +50,12 @@ export default function Contacto({ preview, company }) {
                           </a>
                         </li>
                         <li>
+                          <i className="icon-email"></i>
+                          <a href={`mailto:${company.email}`}>
+                            Correo electronico: {company.email}
+                          </a>
+                        </li>
+                        <li>
                           <i className="icon-location"></i>
                           <a href="#">{company.location.address}</a>
                         </li>

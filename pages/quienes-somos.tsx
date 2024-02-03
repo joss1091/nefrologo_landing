@@ -114,7 +114,7 @@ export default function AboutUs({
                     </div>
                   </li>
                   <li>
-                    <h5 className="details__title">oficina</h5>
+                    <h5 className="details__title">Consultorio</h5>
                     <div className="details__content">
                       <p className="mb-0">{doctor.office}</p>
                     </div>
@@ -140,12 +140,7 @@ export default function AboutUs({
                       <h4 className="timeline__title">
                         {title}
                       </h4>
-                      <p className="timeline__desc mb-0">
-                        We partner with you to enable your technology so that
-                        you can focus on your organization’s mission leverage
-                        our talent, and creativity to help your business succeed
-                        above all your business competitors.
-                      </p>
+                     
                     </div>
                   </div>
                   ))}
