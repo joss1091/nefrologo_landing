@@ -57,7 +57,7 @@ export default function PostPreview({
             className="btn btn__secondary btn__link btn__rounded"
           >
             <span>Leer más</span>
-            <i className="icon-arrow-right"></i>
+            <i className="fa fa-arrow-right"></i>
           </Link>
         </div>
       </div>

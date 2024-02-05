@@ -31,7 +31,7 @@ export default function FeaturesLayout({ services }) {
             patients!
           </p>
           <a href="#" className="btn btn__white btn__link">
-            <i className="icon-arrow-right icon-filled"></i>
+            <i className="fa fa-arrow-right icon-filled"></i>
             <span>Our Core Values</span>
           </a>
         </div>
@@ -50,7 +50,7 @@ export default function FeaturesLayout({ services }) {
                <h4 className="feature__title">{name}</h4>
              </div>
              <Link href="#" className="btn__link">
-               <i className="icon-arrow-right icon-outlined"></i>
+               <i className="fa fa-arrow-right icon-outlined"></i>
              </Link>
            </div>
          </div>
@@ -63,7 +63,7 @@ export default function FeaturesLayout({ services }) {
           <p className="font-weight-bold color-gray mb-0">We hope you will allow us to care for you and strive to be the
             first and best choice for healthcare.
             <a href="#" className="color-secondary">
-              <span>Contact Us For More Information</span> <i className="icon-arrow-right"></i>
+              <span>Contact Us For More Information</span> <i className="fa fa-arrow-right"></i>
             </a>
           </p>
         </div>

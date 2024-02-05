@@ -44,24 +44,24 @@ export default function Contacto({ preview, company }) {
                     <div>
                       <ul className="contact__list list-unstyled mb-30">
                         <li>
-                          <i className="icon-phone"></i>
+                          <i className="fa fa-phone"></i>
                           <a href={`tel:+52${company.appointment.phone}`}>
                             Linea de atención: {company.appointment.phone}
                           </a>
                         </li>
                         <li>
-                          <i className="icon-email"></i>
+                          <i className="fa fa-envelope"></i>
                           <a href={`mailto:${company.email}`}>
                             Correo electronico: {company.email}
                           </a>
                         </li>
                         <li>
-                          <i className="icon-location"></i>
+                          <i className="fa fa-location-dot"></i>
                           <a href="#">{company.location.address}</a>
                         </li>
                         {company.short_schedule.map(({ text, details }, index) => (
                           <li key={`schedule-${index}`} >
-                            <i className="icon-clock"></i>
+                            <i className="fa fa-clock"></i>
                             <span>
                               {text}
                               {details.closed

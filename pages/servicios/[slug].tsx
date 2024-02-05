@@ -76,7 +76,7 @@ export default function Index({ service, otherServices, company, preview }) {
                             className="btn btn__primary btn__rounded"
                           >
                             <span>Agendar cita</span>{" "}
-                            <i className="icon-arrow-right"></i>
+                            <i className="fa fa-arrow-right"></i>
                           </Link>
                         </div>
                       </div>

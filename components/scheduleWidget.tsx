@@ -6,7 +6,7 @@ export default function ScheduleWidget({ company }) {
     <div className="widget widget-schedule">
       <div className="widget-content">
         <div className="widget__icon">
-          <i className="icon-charity2"></i>
+          <i className="fa fa-heart-circle-plus"></i>
         </div>
         <h4 className="widget__title">Horarios</h4>
         <ul className="time__list list-unstyled mb-0">

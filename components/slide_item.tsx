@@ -4,8 +4,8 @@ export default function SlideItem({service}) {
   return (
     <div className="service-item" >
     <div className="service__icon">
-      <i className="icon-head"></i>
-      <i className="icon-head"></i>
+      <i className={service.icon || "fa fa-user-doctor"}></i>
+      <i className={service.icon || "fa fa-user-doctor"}></i>
     </div>
     <div className="service__content">
       <h4 className="service__title">{service.name}</h4>
@@ -19,7 +19,7 @@ export default function SlideItem({service}) {
       </ul>
       <Link href={`/servicios/${service.slug}`} className="btn btn__secondary btn__outlined btn__rounded">
         <span>Leer más</span>
-        <i className="icon-arrow-right"></i>
+        <i className="fa fa-arrow-right"></i>
       </Link>
     </div>
   </div>

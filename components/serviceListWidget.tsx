@@ -12,7 +12,7 @@ export default function ServiceListWidget({ services }) {
               <li key={slug}>
               <Link href={`/servicios/${slug}`}>
                 <span>{name}</span>
-                <i className="icon-arrow-right"></i>
+                <i className="fa fa-arrow-right"></i>
               </Link>
             </li>
             ))}

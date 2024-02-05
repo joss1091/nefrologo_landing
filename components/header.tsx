@@ -63,19 +63,19 @@ export default function Header({ services, company }) {
               <div className="d-flex align-items-center justify-content-between mt-10">
                 <ul className="contact__list d-flex flex-wrap align-items-center list-unstyled mb-0 mt-10">
                   <li>
-                    <i className="icon-phone"></i>
+                    <i className="fa fa-phone"></i>
                     <Link href={`tel:+52${company.appointment.phone}`}>
                       Linea de atención: {company.appointment.phone}
                     </Link>
                   </li>
                   <li>
-                    <i className="icon-location"></i>
+                    <i className="fa fa-location-dot"></i>
                     <Link href="/contacto">
                       Ubicacion: {company.location.short_address}
                     </Link>
                   </li>
                   <li>
-                    <i className="icon-clock"></i>
+                    <i className="fa fa-clock"></i>
                     <Link href="/contacto">{available_days.join(" / ")}</Link>
                   </li>
                 </ul>
@@ -164,7 +164,7 @@ export default function Header({ services, company }) {
               target="_blank"
               className="btn btn__primary btn__rounded ml-30"
             >
-              <i className="icon-calendar"></i>
+              <i className="fa fa-calendar"></i>
               <span>Agendar cita</span>
             </Link>
           </div>

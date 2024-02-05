@@ -96,7 +96,7 @@ export default function WorkProcessLayout({
                       className="btn btn__secondary btn__link"
                     >
                       <span>Ver más</span>
-                      <i className="icon-arrow-right"></i>
+                      <i className="fa fa-arrow-right"></i>
                     </Link>
                   </div>
                 ))}

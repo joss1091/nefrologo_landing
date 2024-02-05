@@ -23,7 +23,7 @@ export default function Footer({ services, company, doctor }) {
                   className="btn btn__primary btn__primary-style2 btn__link"
                 >
                   <span>Agenda tu cita</span>{" "}
-                  <i className="icon-arrow-right"></i>
+                  <i className="fa fa-arrow-right"></i>
                 </Link>
               </div>
             </div>
@@ -77,7 +77,7 @@ export default function Footer({ services, company, doctor }) {
                       href={`tel:${company.appointment.phone}`}
                       className="phone__number"
                     >
-                      <i className="icon-phone"></i>{" "}
+                      <i className="fa fa-phone"></i>{" "}
                       <span>{company.appointment.phone}</span>
                     </a>
                   </li>
@@ -88,7 +88,7 @@ export default function Footer({ services, company, doctor }) {
                     href="/contacto"
                     className="btn btn__primary btn__link mr-30"
                   >
-                    <i className="icon-arrow-right"></i> <span>Contacto</span>
+                    <i className="fa fa-arrow-right"></i> <span>Contacto</span>
                   </Link>
                 </div>
               </div>

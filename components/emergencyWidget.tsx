@@ -13,14 +13,14 @@ export default function EmergencyWidget({ company }) {
       </div>
       <div className="widget-content">
         <div className="widget__icon">
-          <i className="icon-call3"></i>
+          <i className="fa fa-phone-volume"></i>
         </div>
         <h4 className="widget__title">Atención</h4>
         <p className="widget__desc">
           Si tienes alguna pregunta o necesitas ayuda, no dudes en contactarnos.
         </p>
         <a href={`tel:+52${company.appointment.phone}`} className="phone__number">
-          <i className="icon-phone"></i> <span>{company.appointment.phone}</span>
+          <i className="fa fa-phone"></i> <span>{company.appointment.phone}</span>
         </a>
       </div>
     </div>

@@ -1,6 +1,7 @@
 /*----------------------------
     Contact
 ----------------------------*/
+/* purgecss start ignore */
 .contact-info {
     .boxes-wrapper {
         position: relative;
@@ -76,6 +77,7 @@
         }
     }
 }
+
 
 .contact-panel {
     position: relative;
@@ -265,3 +267,4 @@ textarea.form-control {
         padding: 20px;
     }
 }
+/* purgecss end ignore */

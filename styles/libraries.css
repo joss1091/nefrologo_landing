@@ -66,10 +66,10 @@
 .icon-arrow-left-2:before {
   content: "\e904";
 }
-.icon-arrow-right:before {
+.fa fa-arrow-right:before {
   content: "\e905";
 }
-.icon-arrow-right-2:before {
+.fa fa-arrow-right-2:before {
   content: "\e906";
 }
 .icon-arrow-up-2:before {

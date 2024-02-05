@@ -53,7 +53,7 @@ export default function AboutLayout({ data }) {
                   href="/quienes-somos"
                   className="btn btn__secondary btn__rounded mt-40"
                 >
-                  <span>Ver más</span> <i className="icon-arrow-right"></i>
+                  <span>Ver más</span> <i className="fa fa-arrow-right"></i>
                 </Link>
               </div>
             </div>

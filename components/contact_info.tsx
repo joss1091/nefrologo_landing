@@ -10,7 +10,7 @@ export default function ContactInfo({ company }) {
           <div className="col-sm-12 col-md-6">
             <div className="contact-box d-flex">
               <div className="contact__icon">
-                <i className="icon-call3"></i>
+                <i className="fa fa-phone"></i>
               </div>
               <div className="contact__content">
                 <h2 className="contact__title">Atención</h2>
@@ -22,7 +22,7 @@ export default function ContactInfo({ company }) {
                   href={`tel:${company.appointment.phone}`}
                   className="phone__number"
                 >
-                  <i className="icon-phone"></i>{" "}
+                  <i className="fa fa-phone"></i>{" "}
                   <span>{company.appointment.phone}</span>
                 </Link>
               </div>
@@ -32,7 +32,7 @@ export default function ContactInfo({ company }) {
           <div className="col-sm-12 col-md-6">
             <div className="contact-box d-flex">
               <div className="contact__icon">
-                <i className="icon-heart2"></i>
+                <i className="fa fa-hand-holding-medical"></i>
               </div>
               <div className="contact__content w-100">
                 <h2 className="contact__title">Horarios</h2>

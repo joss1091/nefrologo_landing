@@ -67,7 +67,7 @@ export default function DescriptionDisplayer({
                     className="btn btn__secondary btn__rounded mr-30"
                   >
                     <span>Agendar cita</span>
-                    <i className="icon-arrow-right"></i>
+                    <i className="fa fa-arrow-right"></i>
                   </Link>
                 )}
               </div>
@@ -110,7 +110,7 @@ export default function DescriptionDisplayer({
             <div className="col-md-6">
               <div className="fancybox-item d-flex">
                 <div className="fancybox__icon">
-                  <i className="icon-call3"></i>
+                  <i className="fa fa-phone"></i>
                 </div>
                 <div className="fancybox__content">
                   <h4 className="fancybox__title">Emergency Help 24/7 </h4>

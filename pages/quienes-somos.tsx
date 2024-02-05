@@ -155,7 +155,7 @@ export default function AboutUs({
                       className="btn btn__primary btn__rounded btn__block btn__xhight mt-10"
                     >
                       <span>Agendar cita</span>{" "}
-                      <i className="icon-arrow-right"></i>
+                      <i className="fa fa-arrow-right"></i>
                     </Link>
                     <div className="contact-result"></div>
                   </div>

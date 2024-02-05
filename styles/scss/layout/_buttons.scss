@@ -109,7 +109,7 @@
         border: 2px solid $color-primary;
         color: $color-primary;
 
-        .icon-arrow-right,
+        .fa fa-arrow-right,
         .icon-arrow-left {
             color: $color-white;
             background-color: $color-primary;
@@ -119,7 +119,7 @@
             color: $color-white;
             background-color: $color-primary;
 
-            .icon-arrow-right,
+            .fa fa-arrow-right,
             .icon-arrow-left {
                 color: $color-primary;
                 background-color: $color-white;
@@ -135,7 +135,7 @@
         &:hover {
             color: $color-secondary;
 
-            .icon-arrow-right,
+            .fa fa-arrow-right,
             .icon-arrow-left {
                 color: $color-white;
                 background-color: $color-secondary;
