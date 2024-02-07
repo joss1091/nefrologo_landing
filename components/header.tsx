@@ -86,7 +86,7 @@ export default function Header({ services, company }) {
       </div>
       <nav className="navbar navbar-expand-lg sticky-navbar">
         <div className="container-fluid">
-          <a className="navbar-brand" href="/">
+          <Link className="navbar-brand" href="/">
             
             <Image
               height={79}
@@ -102,7 +102,7 @@ export default function Header({ services, company }) {
               className="logo-dark"
               alt={company.name}
             />
-          </a>
+          </Link>
           <button className="navbar-toggler" type="button">
             <span className="menu-lines">
               <span></span>
@@ -111,13 +111,13 @@ export default function Header({ services, company }) {
           <div className="collapse navbar-collapse" id="mainNavigation">
             <ul className="navbar-nav ml-auto">
               <li className="nav__item has-dropdown">
-                <a
+                <Link
                   href="/servicios"
                   data-toggle="dropdown"
                   className="dropdown-toggle nav__item-link"
                 >
                   Servicios
-                </a>
+                </Link>
                 <ul className="dropdown-menu">
                   {services.map(({ slug, name }) => (
                     <li className="nav__item" key={slug}>
@@ -149,9 +149,9 @@ export default function Header({ services, company }) {
               </li>
 
               <li className="nav__item">
-                <a href="/contacto" className="nav__item-link">
+                <Link href="/contacto" className="nav__item-link">
                   Contacto
-                </a>
+                </Link>
               </li>
             </ul>
             <button className="close-mobile-menu d-block d-lg-none">

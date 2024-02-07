@@ -133,8 +133,8 @@ export default function AboutUs({
                   </p>
                 </div>
                 <div className="timeline-wrapper mb-60">
-                  {doctor.medical_education.map(({year, title, description})=> (
-                    <div className="timeline-item d-flex">
+                  {doctor.medical_education.map(({year, title, description},index)=> (
+                    <div className="timeline-item d-flex" key={`timeline-${index}`}>
                     <span className="timeline__year">{year}</span>
                     <div className="timeline__body">
                       <h4 className="timeline__title">
