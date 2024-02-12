@@ -50,7 +50,7 @@ export default function Footer({ services, company, doctor }) {
                       <Link href="/quienes-somos">Acerca de nosotros</Link>
                     </li>
                     <li>
-                      <Link href="/preguntas-frecuentes">Faqs</Link>
+                      <Link href="/preguntas-frecuentes">Preguntas Frecuentes</Link>
                     </li>
                     <li>
                       <Link href="/blog">Blog</Link>
