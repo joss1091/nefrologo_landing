@@ -144,7 +144,7 @@ export default function Header({ services, company }) {
               </li>
               <li className="nav__item">
                 <Link href="/preguntas-frecuentes" className="nav__item-link">
-                  Preguntar frecuentes
+                  Preguntas frecuentes
                 </Link>
               </li>
 
