@@ -31,7 +31,7 @@ export default function AboutLayout({ data }) {
               <div className="video-banner-layout2 bg-overlay">
                 <Image
                 
-                  width={430}
+                  width={440}
                   height={600}
                   src={data.doctor.avatar}
                   alt={data.doctor.name}
