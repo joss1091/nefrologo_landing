@@ -7,10 +7,21 @@ import Questions from "../components/questions";
 import Meta from "../components/meta";
 import EmergencyWidget from "../components/emergencyWidget";
 import ScheduleWidget from "../components/scheduleWidget";
+import { FAQPageJsonLd } from "next-seo";
 export default function Faqs({ faqs, company, preview }) {
 
   return (
     <Layout preview={preview}>
+      <FAQPageJsonLd
+      mainEntity={
+        faqs.map(({question, answer}) => (
+          {
+            questionName: question, 
+            acceptedAnswerText: answer
+          }
+        ))
+      } 
+      />
       <Meta title={"Preguntas Frecuentes"} />
       <Container>
         <section className="faq pt-120 pb-70">

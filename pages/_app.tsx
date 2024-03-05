@@ -5,16 +5,21 @@ import "@fortawesome/fontawesome-free/scss/fontawesome.scss"
 import '../styles/libraries.css'
 import '../styles/slicky-carousel.css'
 import "../styles/scss/style.scss"
+import {initializeGoogleTagManager} from "../lib/tagmanager_initialize"
 
 
 import Script from 'next/script'
+import { useEffect } from 'react'
 
 function MyApp({ Component, pageProps }: AppProps) {
+  useEffect(() =>{
+    initializeGoogleTagManager("GTM-T8CBV7F7")
+  }
+  ,[])
   return (
   <>
-  <Script id="doctoralia" strategy='lazyOnload'>
-       {`!function($_x,_s,id){var js,fjs=$_x.getElementsByTagName(_s)[0];if(!$_x.getElementById(id)){js = $_x.createElement(_s);js.id = id;js.src = "//platform.docplanner.com/js/widget.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","zl-widget-s");`}
-       </Script>
+
+  
        <Component {...pageProps} />
   </>
   )

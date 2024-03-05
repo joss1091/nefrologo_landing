@@ -25,6 +25,8 @@ import {
   WhatsappIcon,
   WhatsappShareButton,
 } from "next-share";
+import Head from "next/head";
+import { NextSeo } from "next-seo";
 
 export default function Post({
   post,
@@ -36,14 +38,31 @@ export default function Post({
   preview,
 }) {
   const morePosts = posts?.edges;
-
   if (!post) {
     return <ErrorPage statusCode={404} />;
   }
 
   return (
+    <>
+    
     <Layout preview={preview}>
-      <Meta title={post.title} />
+    <NextSeo
+      openGraph={
+        { 
+          title: post.title,
+          description: post.excerpt,
+          url: `/blog/${post.slug}`,
+          type: "article",
+          article: {
+            publishedTime: post.date,
+            modifiedTime: post.modified
+            
+          }
+          
+        }
+      } />
+      
+    <Meta title={post.title} />
       <Container>
         <section className="page-title pt-30 pb-30 text-center">
           <div className="container">
@@ -198,6 +217,7 @@ export default function Post({
         </section>
       </Container>
     </Layout>
+    </>
   );
 }
 
