@@ -33,7 +33,7 @@ export default function AboutLayout({ data }) {
                 
                   width={440}
                   height={600}
-                  src={data.doctor.avatar}
+                  src={data.doctor.avatars.version2}
                   alt={data.doctor.name}
                   className="w-100"
                 />

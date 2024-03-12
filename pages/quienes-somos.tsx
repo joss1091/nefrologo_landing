@@ -63,7 +63,7 @@ export default function AboutUs({
                         <Image
                           width={430}
                           height={600}
-                          src={doctor.avatar}
+                          src={doctor.avatars.version3}
                           alt={doctor.name}
                         />
                       </div>
