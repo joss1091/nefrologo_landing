@@ -140,7 +140,7 @@ export default function DescriptionDisplayer({
       );
     case "image":
       return (
-        <div className=" mb-50">
+        <div className=" mb-50 text-center">
           <Image
             src={content}
             width={details.width}
