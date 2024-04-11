@@ -30,7 +30,7 @@ function generateSiteMap(posts, categories, tags) {
      ${categories.edges.map(({node}) => {
       return `
       <url>
-       <loc>${`${URL}/categorias/${node.slug}`}</loc>
+       <loc>${`${URL}/blog/categorias/${node.slug}`}</loc>
        <lastmod>${`${new Date().toISOString()}`}</lastmod>
      </url>
      `
@@ -38,7 +38,7 @@ function generateSiteMap(posts, categories, tags) {
      ${tags.nodes.map(({slug}) => {
       return `
       <url>
-       <loc>${`${URL}/tags/${slug}`}</loc>
+       <loc>${`${URL}/blog/tags/${slug}`}</loc>
        <lastmod>${`${new Date().toISOString()}`}</lastmod>
      </url>
      `
